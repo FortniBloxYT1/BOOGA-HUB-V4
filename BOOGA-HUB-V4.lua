@@ -1051,7 +1051,9 @@ MiscSection1:addToggle("Auto TOP Respawn", nil,function(AutoTopRespawn)
 			end
 			if Player.Character.Humanoid.Health == 1 then
 				task.wait(6)
-				Player.Character.SuperAction:Destroy()
+				if Player.Character:FindFirstChild("SuperAction") then
+					Player.Character.SuperAction:Destroy()
+				end
 				game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = CFrame.new(100,100,100)}):Play()
 			end
 		end)
