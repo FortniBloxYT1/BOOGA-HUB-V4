@@ -1328,6 +1328,28 @@ MiscSection2:addButton("Fusion Stack", function()
 	end)
 end)
 
+MiscSection2:addButton("Power Impact Glitch",function()
+	while true do
+		task.wait(.250)
+		if Toggled or not workspace.Live:FindFirstChild(Player.Name) then
+			continue
+		end
+		if not Player.Character:FindFirstChild("Head") then
+			continue
+		elseif not Player.Character:FindFirstChild("Power Impact") then
+			continue
+		end
+		if not Player.Character["Power Impact"].Activator:FindFirstChild("BoneBreak") then
+			continue
+		end
+		Player.Character["Power Impact"].Activator.BoneBreak:Destroy()
+		Player.Character["Power Impact"].Activator.Sound:Destroy()
+		Player.Character["Power Impact"].Activator.Fireworks:Destroy()
+		Player.Character["Power Impact"].Activator.Crash:Destroy()
+		Player.Character["Power Impact"].Activator.Blocked:Destroy()
+	end
+end)
+
 MiscSection2:addButton("Anchor (O)",function()
 	UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 		if GameProcessedEvent then return end
