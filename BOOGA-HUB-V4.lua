@@ -1298,8 +1298,7 @@ MiscSection2:addButton("No Flying Ki-Drain", function()
 	setreadonly(mt, false)
 
 	mt.__namecall = newcclosure(function(self, ...)
-		local method = getnamecallmethod()
-		if method == "FireServer" and self.Name == "Super" then
+		if self.Name == "Super" then
 			return nil
 		end
 		return namecall(self, ...)
@@ -1312,9 +1311,8 @@ MiscSection2:addButton("No-Ki-Waste-Vanish", function()
 	setreadonly(mt, false)
 
 	mt.__namecall = newcclosure(function(self, ...)
-		local method = getnamecallmethod()
-		if method == "FireServer" and self.Name == "Use" then
-			return 0
+		if self.Name == "Use" then
+			return namecall(self,0)
 		end
 		return namecall(self, ...)
 	end)
