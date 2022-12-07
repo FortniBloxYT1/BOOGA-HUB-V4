@@ -57,10 +57,9 @@ local function Respawn()
 	if game.PlaceId ~= 536102540 then ResetCharacter() return end
 	if game.PlaceId == 536102540 and not ResetRace() then ResetCharacter() return end
 	Player.Character:WaitForChild('HumanoidRootPart')
-	local CurrentFrame = Player.Character.HumanoidRootPart
-	local CurrentFrame3 = Player.Character.HumanoidRootPart.CFrame
 	Toggled = true
-	Player.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Hair Stylist"])
+	CurrentFrame3 = Player.Character.HumanoidRootPart.CFrame
+	Player.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs["Hair Stylist"])
 	task.wait(.430)
 	game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 	task.wait(.430)
@@ -1685,7 +1684,7 @@ AutoFarmOptions:addToggle("Start Autofarm", nil, function(AutoFarm)
 					local Target = v
 					repeat
 						task.wait()
-						if not Target:FindFirstChild("HumanoidRootPart") or not AutoFarming or not Target:FindFirstChildOfClass("Humanoid") then
+						if not Target:FindFirstChild("HumanoidRootPart") or not AutoFarming or not Target:FindFirstChildOfClass("Humanoid") or Toggled then
 							break
 						end
 						local Distance = (Player.Character.HumanoidRootPart.Position - Target.HumanoidRootPart.Position).magnitude / 10000
