@@ -56,23 +56,23 @@ end
 local function Respawn()
 	if game.PlaceId ~= 536102540 then ResetCharacter() return end
 	if game.PlaceId == 536102540 and not ResetRace() then ResetCharacter() return end
-	Player.Character:WaitForChild("HumanoidRootPart")
+	Player.Character:WaitForChild('HumanoidRootPart')
+	local CurrentFrame = Player.Character.HumanoidRootPart
+	local CurrentFrame3 = Player.Character.HumanoidRootPart.CFrame
 	Toggled = true
-	local CFrame = Player.Character.HumanoidRootPart.CFrame
-	Player.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs["Hair Stylist"])
+	Player.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Hair Stylist"])
 	task.wait(.430)
-	Player.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
+	game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 	task.wait(.430)
 	Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
 
-	local HumanoidRootPart = Player.Character:WaitForChild("HumanoidRootPart")
 	Player.CharacterAdded:Connect(function()
 		if not Toggled then
 			return
 		end
 		repeat
 			task.wait()
-			Player.Character.HumanoidRootPart.CFrame = CFrame
+			Player.Character.HumanoidRootPart.CFrame = CurrentFrame3
 		until Player.Character:FindFirstChild("PowerOutput")
 		Toggled = false
 	end)
