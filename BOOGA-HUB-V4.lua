@@ -2071,7 +2071,9 @@ Visuals:addButton("Japanese Dark Shader",function()
 end)
 
 Visuals:addButton("Japanese Shader",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Japanese"))()
+	pcall(function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Japanese"))()
+	end)
 end)
 
 Visuals:addButton("FPS Boost",function()
