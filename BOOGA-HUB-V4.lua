@@ -1619,7 +1619,7 @@ local npcssection = AutoFarm:addSection("NPCS")
 local NPCS = {"     ","      ","     ","     "}
 
 npcssection:addButton("Recommended Farm",function()
-	npc1.Button.Textbox.Text = "Saibaman"
+	npc1.Button.Textbox.Text = "Saiba"
 	npc2.Button.Textbox.Text = "Saiyan"
 	npc3.Button.Textbox.Text = "Chi"
 	npc4.Button.Textbox.Text = "Boxer"
