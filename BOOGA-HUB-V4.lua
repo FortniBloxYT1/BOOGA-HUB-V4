@@ -1314,7 +1314,7 @@ MiscSection2:addButton("No-Ki-Waste-Vanish", function()
 	mt.__namecall = newcclosure(function(self, ...)
 		local method = getnamecallmethod()
 		if method == "FireServer" and self.Name == "Use" then
-			return nil
+			return 0
 		end
 		return namecall(self, ...)
 	end)
