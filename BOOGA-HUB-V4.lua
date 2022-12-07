@@ -1704,7 +1704,7 @@ AutoFarmOptions:addToggle("Auto Attack", nil,function(attacking)
 		Attacking = true
 		while Attacking do
 			Player.Backpack.ServerTraits.Input:FireServer({"md"},CFrame.new())
-			task.wait(.350)
+			task.wait(.4)
 		end
 	else
 		Attacking = false
