@@ -2059,7 +2059,7 @@ end)
 local Visuals = Other:addSection("Visuals")
 
 Visuals:addButton("Galaxy Shaders",function()
-	loadstring(game:HttpGet("https://github.com/FortniBloxYT1/Shaders/blob/main/Galaxy%20Shader"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Galaxy%20Shader"))()
 end)
 
 Visuals:addButton("Shader",function()
