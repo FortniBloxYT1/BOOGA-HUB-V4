@@ -651,6 +651,7 @@ MainSection4:addToggle("Loop Attach", nil,function(loopAttach)
 	if loopAttach then
 		LoopAttach = true
 		while LoopAttach do
+			task.wait()
 			if not playerToAttach then
 				continue
 			end
