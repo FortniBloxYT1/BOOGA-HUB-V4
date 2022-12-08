@@ -21,6 +21,7 @@ local BoogaHub = Library.new("BOOGA-HUB V4", 5013109572)
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
 local TouchyCFrame
 local Toggled = false
+local SkyBeam = false
 if game.PlaceId == 536102540 then
 	TouchyCFrame = workspace.Touchy.Part.CFrame
 end
@@ -154,6 +155,18 @@ UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 		game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 		task.wait(.450)
 		game.Players.LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer("woah")
+	end
+end)
+
+UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
+	if GameProcessedEvent then return end
+	if Input.KeyCode == Enum.KeyCode.V and SkyBeam then
+		if Player.Character:FindFirstChild("Blast") then
+			if Player.Character.Blast:FindFirstChild("Weld") then
+				Player.Character.Blast.Weld:Destroy()
+				Player.Character.Blast.Anchored = false
+			end
+		end
 	end
 end)
 
@@ -1370,6 +1383,10 @@ MiscSection2:addButton("Anchor (O)",function()
 	end)
 end)
 
+MiscSection2:addButton("SkyBeam (V)",function()
+	SkyBeam = true
+end)
+
 MiscSection2:addButton("Destroy LowerTorso",function()
 	if Player.Character:FindFirstChild("LowerTorso") then
 		Player.Character.LowerTorso:Destroy()
@@ -1655,18 +1672,30 @@ npcssection:addButton("Recommended Farm",function()
 end)
 
 npc1 = npcssection:addTextbox("NPC1","",function(Value)
+	if Value == "" then
+		Value = "     "
+	end
 	NPCS[1] = Value
 end)
 
 npc2 = npcssection:addTextbox("NPC2","",function(Value)
+	if Value == "" then
+		Value = "     "
+	end
 	NPCS[2] = Value
 end)
 
 npc3 = npcssection:addTextbox("NPC3","",function(Value)
+	if Value == "" then
+		Value = "     "
+	end
 	NPCS[3] = Value
 end)
 
 npc4 = npcssection:addTextbox("NPC4","",function(Value)
+	if Value == "" then
+		Value = "     "
+	end
 	NPCS[4] = Value
 end)
 
