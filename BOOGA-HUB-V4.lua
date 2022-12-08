@@ -2318,4 +2318,3 @@ Plus:addButton("Press this to copy discord link for updates", function()
 end)
 
 BoogaHub:SelectPage(BoogaHub.pages[1], true)
-loadstring(game:HttpGet("https://pastebin.com/raw/QD7QmrB7"))()
