@@ -184,7 +184,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 7/12/2022",function() end)
+MainSection:addButton("Last Update : 8/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
