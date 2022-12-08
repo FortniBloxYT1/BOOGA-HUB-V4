@@ -2,6 +2,11 @@ repeat
 	task.wait()
 until game:IsLoaded() and game.Players.LocalPlayer
 
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V4", Text = "Script is under maintenance,wait 5 minutes", Duration = 10})
+while true do
+	task.wait(6000)
+end
+
 if not Executed then
 	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V4", Text = "Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
 else
