@@ -322,13 +322,20 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 			Player.Character["Energy Wave"]:Deactivate()
 			wait(0.3)
 			if Player.Character:FindFirstChild("Action") then
-				Player.Character["Action"]:Destroy()
+				Player.Character.Action:Destroy()
 			end
 			if Player.Backpack:FindFirstChild("Super Death Beam") then
 				Player.Backpack["Super Death Beam"].Parent = Player.Character
 				Player.Character["Super Death Beam"]:Activate()
-				wait(0.4)
 				Player.Character["Super Death Beam"]:Deactivate()
+				wait(0.4)
+				if Player.Character:FindFirstChild("Action") then
+					Player.Character.Action:Destroy()
+				end
+			elseif Player.Backpack:FindFirstChild("Big Bang Kamehameha") then
+				Player.Backpack["Big Bang Kamehameha"].Parent = Player.Character
+				Player.Character["Big Bang Kamehameha"]:Activate()
+				Player.Character["Big Bang Kamehameha"]:Deactivate()
 				wait(0.4)
 				if Player.Character:FindFirstChild("Action") then
 					Player.Character.Action:Destroy()
