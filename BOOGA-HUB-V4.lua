@@ -197,7 +197,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 8/12/2022",function() end)
+MainSection:addButton("Last Update : 9/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -1672,28 +1672,28 @@ npcssection:addButton("Recommended Farm",function()
 end)
 
 npc1 = npcssection:addTextbox("NPC1","",function(Value)
-	if Value == "" then
+	if Value == "" or Value == " " then
 		Value = "     "
 	end
 	NPCS[1] = Value
 end)
 
 npc2 = npcssection:addTextbox("NPC2","",function(Value)
-	if Value == "" then
+	if Value == "" or Value == " " then
 		Value = "     "
 	end
 	NPCS[2] = Value
 end)
 
 npc3 = npcssection:addTextbox("NPC3","",function(Value)
-	if Value == "" then
+	if Value == "" or Value == " " then
 		Value = "     "
 	end
 	NPCS[3] = Value
 end)
 
 npc4 = npcssection:addTextbox("NPC4","",function(Value)
-	if Value == "" then
+	if Value == "" or Value == " " then
 		Value = "     "
 	end
 	NPCS[4] = Value
