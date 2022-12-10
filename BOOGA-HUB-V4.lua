@@ -17,7 +17,7 @@ end
 
 getgenv().Executed = true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
-local BoogaHub = Library.new("BOOGA-HUB V4", 5013109572)
+local BoogaHub = Library.new("BOOGA-HUB V4 ♥️ 🇵🇹 ♥️ 🇪🇸", 5013109572)
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
 local TouchyCFrame
 local Toggled = false
@@ -197,7 +197,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 8/12/2022",function() end)
+MainSection:addButton("Last Update : 10/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -2341,7 +2341,7 @@ Plus:addKeybind("Close UI", Enum.KeyCode.Clear, function()
 end)
 
 Plus:addButton("Destroy GUI",function()
-	game.CoreGui["BOOGA-HUB V4"]:Destroy()
+	game.CoreGui["BOOGA-HUB V4 ♥️ 🇵🇹 ♥️ 🇪🇸"]:Destroy()
 	getgenv().Executed = false
 end)
 
