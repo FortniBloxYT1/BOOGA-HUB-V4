@@ -43,7 +43,7 @@ local Themes = {
 
 local function ResetRace()
 	if Player.Character.Race.Value == "Saiyan" or Player.Character.Race.Value == "Android" or Player.Character.Race.Value == "Human" then
-		return true
+		return true 
 	else
 		return false
 	end
