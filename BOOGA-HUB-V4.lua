@@ -197,7 +197,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 10/12/2022",function() end)
+MainSection:addButton("Last Update : 11/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -1368,6 +1368,51 @@ MiscSection2:addButton("Power Impact Glitch",function()
 		Player.Character["Power Impact"].Activator.Crash:Destroy()
 		Player.Character["Power Impact"].Activator.Blocked:Destroy()
 	end
+end)
+
+MiscSection2:addButton("Queue Kick (U)",function()
+	UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
+		if GameProcessedEvent then return end
+		if Input.KeyCode == Enum.KeyCode.U then
+			local OldCF,Pos = Player.Character.HumanoidRootPart.CFrame,Player.Character.HumanoidRootPart.Position
+			if workspace:FindFirstChild("Wormhole") then
+				workspace.Wormhole:Destroy()
+			end
+
+			if not Player.Backpack:FindFirstChild("Dragon Throw") and not Player.Character:FindFirstChild("Dragon Throw") then
+				game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V4", Text = "Buy Dragon Throw",Duration = 3})
+			end
+
+			Player.Backpack["Dragon Throw"].Parent = Player.Character
+			Player.Character["Dragon Throw"]:Activate()
+			Player.Character["Dragon Throw"].Activator.Flip:Destroy()
+			Player.Character["Dragon Throw"]:Deactivate()
+			task.wait(.650)
+			for _ = 1,120 do
+				task.wait()
+				Player.Character.HumanoidRootPart.CFrame = CFrame.new(2658.0686, 3945.40454, -2516.53149, -0.394769967, -0, -0.918779969, -0, 1, -0, 0.918780088, 0, -0.394769907)
+			end
+			task.wait(.2)
+			if (Player.Character.HumanoidRootPart.Position - Pos).magnitude > 50 then
+				local Tween = game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(2,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = OldCF})
+				Tween:Play()
+				Tween.Completed:Wait()
+				if game.PlaceId == 536102540 and ResetRace() then
+					task.wait(1.2)
+					Respawn()
+				else
+					ResetCharacter()
+				end
+			else
+				if game.PlaceId == 536102540 and ResetRace() then
+					task.wait(1.2)
+					Respawn()
+				else
+					ResetCharacter()
+				end
+			end
+		end
+	end)
 end)
 
 MiscSection2:addButton("Anchor (O)",function()
