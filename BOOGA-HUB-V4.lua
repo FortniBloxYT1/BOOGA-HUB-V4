@@ -333,7 +333,7 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 			until Player.Character:FindFirstChild("Blast")
 			Player.Character:WaitForChild("Blast").Mesh:Destroy()
 			Player.Character["Energy Wave"]:Deactivate()
-			wait(0.3)
+			wait(0.4)
 			if Player.Character:FindFirstChild("Action") then
 				Player.Character.Action:Destroy()
 			end
