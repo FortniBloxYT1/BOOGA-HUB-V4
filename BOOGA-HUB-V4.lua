@@ -197,7 +197,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 11/12/2022",function() end)
+MainSection:addButton("Last Update : 14/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -333,7 +333,7 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 			until Player.Character:FindFirstChild("Blast")
 			Player.Character:WaitForChild("Blast").Mesh:Destroy()
 			Player.Character["Energy Wave"]:Deactivate()
-			wait(0.4)
+			wait(0.3)
 			if Player.Character:FindFirstChild("Action") then
 				Player.Character.Action:Destroy()
 			end
@@ -341,7 +341,7 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 				Player.Backpack["Super Death Beam"].Parent = Player.Character
 				Player.Character["Super Death Beam"]:Activate()
 				Player.Character["Super Death Beam"]:Deactivate()
-				wait(0.5)
+				wait(0.4)
 				if Player.Character:FindFirstChild("Action") then
 					Player.Character.Action:Destroy()
 				end
@@ -349,7 +349,7 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 				Player.Backpack["Big Bang Kamehameha"].Parent = Player.Character
 				Player.Character["Big Bang Kamehameha"]:Activate()
 				Player.Character["Big Bang Kamehameha"]:Deactivate()
-				wait(0.5)
+				wait(0.4)
 				if Player.Character:FindFirstChild("Action") then
 					Player.Character.Action:Destroy()
 				end
@@ -1122,6 +1122,22 @@ MiscSection1:addToggle("Dark Theme Chat", nil, function(DarkTheme)
 	else
 		Player.Character.DarkTheme:Destroy()
 	end
+end)
+
+MiscSection1:addToggle("Giant (Transform with a size form)", nil,function(Giant)
+    if Giant then
+        GiantRun = RS.RenderStepped:Connect(function()
+            pcall(function()
+                for _,v in pairs(Player.Character:GetChildren()) do
+                    if v:FindFirstChild("OriginalSize") then
+                        v.OriginalSize:Destroy()
+                    end
+                end
+            end)
+        end)
+    else
+        GiantRun:Disconnect()
+    end
 end)
 
 MiscSection1:addToggle("Auto-Vanish", nil, function(AutoVanish)
