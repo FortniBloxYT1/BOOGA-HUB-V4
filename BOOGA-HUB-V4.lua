@@ -338,6 +338,7 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 				Player.Character.Action:Destroy()
 			end
 			if Player.Backpack:FindFirstChild("Super Death Beam") then
+				task.wait(.2)
 				Player.Backpack["Super Death Beam"].Parent = Player.Character
 				Player.Character["Super Death Beam"]:Activate()
 				Player.Character["Super Death Beam"]:Deactivate()
@@ -346,6 +347,7 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 					Player.Character.Action:Destroy()
 				end
 			elseif Player.Backpack:FindFirstChild("Big Bang Kamehameha") then
+				task.wait(.2)
 				Player.Backpack["Big Bang Kamehameha"].Parent = Player.Character
 				Player.Character["Big Bang Kamehameha"]:Activate()
 				Player.Character["Big Bang Kamehameha"]:Deactivate()
