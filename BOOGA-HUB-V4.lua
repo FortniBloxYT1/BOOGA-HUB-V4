@@ -333,7 +333,11 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 			until Player.Character:FindFirstChild("Blast")
 			Player.Character:WaitForChild("Blast").Mesh:Destroy()
 			Player.Character["Energy Wave"]:Deactivate()
-			wait(.350)
+			local e = 0
+			repeat
+				task.wait(.1)
+				e = e + .1
+			until e >= .4 or Player.Character:FindFirstChild("Action")
 			if Player.Character:FindFirstChild("Action") then
 				Player.Character.Action:Destroy()
 			end
@@ -341,7 +345,11 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 				Player.Backpack["Super Death Beam"].Parent = Player.Character
 				Player.Character["Super Death Beam"]:Activate()
 				Player.Character["Super Death Beam"]:Deactivate()
-				wait(.350)
+				local e = 0
+				repeat
+					task.wait(.1)
+					e = e + .1
+				until e >= .4 or Player.Character:FindFirstChild("Action")
 				if Player.Character:FindFirstChild("Action") then
 					Player.Character.Action:Destroy()
 				end
@@ -349,7 +357,11 @@ MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 				Player.Backpack["Big Bang Kamehameha"].Parent = Player.Character
 				Player.Character["Big Bang Kamehameha"]:Activate()
 				Player.Character["Big Bang Kamehameha"]:Deactivate()
-				wait(.350)
+				local e = 0
+				repeat
+					task.wait(.1)
+					e = e + .1
+				until e >= .4 or Player.Character:FindFirstChild("Action")
 				if Player.Character:FindFirstChild("Action") then
 					Player.Character.Action:Destroy()
 				end
