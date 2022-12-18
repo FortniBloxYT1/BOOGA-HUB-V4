@@ -45,6 +45,29 @@ local Themes = {
 	TextColor = Color3.fromRGB(255, 255, 255),
 }
 
+local Name = "BOOGA-HUB V4/config.json"
+
+local DefaultSettings = {
+    CloseUI = "Clear"
+}
+
+if not isfolder("BOOGA-HUB V4") then
+	makefolder("BOOGA-HUB V4")
+	writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings))
+end
+
+local ActualSettings = {}
+
+if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
+
+local Settings = game:service'HttpService':JSONDecode(readfile(Name))
+
+ActualSettings.CloseUI = Settings.CloseUI
+
+local function Save()
+    writefile(Name,game:service'HttpService':JSONEncode(ActualSettings))
+end
+
 local function ResetRace()
 	if Player.Character.Race.Value == "Saiyan" or Player.Character.Race.Value == "Android" or Player.Character.Race.Value == "Human" then
 		return true
@@ -2402,9 +2425,12 @@ for theme, color in pairs(Themes) do
 end
 local Plus = Settings:addSection("Plus")
 
-Plus:addKeybind("Close UI", Enum.KeyCode.Clear, function()
+Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
 	BoogaHub:toggle()
-	BoogaHub:close()
+end,function(Key)
+    Settings.CloseUI = tostring(Key.KeyCode):gsub("%a+%.%a+%.","")
+    ActualSettings.CloseUI = tostring(Key.KeyCode):gsub("%a+%.%a+%.","")
+    Save()
 end)
 
 Plus:addButton("Destroy GUI",function()
