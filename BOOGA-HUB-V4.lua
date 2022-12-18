@@ -1158,6 +1158,9 @@ MiscSection1:addToggle("Remove Bean Aura", nil, function(BeanAura)
 			if Player.Character.HumanoidRootPart:FindFirstChild("Critz") then
 				Player.Character.HumanoidRootPart.Critz:Destroy()
 			end
+			if Player.Character.HumanoidRootPart:FindFirstChild("KritSound") then
+				Player.Character.HumanoidRootPart.KritSound:Destroy()
+			end
 		end)
 	else
 		BeanRun:Disconnect()
