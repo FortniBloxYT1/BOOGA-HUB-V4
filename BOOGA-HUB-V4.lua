@@ -197,7 +197,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 18/12/2022",function() end)
+MainSection:addButton("Last Update : 16/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -1157,9 +1157,6 @@ MiscSection1:addToggle("Remove Bean Aura", nil, function(BeanAura)
 		BeanRun = RS.RenderStepped:Connect(function()
 			if Player.Character.HumanoidRootPart:FindFirstChild("Critz") then
 				Player.Character.HumanoidRootPart.Critz:Destroy()
-			end
-			if Player.Character.HumanoidRootPart:FindFirstChild("KritSound") then
-				Player.Character.HumanoidRootPart.KritSound:Destroy()
 			end
 		end)
 	else
