@@ -17,7 +17,7 @@ end
 
 getgenv().Executed = true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
-local BoogaHub = Library.new("BOOGA-HUB V4 ♥️ 🇵🇹 ♥️ 🇪🇸", 5013109572)
+local BoogaHub = Library.new("BOOGA-HUB V4 - Happy Christmas 🎄 🎅🏻", 5013109572)
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
 local TouchyCFrame
 local Toggled = false
@@ -32,9 +32,13 @@ local FireValues = {"Attacking","Action","heavy","hyper","Hyper","Using"}
 local Trackables = {"KiBlast","Blast"}
 local Magnitude = 12
 
+BoogaHub:setTheme("Glow",Color3.fromRGB(255,255,255))
+
+BoogaHub:setTheme("Accent",Color3.fromRGB(181,175,193))
+
 local Themes = {
 	Background = Color3.fromRGB(24, 24, 24),
-	Glow = Color3.fromRGB(190, 0, 0),
+	Glow = Color3.fromRGB(255, 255, 255),
 	Accent = Color3.fromRGB(215, 0, 0),
 	LightContrast = Color3.fromRGB(20, 20, 20),
 	DarkContrast = Color3.fromRGB(14, 14, 14),
@@ -197,7 +201,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 16/12/2022",function() end)
+MainSection:addButton("Last Update : 18/12/2022",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -2404,7 +2408,7 @@ Plus:addKeybind("Close UI", Enum.KeyCode.Clear, function()
 end)
 
 Plus:addButton("Destroy GUI",function()
-	game.CoreGui["BOOGA-HUB V4 ♥️ 🇵🇹 ♥️ 🇪🇸"]:Destroy()
+	game.CoreGui["BOOGA-HUB V4 - Happy Christmas 🎄 🎅🏻"]:Destroy()
 	getgenv().Executed = false
 end)
 
