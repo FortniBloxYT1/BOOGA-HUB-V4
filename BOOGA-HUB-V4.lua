@@ -27,7 +27,7 @@ if game.PlaceId == 536102540 then
 end
 local SlowValues = {"xx","Action","Activity","SuperAction","Attacking","Using","heavy","hyper","Hyper","Tele","tele","Slow","Killed","KiBlasted","Hyper","Dodging","KiBlasting","BStun","creator","KnockBacked","NotHardBack","evasive","Velocity","zDASZzxc"}
 local MeleeMoves = {"Meteor Crash","Anger Rush","Wolf Fang Fist","Neo Wolf Fang Fist","Deadly Dance","God Slicer","Sweep Kick","TS Molotov","Flash Skewer","Demon Flash","Strong Kick","Masenko","Big Bang Kamehameha","Flash Strike","Aerial Breaker"}
-local KiMoves = {"Blaster Meteor","Masenko","Big Bang Kamehameha","Sudden Storm","Super Volley","Tribeam","Beam Scatter","Justice Flash","Chain Destruco Disk","Spirit Ball","Giant Storm","Super Death Beam","Death Beam","Divine Lasso","Explosive Grip","Hellzone Grenade"}
+local KiMoves = {"Blaster Meteor","Explosive Grip","Super Volley","Finish Breaker","Genocide Shell","Murder Grenade","Hell Pillars","Justicle Flash","Divine Lasso","Spirit Ball","Death Beam Barrage"}
 local FireValues = {"Attacking","Action","heavy","hyper","Hyper","Using"}
 local Trackables = {"KiBlast","Blast"}
 local Magnitude = 12
