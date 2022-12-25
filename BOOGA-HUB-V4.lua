@@ -1460,6 +1460,55 @@ MiscSection2:addButton("Queue Kick (U)",function()
 	end)
 end)
 
+MiscSection2:addButton("Freeze (K)",function()
+    UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
+		if GameProcessedEvent then return end
+		if Input.KeyCode == Enum.KeyCode.K then
+            if not Player.Backpack:FindFirstChild("Dragon Throw") and not Player.Character:FindFirstChild("Dragon Throw") then
+				game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V4", Text = "Buy Dragon Throw",Duration = 3})
+			end
+
+			Player.Backpack["Dragon Throw"].Parent = Player.Character
+			Player.Character["Dragon Throw"]:Activate()
+			Player.Character["Dragon Throw"].Activator.Flip:Destroy()
+			Player.Character["Dragon Throw"]:Deactivate()
+            task.wait(.5)
+            local OldCF,Pos = Player.Character.HumanoidRootPart.CFrame,Player.Character.HumanoidRootPart.Position
+            for _ = 1,120 do
+				task.wait()
+				Player.Character.HumanoidRootPart.CFrame = CFrame.new(100000,100000,100000)
+			end
+			task.wait(.2)
+			if (Player.Character.HumanoidRootPart.Position - Pos).magnitude > 50 then
+				local Tween = game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(2,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = OldCF})
+				Tween:Play()
+				Tween.Completed:Wait()
+				if game.PlaceId == 536102540 and ResetRace() then
+					task.wait(1.2)
+					if (Player.Character.HumanoidRootPart.Position - Pos).magnitude > 50 then
+                        Player.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Hair Stylist"])
+                        task.wait(.450)
+                        Player.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
+                        task.wait(.450)
+                        Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
+                    else
+                        Respawn()
+                    end
+				else
+					ResetCharacter()
+				end
+			else
+				if game.PlaceId == 536102540 and ResetRace() then
+					task.wait(1.2)
+					Respawn()
+				else
+					ResetCharacter()
+				end
+			end
+        end
+    end)
+end)
+
 MiscSection2:addButton("Anchor (O)",function()
 	UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 		if GameProcessedEvent then return end
