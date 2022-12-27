@@ -1257,6 +1257,11 @@ MiscSection2:addButton("Anti-Kick",function()
 		end
 		return NameCall(self, ...)
 	end)
+	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:connect(function(child)
+		if child.Name == "ErrorPrompt" and child:FindFirstChild("MessageArea") and child.MessageArea:FindFirstChild("ErrorFrame") then
+			TeleportService:Teleport(game.PlaceId, Player)
+		end
+	end)
 end)
 
 MiscSection2:addButton("Anti-AFK", function()
