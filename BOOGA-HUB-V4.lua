@@ -1391,6 +1391,9 @@ MiscSection2:addButton("No-Ki-Waste-Vanish", function()
 end)
 
 MiscSection2:addButton("Fusion Stack", function()
+	if Player.Character:FindFirstChild("FUSED") then
+		Player.Character.FUSED:Destroy()
+	end
 	Player.Character.ChildAdded:Connect(function(Child)
 		if Child.Name == "FUSED" then
 			Child:Destroy()
