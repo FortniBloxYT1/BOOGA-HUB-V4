@@ -272,8 +272,8 @@ end)
 
 local MainGodModesSection = Main:addSection("Main | Section 2 | GodModes")
 
-MainGodModesSection:addButton("Universal GodMode", function(UNIGM) -- Universal God Mode Was Not Made By Booga
-	if UNIGM and not Activated then
+MainGodModesSection:addButton("Universal GodMode", function() -- Universal God Mode Was Not Made By Booga
+	if not Activated then
 		Activated = true
 		getgenv().toggled = true
 
