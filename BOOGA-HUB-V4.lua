@@ -17,7 +17,7 @@ end
 
 getgenv().Executed = true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
-local BoogaHub = Library.new("BOOGA-HUB V4 - Happy Christmas 🎄 🎅", 5013109572)
+local BoogaHub = Library.new("BOOGA-HUB V4 - Happy New Year!", 5013109572)
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power, autoFarmDistance = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100,2
 local TouchyCFrame
 local Toggled = false
@@ -224,7 +224,7 @@ end)
 
 local Main, MainSection = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 27/12/2022",function() end)
+MainSection:addButton("Last Update : 1/01/2023",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -1877,6 +1877,7 @@ AutoFarmOptions:addToggle("Start Autofarm", nil, function(AutoFarm)
 						if not Target:FindFirstChild("HumanoidRootPart") or not AutoFarming or not Target:FindFirstChildOfClass("Humanoid") or Toggled then
 							break
 						end
+						workspace.CurrentCamera.CFrame = CFrame.new(Player.Character.HumanoidRootPart.Position,Vector3.new(v.HumanoidRootPart.Position.X,Player.Character.HumanoidRootPart.Position.Y,v.HumanoidRootPart.Position.Z)) * CFrame.new(0,2,10)
 						local Distance = (Player.Character.HumanoidRootPart.Position - Target.HumanoidRootPart.Position).magnitude / 10000
 						game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(Distance,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,autoFarmDistance)}):Play()
 					until Target.Humanoid.Health == 0
@@ -2495,7 +2496,7 @@ end,function(Key)
 end)
 
 Plus:addButton("Destroy GUI",function()
-	game.CoreGui["BOOGA-HUB V4 - Happy Christmas 🎄 🎅🏻"]:Destroy()
+	game.CoreGui["BOOGA-HUB V4 - Happy New Year!"]:Destroy()
 	getgenv().Executed = false
 end)
 
