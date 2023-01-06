@@ -1852,6 +1852,33 @@ AutoFarmOptions:addSlider("Distance", 2, 0, 10, function(Distance)
 	autoFarmDistance = Distance
 end)
 
+AutoFarmOptions:addToggle("BOOGA AutoQuest V1",nil,function(AutoQuest)
+	if AutoQuest then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-AUTOQUEST/main/BOOGA%20AUTO%20QUEST%20V1.lua"))()
+	else
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "BOOGA AUTO QUEST V1",Text = "BOOGA AUTO QUEST STOPPED",Duration = 2})
+		Noclip:Disconnect()
+		for _,v in pairs(Player.Character:GetChildren()) do
+			if v:IsA("BasePart") and not v.CanCollide then
+				v.CanCollide = true
+			end
+		end
+		autoQuest = nil
+		questsDone = nil
+		NPCs = nil
+		questLoaded = nil
+		Fight = nil
+		Talk = nil
+		Both = nil
+		searchMore = nil
+		destroy = nil
+		friaza = nil
+		friazaQuests = nil
+		Others = nil
+		Balls = nil
+	end
+end)
+
 AutoFarmOptions:addToggle("Start Autofarm", nil, function(AutoFarm)
 	if AutoFarm then
 		AutoFarming = true
