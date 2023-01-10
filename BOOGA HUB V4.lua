@@ -1629,12 +1629,12 @@ Storesection:addToggle("Start Buying", nil, function(buying)
 			repeat
 				buyBeans()
 				local Money = Player.PlayerGui.HUD.FullSize.Money.Text:gsub("%p+","")
-			until not Buying or tonumber(Money) < 25000
+			until not Buying or (amountt == "80" and tonumber(Money) < 25000) or (amountt == "8" and tonumber(Money) < 2500)
 		elseif Types == "Jars" then
 			repeat
 				buyBeans()
 				local Money = Player.PlayerGui.HUD.FullSize.Money.Text:gsub("%p+","")
-			until not Buying or tonumber(Money) < 40000
+			until not Buying or (amountt == "80" and tonumber(Money) < 40000) or (amountt == "8" and tonumber(Money) < 4000)
 		end
 	else
 		Buying = false
