@@ -97,11 +97,16 @@ local function Respawn()
 		if not Toggled then
 			return
 		end
+		getgenv().loadingCharacter = true
 		repeat
 			task.wait()
 			Player.Character.HumanoidRootPart.CFrame = CurrentFrame3
 		until Player.Character:FindFirstChild("PowerOutput")
 		Toggled = false
+		task.delay(1,function()
+            		repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
+            		getgenv().loadingCharacter = false
+        	end)
 	end)
 end
 
