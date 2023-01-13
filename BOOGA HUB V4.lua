@@ -1850,6 +1850,9 @@ AutoFarmOptions:addToggle("BOOGA AutoQuest V1",nil,function(AutoQuest)
 		friazaQuests = nil
 		Others = nil
 		Balls = nil
+		if Player.Character.HumanoidRootPart:FindFirstChild("AutoQuestBV") then
+			Player.Character.HumanoidRootPart.AutoQuestBV:Destroy()
+		end
 	end
 end)
 
