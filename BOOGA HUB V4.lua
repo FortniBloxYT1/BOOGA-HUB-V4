@@ -229,7 +229,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 13/01/2023",function() end)
+MainSection:addButton("Last Update : 14/01/2023",function() end)
 MainSection:addToggle("No Slow", nil, function(NS)
 	if NS then
 		NSRun = RS.RenderStepped:Connect(function()
@@ -1935,7 +1935,7 @@ AutoFarmOptions:addToggle("Auto Right Click", nil, function(rightClick)
 		HeavyAttacking = true
 		while HeavyAttacking do
 			Player.Backpack.ServerTraits.Input:FireServer({"m2"},CFrame.new())
-			task.wait(.5)
+			task.wait(.4)
 		end
 	else
 		HeavyAttacking = false
