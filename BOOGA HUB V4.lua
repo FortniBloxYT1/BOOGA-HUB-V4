@@ -118,8 +118,17 @@ local function changeSlot(Slot,CF)
     Player.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
     task.wait(.550)
     Player.Backpack.ServerTraits.ChatAdvance:FireServer({Slot})
-	task.wait(4)
-	game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(1.2,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = CF}):Play()
+	CF = Player.Character.HumanoidRootPart.CFrame
+	changing = true
+	Player.CharacterAdded:Connect(function()
+		if changing then
+			repeat
+				task.wait()
+				Player.Character.HumanoidRootPart.CFrame = CF
+			until Player.Character:FindFirstChild("PowerOutput")
+			changing = false
+		end
+	end)
 end
 
 local function buyBeans()
