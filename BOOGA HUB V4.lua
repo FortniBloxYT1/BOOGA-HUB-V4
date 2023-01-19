@@ -2514,7 +2514,7 @@ end,function(Key)
 end)
 
 Plus:addButton("Destroy GUI",function()
-	game.CoreGui["BOOGA-HUB V4 - Happy New Year!"]:Destroy()
+	game.CoreGui["BOOGA-HUB V4"]:Destroy()
 	getgenv().Executed = false
 end)
 
