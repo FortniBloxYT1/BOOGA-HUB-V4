@@ -785,7 +785,7 @@ MainSection4:addButton("Hard Reset", function()
 end)
 
 MainSection4:addButton("God / UI / MUI", function()
-	game:GetService("ReplicatedStorage").ResetChar:FireServer() for i = 1,20,1 do game.Players.LocalPlayer.Backpack.ServerTraits.Input:FireServer({"decrease"}, true) end task.wait(.350) if game.Players.LocalPlayer.character:FindFirstChild("Killed") and game.Players.LocalPlayer.character:FindFirstChild("Action") then game.Players.LocalPlayer.character.Killed:Destroy() game.Players.LocalPlayer.character.Action:Destroy() end game.Players.LocalPlayer.Backpack.ServerTraits.Transform:FireServer("h") for i = 1,20,1 do game.Players.LocalPlayer.Backpack.ServerTraits.Input:FireServer({"increase"}, true) end
+	game:GetService("ReplicatedStorage").ResetChar:FireServer() repeat task.wait() until not Player.Character or Player.Character.Humanoid.Health < 1.1 for _ = 1,20,1 do Player.Backpack.ServerTraits.Input:FireServer({"decrease"}, true) end task.wait(.2) if Player.Character:FindFirstChild("Killed") and Player.Character:FindFirstChild("Action") then Player.Character.Killed:Destroy() Player.Character.Action:Destroy() end Player.Backpack.ServerTraits.Transform:FireServer("h") Player.Backpack.ServerTraits.Transform:FireServer("g") for _ = 1,20,1 do Player.Backpack.ServerTraits.Input:FireServer({"increase"}, true) end
 end)
 
 MainSection4:addButton("Complete Red Quests",function()
