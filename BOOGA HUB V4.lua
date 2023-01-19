@@ -103,7 +103,7 @@ local function Respawn()
 			Player.Character.HumanoidRootPart.CFrame = CurrentFrame3
 		until Player.Character:FindFirstChild("PowerOutput")
 		Toggled = false
-		task.delay(1,function()
+		task.delay(.5,function()
             		repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
             		getgenv().loadingCharacter = false
         	end)
@@ -120,6 +120,7 @@ local function changeSlot(Slot,CF)
     Player.Backpack.ServerTraits.ChatAdvance:FireServer({Slot})
 	CFram = Player.Character.HumanoidRootPart.CFrame
 	changing = true
+	getgenv().loadingCharacter = true
 	Player.CharacterAdded:Connect(function()
 		if changing then
 			repeat
@@ -127,6 +128,10 @@ local function changeSlot(Slot,CF)
 				Player.Character.HumanoidRootPart.CFrame = CFram
 			until Player.Character:FindFirstChild("PowerOutput")
 			changing = false
+			task.delay(.5,function()
+				repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
+				getgenv().loadingCharacter = false
+			end)
 		end
 	end)
 end
