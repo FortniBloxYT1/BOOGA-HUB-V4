@@ -118,13 +118,13 @@ local function changeSlot(Slot,CF)
     Player.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
     task.wait(.550)
     Player.Backpack.ServerTraits.ChatAdvance:FireServer({Slot})
-	CFrame = Player.Character.HumanoidRootPart.CFrame
+	CFram = Player.Character.HumanoidRootPart.CFrame
 	changing = true
 	Player.CharacterAdded:Connect(function()
 		if changing then
 			repeat
 				task.wait()
-				Player.Character.HumanoidRootPart.CFrame = CFrame
+				Player.Character.HumanoidRootPart.CFrame = CFram
 			until Player.Character:FindFirstChild("PowerOutput")
 			changing = false
 		end
