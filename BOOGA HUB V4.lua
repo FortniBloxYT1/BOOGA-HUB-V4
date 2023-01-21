@@ -2490,11 +2490,12 @@ MoreScriptsSection:addButton("CMD-X", function()
 end)
 
 MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
-	if not game:IsLoaded() then
-    		game.Loaded:Wait()
+	if not getgenv().Executedd then
+		getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
+	else
+		game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V4", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
 	end
-	getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
 end)
 
 MoreScriptsSection:addButton("Kosa-HUB", function()
