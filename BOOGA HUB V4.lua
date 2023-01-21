@@ -2489,8 +2489,12 @@ MoreScriptsSection:addButton("CMD-X", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source"))()
 end)
 
-MoreScriptsSection:addButton("BOOGA-CMDS",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS-V1/main/BOOGA_CMDS_V1(1).lua"))()
+MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
+	if not game:IsLoaded() then
+    		game.Loaded:Wait()
+	end
+	getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
 end)
 
 MoreScriptsSection:addButton("Kosa-HUB", function()
