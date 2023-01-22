@@ -1918,15 +1918,17 @@ AutoFarmOptions:addToggle("Spam Moves", nil,function(SpamMoves)
 		SpammingMoves = true
 		while SpammingMoves do
 			task.wait()
-			for _,v in pairs(Player.Backpack:GetChildren()) do
-				if table.find(Moves,v.Name) then
-					v.Parent = Player.Character
-					v:Activate()
-					v:Deactivate()
-					task.wait(.1)
-					v.Parent = Player.Backpack
+			pcall(function()
+				for _,v in pairs(Player.Backpack:GetChildren()) do
+					if table.find(Moves,v.Name) then
+						v.Parent = Player.Character
+						v:Activate()
+						v:Deactivate()
+						task.wait(.1)
+						v.Parent = Player.Backpack
+					end
 				end
-			end
+			end)
 		end
 	else
 		SpammingMoves = false
@@ -1951,8 +1953,10 @@ AutoFarmOptions:addToggle("Auto Right Click", nil, function(rightClick)
 	if rightClick then
 		HeavyAttacking = true
 		while HeavyAttacking do
-			Player.Backpack.ServerTraits.Input:FireServer({"m2"},CFrame.new())
-			task.wait(.4)
+			pcall(function()
+				Player.Backpack.ServerTraits.Input:FireServer({"m2"},CFrame.new())
+				task.wait(.4)
+			end)
 		end
 	else
 		HeavyAttacking = false
@@ -1963,12 +1967,14 @@ AutoFarmOptions:addToggle("Auto-Block", nil,function(autoBlock)
 	if autoBlock then
 		AutoBlock = true
 		while AutoBlock do
-			game:GetService("Players").LocalPlayer.Backpack.ServerTraits.Input:FireServer({"blockon"},CFrame.new())
-			task.wait(.5)
+			pcall(function()
+				Player.Backpack.ServerTraits.Input:FireServer({"blockon"},CFrame.new())
+				task.wait(.5)
+			end)
 		end
 	else
 		AutoBlock = false
-		game:GetService("Players").LocalPlayer.Backpack.ServerTraits.Input:FireServer({"blockoff"},CFrame.new())
+		Player.Backpack.ServerTraits.Input:FireServer({"blockoff"},CFrame.new())
 	end
 end)
 
@@ -1977,13 +1983,15 @@ AutoFarmOptions:addToggle("Auto Reset Low Ki", nil, function(ResetLowKi)
 		ResetStamina = true
 		while ResetStamina do
 			task.wait(.2)
-			if Player.Character.Ki.Value <= Player.Character.Ki.MaxValue * 0.1 and not Ressetting then
-				Ressetting = true
-				task.delay(5,function()
-					Ressetting = false
-				end)
-				game:GetService("ReplicatedStorage").ResetChar:FireServer()
-			end
+			pcall(function()
+				if Player.Character.Ki.Value <= Player.Character.Ki.MaxValue * 0.1 and not Ressetting then
+					Ressetting = true
+					task.delay(5,function()
+						Ressetting = false
+					end)
+					game:GetService("ReplicatedStorage").ResetChar:FireServer()
+				end
+			end)
 		end
 	else
 		ResetStamina = false
@@ -1994,8 +2002,10 @@ AutoFarmOptions:addToggle("Bean Spam", nil, function(beanSpam)
 	if beanSpam then
 		BeanSpam = true
 		while BeanSpam do
-			Player.Backpack.ServerTraits.EatSenzu:FireServer("something")
-			task.wait(.2)
+			pcall(function()
+				Player.Backpack.ServerTraits.EatSenzu:FireServer("something")
+				task.wait(.2)
+			end)
 		end
 	else
 		BeanSpam = false
