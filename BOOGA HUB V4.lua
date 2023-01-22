@@ -170,11 +170,9 @@ local function findExtra(PlayerName)
 	if game.Players:FindFirstChild(PlayerName) then
 		if workspace.Live[PlayerName]:FindFirstChild("RebirthWings") then
 			return "Rebirth"
-		end
-		if workspace.Live[PlayerName]:FindFirstChild("RealHalo") then
+		elseif workspace.Live[PlayerName]:FindFirstChild("RealHalo") then
 			return "Heaven"
-		end
-		if not workspace.Live[PlayerName]:FindFirstChild("RebirthWings") and not workspace.Live[PlayerName]:FindFirstChild("RealHalo") then
+		else
 			return "Pure"
 		end
 	end
