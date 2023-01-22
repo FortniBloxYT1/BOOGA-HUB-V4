@@ -1937,11 +1937,10 @@ AutoFarmOptions:addToggle("Auto Attack", nil,function(attacking)
 	if attacking then
 		Attacking = true
 		while Attacking do
-			if Toggled then
-				continue
-			end
-			Player.Backpack.ServerTraits.Input:FireServer({"md"},CFrame.new())
-			task.wait(.4)
+			pcall(function()
+				Player.Backpack.ServerTraits.Input:FireServer({"md"},CFrame.new())
+				task.wait(.4)
+			end)
 		end
 	else
 		Attacking = false
@@ -2041,23 +2040,19 @@ AutoFarmOptions:addToggle("Auto Form", nil,function(autoForm)
 		AutoForm = true
 		while AutoForm do
 			task.wait(.2)
-			if not workspace.Live:FindFirstChild(Player.Name) or Toggled then
-				continue
-			end
-			if not Player.Character:FindFirstChild("Boosts") then
-				continue
-			end
-			if TIME and FORMTYPE and not Player.Character.Boosts:FindFirstChild("Phys-Damage") and (Player.Character.Ki.Value >= Player.Character.Ki.MaxValue * 0.15 or Player.Character.Humanoid.Health == 1) then
-				if TIME >= 1 then
-					Player.Backpack.ServerTraits.Input:FireServer({"x"},CFrame.new())
-					task.wait(TIME)
-					Player.Backpack.ServerTraits.Transform:FireServer(FORMTYPE)
-					task.wait(.8)
-					Player.Backpack.ServerTraits.Input:FireServer({"xoff"},CFrame.new())
-				else
-					Player.Backpack.ServerTraits.Transform:FireServer(FORMTYPE)
+			pcall(function()
+				if TIME and FORMTYPE and not Player.Character.Boosts:FindFirstChild("Phys-Damage") and (Player.Character.Ki.Value >= Player.Character.Ki.MaxValue * 0.15 or Player.Character.Humanoid.Health == 1) then
+					if TIME >= 1 then
+						Player.Backpack.ServerTraits.Input:FireServer({"x"},CFrame.new())
+						task.wait(TIME)
+						Player.Backpack.ServerTraits.Transform:FireServer(FORMTYPE)
+						task.wait(.8)
+						Player.Backpack.ServerTraits.Input:FireServer({"xoff"},CFrame.new())
+					else
+						Player.Backpack.ServerTraits.Transform:FireServer(FORMTYPE)
+					end
 				end
-			end
+			end)
 		end
 	else
 		AutoForm = false
