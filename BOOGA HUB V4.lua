@@ -1037,7 +1037,7 @@ MiscSection1:addToggle("Auto-Defender",nil,function(AutoDefender)
 					if v:FindFirstChild("HumanoidRootPart") then
 						if (Player.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude < Magnitude then
 							for _,v in pairs(v:GetChildren()) do
-								if table.find(FireValues,v.Name) and tostring(v.Parent) ~= Player.Name and v.Parent.Humanoid.Health > 1 then
+								if table.find(FireValues,v.Name) and v.Parent.Name ~= Player.Name and v.Parent.Humanoid.Health > 1 then
 									Player.Backpack.ServerTraits.Vanish:FireServer()
 									Player.Character.HumanoidRootPart.CFrame = v.Parent.HumanoidRootPart.CFrame * CFrame.new(0,0,3)
 									workspace.CurrentCamera.CFrame = v.Parent.HumanoidRootPart.CFrame * CFrame.new(0,2,10)
