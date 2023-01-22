@@ -193,11 +193,11 @@ end)
 UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 	if GameProcessedEvent then return end
 	if Input.KeyCode == OtherRespawnKey then
-		game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Hair Stylist"])
+		Player.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Hair Stylist"])
 		task.wait(.450)
-		game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
+		Player.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 		task.wait(.450)
-		game.Players.LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer("woah")
+		Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
 	end
 end)
 
