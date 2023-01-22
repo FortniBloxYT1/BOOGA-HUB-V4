@@ -2044,7 +2044,7 @@ AutoFarmOptions:addToggle("Auto Form", nil,function(autoForm)
 			if not workspace.Live:FindFirstChild(Player.Name) or Toggled then
 				continue
 			end
-			if not Player.Character:FindFirstChild("HumanoidRootPart") then
+			if not Player.Character:FindFirstChild("Boosts") then
 				continue
 			end
 			if TIME and FORMTYPE and not Player.Character.Boosts:FindFirstChild("Phys-Damage") and (Player.Character.Ki.Value >= Player.Character.Ki.MaxValue * 0.15 or Player.Character.Humanoid.Health == 1) then
