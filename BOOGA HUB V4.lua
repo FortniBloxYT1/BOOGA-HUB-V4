@@ -23,6 +23,7 @@ getgenv().autoFarmDistance = 2
 local TouchyCFrame
 local Toggled = false
 local SkyBeam = false
+local func = setclipboard or toclipboard
 if game.PlaceId == 536102540 then
 	TouchyCFrame = workspace.Touchy.Part.CFrame
 end
@@ -2533,11 +2534,11 @@ Plus:addButton("Destroy GUI",function()
 end)
 
 Plus:addButton("Made By BOOGABLOZxD", function()
-	setclipboard("https://discord.gg/YCvCSqADtV")
+	func("https://discord.gg/YCvCSqADtV")
 end)
 
 Plus:addButton("Press this to copy discord link for updates", function()
-	setclipboard("https://discord.gg/YCvCSqADtV")
+	func("https://discord.gg/YCvCSqADtV")
 end)
 
 BoogaHub:SelectPage(BoogaHub.pages[1], true)
