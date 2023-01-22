@@ -563,19 +563,11 @@ end)
 MainSection3:addToggle("Trash Glitch", nil, function(TRG)
 	if TRG then
 		TRGRun = RS.RenderStepped:Connect(function()
-			pcall(function()
-				if Player.Character:FindFirstChild("Trash???") then
-					if Player.Character["Trash???"]:FindFirstChild("Activator"):FindFirstChild("Hit1") then
-						Player.Character:WaitForChild("Trash???").Activator.Hit1:Destroy()
-					end
-				end
-
-				if Player.Character:FindFirstChild("Trash?") then
-					if Player.Character["Trash?"]:FindFirstChild("Activator"):FindFirstChild("Hit1") then
-						Player.Character:WaitForChild("Trash?").Activator.Hit1:Destroy()
-					end
-				end
-			end)
+		    pcall(function()
+			if Player.Character.HumanoidRootPart:FindFirstChild("VanishParticle") then
+			    Player.Character.HumanoidRootPart.VanishParticle:Destroy()
+			end
+		    end)
 		end)
 	else
 		TRGRun:Disconnect()
