@@ -1937,6 +1937,9 @@ AutoFarmOptions:addToggle("Auto Attack", nil,function(attacking)
 	if attacking then
 		Attacking = true
 		while Attacking do
+			if Toggled then
+				continue
+			end
 			Player.Backpack.ServerTraits.Input:FireServer({"md"},CFrame.new())
 			task.wait(.4)
 		end
@@ -2038,7 +2041,7 @@ AutoFarmOptions:addToggle("Auto Form", nil,function(autoForm)
 		AutoForm = true
 		while AutoForm do
 			task.wait(.2)
-			if not workspace.Live:FindFirstChild(Player.Name) then
+			if not workspace.Live:FindFirstChild(Player.Name) or Toggled then
 				continue
 			end
 			if not Player.Character:FindFirstChild("HumanoidRootPart") then
