@@ -105,7 +105,7 @@ local function Respawn()
 			Player.Character.HumanoidRootPart.CFrame = CurrentFrame3
 		until Player.Character:FindFirstChild("PowerOutput")
 		Toggled = false
-		task.delay(.5,function()
+		task.delay(1,function()
             		repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
             		getgenv().loadingCharacter = false
         	end)
@@ -130,7 +130,7 @@ local function changeSlot(Slot,CF)
 				Player.Character.HumanoidRootPart.CFrame = CFram
 			until Player.Character:FindFirstChild("PowerOutput")
 			changing = false
-			task.delay(.5,function()
+			task.delay(1,function()
 				repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
 				getgenv().loadingCharacter = false
 			end)
