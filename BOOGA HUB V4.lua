@@ -1912,7 +1912,7 @@ AutoFarmOptions:addToggle("Spam Moves", nil,function(SpamMoves)
 						v.Parent = Player.Character
 						v:Activate()
 						v:Deactivate()
-						task.wait(.1)
+						task.wait(.120)
 						v.Parent = Player.Backpack
 					end
 				end
