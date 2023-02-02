@@ -2099,12 +2099,11 @@ AnotherStore:addButton("BOOGA HUB FORMS & MOVES SHOP",function()
 		end
 	end)
 
-	BoogaHub:SelectPage(boogahub.pages[1],true)
-
 	local Close = Shop:addSection("Close")
 	Close:addButton("Close",function()
 		game.CoreGui["BOOGA-HUB V5 FORMS SHOP"]:Destroy()
 	end)
+	BoogaHub:SelectPage(boogahub.pages[1],true)
 end)
 
 local AutoFarm = BoogaHub:addPage("AutoFarm",5012544693)
