@@ -272,7 +272,7 @@ local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
 MainSection:addButton("Last Update : 21/01/2023",function() end)
 task.spawn(function()
-	NSS = MainSection:addToggle("No Slow", nil, function(NS)
+	NSS = MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
 		if NS then
 			NSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -295,13 +295,24 @@ task.spawn(function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveNoSlow then
-		firesignal(NSS.MouseButton1Click)
+	if ActualSettings.SaveNoSlow then -- Synapse is trash also venyx too
+		NSRun = RS.RenderStepped:Connect(function()
+			pcall(function()
+				for _, v in ipairs(Player.Character:GetChildren()) do
+					if table.find(SlowValues, v.Name) then
+						v:Destroy()
+					end
+					if v.Name == "Block" and v.Value then
+						v.Value = false
+					end
+				end
+			end)
+		end)
 	end
 end)
 
 task.spawn(function()
-	BNSS = MainSection:addToggle("Better No Slow", nil, function(BNS)
+	BNSS = MainSection:addToggle("Better No Slow", ActualSettings.SaveBetterNoSlow, function(BNS)
 		if BNS then
 			BNSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -327,8 +338,22 @@ task.spawn(function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveBetterNoSlow then
-		firesignal(BNSS.MouseButton1Click)
+	if ActualSettings.SaveBetterNoSlow then  -- Synapse is trash also venyx too
+		BNSRun = RS.RenderStepped:Connect(function()
+			pcall(function()
+				for _, v in ipairs(Player.Character:GetChildren()) do
+					if table.find(SlowValues, v.Name) then
+						v:Destroy()
+					end
+					if v.Name == "Block" and v.Value then
+						v.Value = false
+					end
+					if v:FindFirstChild("BodyVelocity") then
+						v.BodyVelocity:Destroy()
+					end
+				end
+			end)
+		end)
 	end
 end)
 
@@ -392,12 +417,63 @@ end)
 task.delay(.3,function()
 	if ActualSettings.SaveUniversalGM then
 		repeat task.wait(.1) until Player:FindFirstChild("Backpack") and Player.Backpack:FindFirstChild("Afterimage Strike") and Player.Character and Player.Character:FindFirstChild("PowerOutput")
-		firesignal(UNIGM.MouseButton1Click)
+		if not Activated then
+			Activated = true
+			getgenv().toggled = true
+	
+			repeat
+				task.wait()
+			until game:IsLoaded()
+			repeat
+				task.wait()
+			until game.Players.LocalPlayer.Character
+			game.Players.LocalPlayer.Character:WaitForChild("Prestige")
+			task.wait(1)
+			function uni_god()
+				char = game.Players.LocalPlayer.Character
+				bp = game.Players.LocalPlayer.Backpack
+				game.Players.LocalPlayer.Character:WaitForChild("Prestige")
+				task.wait(0.5)
+				local aas = bp:FindFirstChild("Afterimage Strike")
+				if not aas then
+					return print("unsuccessful")
+				end
+				aas.Parent = char
+				pcall(function()
+					char.PrimaryPart:FindFirstChild("VanishParticle"):Destroy()
+				end)
+				repeat
+					task.wait()
+					aas.Targeter:FireServer(char)
+					aas:Activate()
+				until char:FindFirstChild("i")
+				aas:Deactivate()
+			end
+			getgenv().uni_god_hookfunc = false
+			if not uni_god_hookfunc then
+				getgenv().uni_god_hookfunc = true
+				old = hookmetamethod(game, "__namecall", function(self, ...)
+					nc = getnamecallmethod()
+					args = { ... }
+					if nc == "FireServer" and self.Name == "Input" then
+						if args[1][1] == "blockoff" or args[1][1] == "blockon" then
+							return nil
+						end
+					end
+					return old(self, ...)
+				end)
+			end
+	
+			if toggled then
+				uni_god()
+				uni_char_added = game.Players.LocalPlayer.CharacterAdded:Connect(uni_god)
+			end
+		end
 	end
 end)
 
 task.spawn(function()
-	EGMM = MainGodModesSection:addToggle("Earth God Mode", nil, function(EGM)
+	EGMM = MainGodModesSection:addToggle("Earth God Mode", ActualSettings.SaveEGM, function(EGM)
 		if EGM and game.PlaceId == 536102540 then
 			EGMRun = RS.RenderStepped:Connect(function()
 				if not Player.Character:FindFirstChild("HumanoidRootPart") then
@@ -421,8 +497,19 @@ task.spawn(function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveEGM then
-		firesignal(EGMM.MouseButton1Click)
+	if ActualSettings.SaveEGM then  -- Synapse is trash also venyx too
+		EGMRun = RS.RenderStepped:Connect(function()
+			if not Player.Character:FindFirstChild("HumanoidRootPart") then
+				return
+			end
+			firetouchinterest(Player.Character.HumanoidRootPart, workspace.Touchy.Part, 0)
+			firetouchinterest(Player.Character.HumanoidRootPart, workspace.Touchy.Part, 1)
+			pcall(function()
+				if Player.PlayerGui:FindFirstChild("Popup") then
+					Player.PlayerGui.Popup:Destroy()
+				end
+			end)
+		end)
 	end
 end)
 
@@ -652,7 +739,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-	AGG = MainSection3:addToggle("Anti-Glitch", nil, function(AG)
+	AGG = MainSection3:addToggle("Anti-Glitch", ActualSettings.SaveAntiGlitch, function(AG)
 		if AG then
 			AGRUN = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -674,13 +761,25 @@ task.spawn(function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveAntiGlitch then
-		firesignal(AGG.MouseButton1Click)
+	if ActualSettings.SaveAntiGlitch then  -- Synapse is trash also venyx too
+		AGRUN = RS.RenderStepped:Connect(function()
+			pcall(function()
+				for _, v in pairs(Player.Character:GetChildren()) do
+					if v.Name == "MoveStart" then
+						for _, v in pairs(Player.Character:GetDescendants()) do
+							if v:IsA("BodyVelocity") and v.Name ~= "Flying" then
+								v:Destroy()
+							end
+						end
+					end
+				end
+			end)
+		end)
 	end
 end)
 
 task.spawn(function()
-	ANGG = MainSection3:addToggle("Anti-Grab", nil, function(ANG)
+	ANGG = MainSection3:addToggle("Anti-Grab", ActualSettings.SaveAntiGrab, function(ANG)
 		if ANG then
 			if workspace:FindFirstChild("Wormhole") then
 				workspace.Wormhole:Destroy()
@@ -703,8 +802,21 @@ task.spawn(function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveAntiGrab then
-		firesignal(ANGG.MouseButton1Click)
+	if ActualSettings.SaveAntiGrab then -- Synapse is trash also venyx too
+		if workspace:FindFirstChild("Wormhole") then
+			workspace.Wormhole:Destroy()
+		end
+		ANGRun = RS.RenderStepped:Connect(function()
+			pcall(function()
+				if Player.Character:FindFirstChild("MoveStart") and not AntiGrabRespawn then
+					AntiGrabRespawn = true
+					task.delay(1.2, function()
+						AntiGrabRespawn = false
+					end)
+					Respawn()
+				end
+			end)
+		end)
 	end
 end)
 
@@ -2915,7 +3027,7 @@ MoreScriptsSection:addButton("CMD-X", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source"))()
 end)
 
-local BOOGACMDS = MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
+MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
 	if not getgenv().Executedd then
 		getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
@@ -2925,8 +3037,13 @@ local BOOGACMDS = MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.AutoLaunchBOOGACMDS then
-		firesignal(BOOGACMDS.MouseButton1Click)
+	if ActualSettings.AutoLaunchBOOGACMDS then -- Synapse is trash also venyx too
+		if not getgenv().Executedd then
+			getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
+		else
+			game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
+		end
 	end
 end)
 
