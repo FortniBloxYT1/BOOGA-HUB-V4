@@ -497,7 +497,7 @@ task.spawn(function()
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveEGM then  -- Synapse is trash also venyx too
+	if ActualSettings.SaveEGM and game.PlaceId == 536102540 then  -- Synapse is trash also venyx too
 		EGMRun = RS.RenderStepped:Connect(function()
 			if not Player.Character:FindFirstChild("HumanoidRootPart") then
 				return
