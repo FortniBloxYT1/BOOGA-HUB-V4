@@ -2233,7 +2233,7 @@ end)
 
 Move1 = MovesetSection:addTextbox("Move1", "", function(value)
 	for _,v in pairs(Player.Backpack:GetChildren()) do
-		if v.Name:find(value) then
+		if v.Name:lower() == value:lower() then
 			value = v.Name
 		end
 	end
@@ -2242,7 +2242,7 @@ end)
 
 Move2 = MovesetSection:addTextbox("Move2", "", function(value)
 	for _,v in pairs(Player.Backpack:GetChildren()) do
-		if v.Name:find(value) then
+		if v.Name:lower() == value:lower() then
 			value = v.Name
 		end
 	end
@@ -2251,7 +2251,7 @@ end)
 
 Move3 = MovesetSection:addTextbox("Move3", "", function(value)
 	for _,v in pairs(Player.Backpack:GetChildren()) do
-		if v.Name:find(value) then
+		if v.Name:lower() == value:lower() then
 			value = v.Name
 		end
 	end
@@ -2260,7 +2260,7 @@ end)
 
 Move4 = MovesetSection:addTextbox("Move4", "", function(value)
 	for _,v in pairs(Player.Backpack:GetChildren()) do
-		if v.Name:find(value) then
+		if v.Name:lower() == value:lower() then
 			value = v.Name
 		end
 	end
@@ -2269,7 +2269,7 @@ end)
 
 Move5 = MovesetSection:addTextbox("Move5", "", function(value)
 	for _,v in pairs(Player.Backpack:GetChildren()) do
-		if v.Name:find(value) then
+		if v.Name:lower() == value:lower() then
 			value = v.Name
 		end
 	end
@@ -2278,7 +2278,7 @@ end)
 
 Move6 = MovesetSection:addTextbox("Move6", "", function(value)
 	for _,v in pairs(Player.Backpack:GetChildren()) do
-		if v.Name:find(value) then
+		if v.Name:lower() == value:lower() then
 			value = v.Name
 		end
 	end
@@ -2407,7 +2407,7 @@ task.spawn(function()
 			while SpammingMoves do
 				task.wait()
 				pcall(function()
-					for _,v in pairs(Player.Backpack:GetChildren()) do
+					for _,v in ipairs(Player.Backpack:GetChildren()) do
 						if table.find(Moves,v.Name) then
 							v.Parent = Player.Character
 							v:Activate()
