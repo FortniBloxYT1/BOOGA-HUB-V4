@@ -57,7 +57,8 @@ local DefaultSettings = {
 	SaveBetterNoSlow = "nil";
 	AutoLaunchBOOGACMDS = "nil";
 	SaveAntiGrab = "nil";
-	SaveAntiGlitch = "nil"
+	SaveAntiGlitch = "nil";
+	Save2XP = "nil"
 }
 
 if not isfolder("BOOGA-HUB V5") then
@@ -95,6 +96,25 @@ ActualSettings.SaveBetterNoSlow = convert(Settings.SaveBetterNoSlow)
 ActualSettings.AutoLaunchBOOGACMDS = convert(Settings.AutoLaunchBOOGACMDS)
 ActualSettings.SaveAntiGrab = convert(Settings.SaveAntiGrab)
 ActualSettings.SaveAntiGlitch = convert(Settings.SaveAntiGlitch)
+ActualSettings.Save2XP = convert(Settings.Save2XP)
+
+task.spawn(function()
+	if ActualSettings.Save2XP then
+		if not Player.Character then
+			repeat task.wait() until Player.Character and Player.Character:FindFirstChild("True")
+			Player.Character.True:Destroy()
+		else
+			if not Player.Character:FindFirstChild("True") then
+				repeat task.wait() until Player.Character:FindFirstChild("True")
+			end
+			Player.Character.True:Destroy()
+		end
+		Player.CharacterAdded:Connect(function()
+			repeat task.wait() until Player.Character:FindFirstChild("True")
+			Player.Character.True:Destroy()
+		end)
+	end
+end)
 
 local function Save()
     writefile(Name,game:service'HttpService':JSONEncode(ActualSettings))
@@ -270,9 +290,9 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 03/02/2023",function() end)
+MainSection:addButton("Last Update : 21/01/2023",function() end)
 task.spawn(function()
-	NSS = MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
+	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
 		if NS then
 			NSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -312,7 +332,7 @@ task.delay(.3,function()
 end)
 
 task.spawn(function()
-	BNSS = MainSection:addToggle("Better No Slow", ActualSettings.SaveBetterNoSlow, function(BNS)
+	MainSection:addToggle("Better No Slow", ActualSettings.SaveBetterNoSlow, function(BNS)
 		if BNS then
 			BNSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -359,7 +379,7 @@ end)
 
 local MainGodModesSection = Main:addSection("Main | Section 2 | GodModes")
 
-UNIGM = MainGodModesSection:addButton("Universal GodMode", function() -- Universal God Mode Was Not Made By Booga
+MainGodModesSection:addButton("Universal GodMode", function() -- Universal God Mode Was Not Made By Booga
 	if not Activated then
 		Activated = true
 		getgenv().toggled = true
@@ -415,7 +435,7 @@ UNIGM = MainGodModesSection:addButton("Universal GodMode", function() -- Univers
 end)
 
 task.delay(.3,function()
-	if ActualSettings.SaveUniversalGM then
+	if ActualSettings.SaveUniversalGM then -- Synapse is trash also venyx too
 		repeat task.wait(.1) until Player:FindFirstChild("Backpack") and Player.Backpack:FindFirstChild("Afterimage Strike") and Player.Character and Player.Character:FindFirstChild("PowerOutput")
 		if not Activated then
 			Activated = true
@@ -473,7 +493,7 @@ task.delay(.3,function()
 end)
 
 task.spawn(function()
-	EGMM = MainGodModesSection:addToggle("Earth God Mode", ActualSettings.SaveEGM, function(EGM)
+	MainGodModesSection:addToggle("Earth God Mode", ActualSettings.SaveEGM, function(EGM)
 		if EGM and game.PlaceId == 536102540 then
 			EGMRun = RS.RenderStepped:Connect(function()
 				if not Player.Character:FindFirstChild("HumanoidRootPart") then
@@ -739,7 +759,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-	AGG = MainSection3:addToggle("Anti-Glitch", ActualSettings.SaveAntiGlitch, function(AG)
+	MainSection3:addToggle("Anti-Glitch", ActualSettings.SaveAntiGlitch, function(AG)
 		if AG then
 			AGRUN = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -779,7 +799,7 @@ task.delay(.3,function()
 end)
 
 task.spawn(function()
-	ANGG = MainSection3:addToggle("Anti-Grab", ActualSettings.SaveAntiGrab, function(ANG)
+	MainSection3:addToggle("Anti-Grab", ActualSettings.SaveAntiGrab, function(ANG)
 		if ANG then
 			if workspace:FindFirstChild("Wormhole") then
 				workspace.Wormhole:Destroy()
@@ -2049,7 +2069,8 @@ local Store = BoogaHub:addPage("Store", 5012544693)
 
 local Storesection = Store:addSection("Beans/Jars")
 local Storesection2 = Store:addSection("ElderKai")
-local AnotherStore = Store:addSection("BOOGA HUB EXTRA SHOP")
+local Storesection3 = Store:addSection("GOD Moves")
+local Storesection4 = Store:addSection("Prestige Forms")
 
 Storesection:addDropdown("Type", { "Beans", "Jars" }, function(typee)
 	if typee == "Beans" then
@@ -2127,95 +2148,74 @@ task.spawn(function()
 	end)
 end)
 
-AnotherStore:addButton("BOOGA HUB FORMS & MOVES SHOP",function()
-	local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
-	local boogahub = Lib.new("BOOGA-HUB V5 FORMS SHOP", 5013109572)
-	local Shop = boogahub:addPage("Shop",5012544693)
-	local shopSection = Shop:addSection("Prestige Forms")
+Storesection3:addButton("GOD-Punch", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("God Punch")
+end)
 
-	local Storesection3 = Shop:addSection("GOD Moves")
-	local Storesection4 = Shop:addSection("Saiyan Prestige Forms")
-	local Storesection5 = Shop:addSection("Jiren Prestige Forms")
-	local Storesection6 = Shop:addSection("Namekian Prestige Forms")
-	local Storesection7 = Shop:addSection("Arcosians Prestige Forms")
-	local Storesection8 = Shop:addSection("Majin Prestige Forms")
-	local Storesection9 = Shop:addSection("Human Prestige Forms")
-	local Storesection10 = Shop:addSection("Other")
+Storesection3:addButton("GOD-Evade", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("God Evade")
+end)
 
-	Storesection3:addButton("GOD-Punch", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("God Punch")
-	end)
+Storesection4:addButton("SSJ4", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("SSJ4")
+end)
 
-	Storesection3:addButton("GOD-Evade", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("God Evade")
-	end)
-	Storesection4:addButton("SSJ4", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("SSJ4")
-	end)
+Storesection4:addButton("SSJBE", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Complete Super Saiyan Blue")
+end)
 
-	Storesection4:addButton("SSJBE", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Complete Super Saiyan Blue")
-	end)
+Storesection4:addButton("Despair", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Despair")
+end)
 
-	Storesection5:addButton("Despair", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Despair")
-	end)
+Storesection4:addButton("White Namekian", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("White Namek")
+end)
 
-	Storesection6:addButton("White Namekian", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("White Namek")
-	end)
+Storesection4:addButton("Demon Namekian", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Demon Namekian")
+end)
 
-	Storesection6:addButton("Demon Namekian", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Demon Namekian")
-	end)
+Storesection4:addButton("Golden Cooler", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Gold Cooler")
+end)
 
-	Storesection7:addButton("Golden Cooler", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Gold Cooler")
-	end)
+Storesection4:addButton("Cooler Form", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Fifth Form")
+end)
 
-	Storesection7:addButton("Cooler Form", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Fifth Form")
-	end)
+Storesection4:addButton("Unstable Majin", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Unstable")
+end)
 
-	Storesection8:addButton("Unstable Majin", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Unstable")
-	end)
+Storesection4:addButton("Dark Majin", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Dark Majin")
+end)
 
-	Storesection8:addButton("Dark Majin", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Dark Majin")
-	end)
+Storesection4:addButton("KKx100", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Kaioken x100")
+end)
 
-	Storesection9:addButton("KKx100", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Kaioken x100")
-	end)
+Storesection4:addButton("Dark Human", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Dark Human")
+end)
 
-	Storesection9:addButton("Dark Human", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Dark Human")
-	end)
+Storesection4:addButton("MUI", function()
+	game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Mastered Ultra Instinct")
+end)
 
-	Storesection10:addButton("MUI", function()
-		game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer("Mastered Ultra Instinct")
-	end)
+local StoreMoveSection = Store:addSection("Moves")
 
-	local StoreMoveSection = Shop:addSection("Moves")
+StoreMoveSection:addTextbox("Buy Moves / Forms", "",function(Buy,focusLost)
+	ToBuy = Buy
+end)
 
-	StoreMoveSection:addTextbox("Buy Moves / Forms", "",function(Buy,focusLost)
-		ToBuy = Buy
-	end)
-
-	StoreMoveSection:addButton("Buy Moves / Forms",function()
-		if ToBuy then
-			pcall(function()
-				game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer(ToBuy)
-			end)
-		end
-	end)
-
-	local Close = Shop:addSection("Close")
-	Close:addButton("Close",function()
-		game.CoreGui["BOOGA-HUB V5 FORMS SHOP"]:Destroy()
-	end)
-	BoogaHub:SelectPage(boogahub.pages[1],true)
+StoreMoveSection:addButton("Buy Moves / Forms",function()
+	if ToBuy then
+		pcall(function()
+			game:GetService("ReplicatedStorage").AttemptBuy:InvokeServer(ToBuy)
+		end)
+	end
 end)
 
 local AutoFarm = BoogaHub:addPage("AutoFarm",5012544693)
@@ -2407,7 +2407,7 @@ task.spawn(function()
 			while SpammingMoves do
 				task.wait()
 				pcall(function()
-					for _,v in ipairs(Player.Backpack:GetChildren()) do
+					for _,v in pairs(Player.Backpack:GetChildren()) do
 						if table.find(Moves,v.Name) then
 							v.Parent = Player.Character
 							v:Activate()
@@ -3023,10 +3023,6 @@ MoreScriptsSection:addButton("Fates-Admin", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))()
 end)
 
-MoreScriptsSection:addButton("CMD-X", function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source"))()
-end)
-
 MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
 	if not getgenv().Executedd then
 		getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
@@ -3080,102 +3076,126 @@ end)
 
 local autoSaveSection = Settingss:addSection("Auto Save Settings")
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Save Earth God Mode",ActualSettings.SaveEGM,function(saveEGM)
-		if saveEGM then
-			Settings.SaveEGM = "true"
-			ActualSettings.SaveEGM = "true"
-		else
-			Settings.SaveEGM = "nil"
-			ActualSettings.SaveEGM = "nil"
-		end
-		Save()
+autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
+
+	local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
+	local boogaHub = Lib.new("BOOGA-HUB V5 SETTINGS", 5013109572)
+	local nothing = boogaHub:addPage("Nothing",5012544693)
+	local autoSavePage = boogaHub:addPage("Auto Saves",5012544693)
+	local autoSaveSection2 = autoSavePage:addSection("Auto Saves")
+
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save Earth God Mode",ActualSettings.SaveEGM,function(saveEGM)
+			if saveEGM then
+				Settings.SaveEGM = "true"
+				ActualSettings.SaveEGM = "true"
+			else
+				Settings.SaveEGM = "nil"
+				ActualSettings.SaveEGM = "nil"
+			end
+			Save()
+		end)
 	end)
-end)
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Save Universal God Mode",ActualSettings.SaveUniversalGM,function(saveUniversalGM)
-		if saveUniversalGM then
-			Settings.SaveUniversalGM = "true"
-			ActualSettings.SaveUniversalGM = "true"
-		else
-			Settings.SaveUniversalGM = "nil"
-			ActualSettings.SaveUniversalGM = "nil"
-		end
-		Save()
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save Universal God Mode",ActualSettings.SaveUniversalGM,function(saveUniversalGM)
+			if saveUniversalGM then
+				Settings.SaveUniversalGM = "true"
+				ActualSettings.SaveUniversalGM = "true"
+			else
+				Settings.SaveUniversalGM = "nil"
+				ActualSettings.SaveUniversalGM = "nil"
+			end
+			Save()
+		end)
 	end)
-end)
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Save No Slow",ActualSettings.SaveNoSlow,function(saveNS)
-		if saveNS then
-			Settings.SaveNoSlow = "true"
-			ActualSettings.SaveNoSlow = "true"
-		else
-			Settings.SaveNoSlow = "nil"
-			ActualSettings.SaveNoSlow = "nil"
-		end
-		Save()
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save No Slow",ActualSettings.SaveNoSlow,function(saveNS)
+			if saveNS then
+				Settings.SaveNoSlow = "true"
+				ActualSettings.SaveNoSlow = "true"
+			else
+				Settings.SaveNoSlow = "nil"
+				ActualSettings.SaveNoSlow = "nil"
+			end
+			Save()
+		end)
 	end)
-end)
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Save Better No Slow",ActualSettings.SaveBetterNoSlow,function(saveBNS)
-		if saveBNS then
-			Settings.SaveBetterNoSlow = "true"
-			ActualSettings.SaveBetterNoSlow = "true"
-		else
-			Settings.SaveBetterNoSlow = "nil"
-			ActualSettings.SaveBetterNoSlow = "nil"
-		end
-		Save()
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save Better No Slow",ActualSettings.SaveBetterNoSlow,function(saveBNS)
+			if saveBNS then
+				Settings.SaveBetterNoSlow = "true"
+				ActualSettings.SaveBetterNoSlow = "true"
+			else
+				Settings.SaveBetterNoSlow = "nil"
+				ActualSettings.SaveBetterNoSlow = "nil"
+			end
+			Save()
+		end)
 	end)
-end)
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Save Anti Grab",ActualSettings.SaveAntiGrab,function(saveANG)
-		if saveANG then
-			Settings.SaveAntiGrab = "true"
-			ActualSettings.SaveAntiGrab = "true"
-		else
-			Settings.SaveAntiGrab = "nil"
-			ActualSettings.SaveAntiGrab = "nil"
-		end
-		Save()
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save Anti Grab",ActualSettings.SaveAntiGrab,function(saveANG)
+			if saveANG then
+				Settings.SaveAntiGrab = "true"
+				ActualSettings.SaveAntiGrab = "true"
+			else
+				Settings.SaveAntiGrab = "nil"
+				ActualSettings.SaveAntiGrab = "nil"
+			end
+			Save()
+		end)
 	end)
-end)
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Save Anti Glitch",ActualSettings.SaveAntiGlitch,function(saveAG)
-		if saveAG then
-			Settings.SaveAntiGlitch = "true"
-			ActualSettings.SaveAntiGlitch = "true"
-		else
-			Settings.SaveAntiGlitch = "nil"
-			ActualSettings.SaveAntiGlitch = "nil"
-		end
-		Save()
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save Anti Glitch",ActualSettings.SaveAntiGlitch,function(saveAG)
+			if saveAG then
+				Settings.SaveAntiGlitch = "true"
+				ActualSettings.SaveAntiGlitch = "true"
+			else
+				Settings.SaveAntiGlitch = "nil"
+				ActualSettings.SaveAntiGlitch = "nil"
+			end
+			Save()
+		end)
 	end)
-end)
 
-task.spawn(function()
-	autoSaveSection:addToggle("Auto Launch BOOGA CMDS V2",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
-		if autoLaunchCMDS then
-			Settings.AutoLaunchBOOGACMDS = "true"
-			ActualSettings.AutoLaunchBOOGACMDS = "true"
-		else
-			Settings.AutoLaunchBOOGACMDS = "nil"
-			ActualSettings.AutoLaunchBOOGACMDS = "nil"
-		end
-		Save()
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save 2XP FREEZE",ActualSettings.Save2XP,function(save2XP)
+			if save2XP then
+				Settings.Save2XP = "true"
+				ActualSettings.Save2XP = "true"
+			else
+				Settings.Save2XP = "nil"
+				ActualSettings.Save2XP = "nil"
+			end
+			Save()
+		end)
 	end)
+
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
+			if autoLaunchCMDS then
+				Settings.AutoLaunchBOOGACMDS = "true"
+				ActualSettings.AutoLaunchBOOGACMDS = "true"
+			else
+				Settings.AutoLaunchBOOGACMDS = "nil"
+				ActualSettings.AutoLaunchBOOGACMDS = "nil"
+			end
+			Save()
+		end)
+	end)
+
+	task.wait(.4)
+	autoSaveSection2:addButton("Close",function()
+		game.CoreGui["BOOGA-HUB V5 SETTINGS"]:Destroy()
+	end)
+	boogaHub:SelectPage(boogaHub.pages[2],true)
 end)
 
-Plus:addButton("Made By BOOGABLOZxD", function()
-	func("https://discord.gg/YCvCSqADtV")
-end)
-
-Plus:addButton("Press this to copy discord link for updates", function()
+Plus:addButton("Made By BOOGABLOZxD | Copy discord link for updates", function()
 	func("https://discord.gg/YCvCSqADtV")
 end)
 
