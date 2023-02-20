@@ -3196,7 +3196,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 end)
 
 Plus:addButton("Made By BOOGABLOZxD | Copy discord link for updates", function()
-	func("https://discord.gg/YCvCSqADtV")
+	func("https://discord.gg/p8XU6fAj")
 end)
 
 BoogaHub:SelectPage(BoogaHub.pages[1], true)
