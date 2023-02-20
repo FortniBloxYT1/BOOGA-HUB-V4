@@ -3,7 +3,7 @@ repeat
 until game:IsLoaded() and game.Players.LocalPlayer
 
 if not Executed then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "OLD SERVER DELETED, JOIN https://discord.gg/P8XU6FAJ | Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
 else
 	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB ALREADY LOADED", Duration = 10})
 	while true do
