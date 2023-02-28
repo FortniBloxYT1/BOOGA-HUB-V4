@@ -290,7 +290,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Old server deleted, join https://discord.gg/P8XU6FAJ",function() end)
+MainSection:addButton("Old server deleted, join https://discord.gg/hrgtsQ6GTj",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
 		if NS then
