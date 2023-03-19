@@ -20,6 +20,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Fortn
 local BoogaHub = Library.new("BOOGA-HUB V5", 5013109572)
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
 getgenv().autoFarmDistance = 2
+local Mouse = Player:GetMouse()
 local TouchyCFrame
 local Toggled = false
 local SkyBeam = false
@@ -306,9 +307,19 @@ task.spawn(function()
 					end
 				end)
 			end)
+
+			NSEConn = UIS.InputBegan:Connect(function(Input,GME)
+				if GME then return end
+
+				if Input.KeyCode == Enum.KeyCode.E then
+					Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+				end
+			end)
+
 		else
 			if NSRun then
 				NSRun:Disconnect()
+				NSEConn:Disconnect()
 			end
 		end
 	end)
@@ -322,12 +333,22 @@ task.delay(.3,function()
 					if table.find(SlowValues, v.Name) then
 						v:Destroy()
 					end
+
 					if v.Name == "Block" and v.Value then
 						v.Value = false
 					end
 				end
 			end)
 		end)
+
+		NSEConn = UIS.InputBegan:Connect(function(Input,GME)
+			if GME then return end
+
+			if Input.KeyCode == Enum.KeyCode.E then
+				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+			end
+		end)
+
 	end
 end)
 
@@ -340,18 +361,30 @@ task.spawn(function()
 						if table.find(SlowValues, v.Name) then
 							v:Destroy()
 						end
+
 						if v.Name == "Block" and v.Value then
 							v.Value = false
 						end
+				
 						if v:FindFirstChild("BodyVelocity") then
 							v.BodyVelocity:Destroy()
 						end
 					end
 				end)
 			end)
+
+			BNSEConn = UIS.InputBegan:Connect(function(Input,GME)
+				if GME then return end
+				
+				if Input.KeyCode == Enum.KeyCode.E then
+					Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+				end
+			end)
+
 		else
 			if BNSRun then
 				BNSRun:Disconnect()
+				BNSEConn:Disconnect()
 			end
 		end
 	end)
@@ -374,6 +407,15 @@ task.delay(.3,function()
 				end
 			end)
 		end)
+
+		BNSEConn = UIS.InputBegan:Connect(function(Input,GME)
+			if GME then return end
+
+			if Input.KeyCode == Enum.KeyCode.E then
+				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+			end
+		end)
+
 	end
 end)
 
