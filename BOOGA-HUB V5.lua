@@ -291,7 +291,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Old server deleted, join https://discord.gg/hrgtsQ6GTj",function() end)
+MainSection:addButton("Old server deleted, join https://discord.gg/RuswFJy7g9",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
 		if NS then
@@ -3238,7 +3238,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 end)
 
 Plus:addButton("Made By BOOGABLOZxD | Copy discord link for updates", function()
-	func("https://discord.gg/p8XU6fAj")
+	func("https://discord.gg/RuswFJy7g9")
 end)
 
 BoogaHub:SelectPage(BoogaHub.pages[1], true)
