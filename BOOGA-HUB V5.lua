@@ -101,6 +101,7 @@ ActualSettings.Save2XP = convert(Settings.Save2XP)
 
 task.spawn(function()
 	if ActualSettings.Save2XP then
+
 		if not Player.Character then
 			repeat task.wait() until Player.Character and Player.Character:FindFirstChild("True")
 			Player.Character.True:Destroy()
@@ -110,6 +111,7 @@ task.spawn(function()
 			end
 			Player.Character.True:Destroy()
 		end
+
 		Player.CharacterAdded:Connect(function()
 			repeat task.wait() until Player.Character:FindFirstChild("True")
 			Player.Character.True:Destroy()
@@ -291,7 +293,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Old server deleted, join https://discord.gg/RuswFJy7g9",function() end)
+MainSection:addButton("Last Update : 26/03/2023",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
 		if NS then
@@ -312,7 +314,7 @@ task.spawn(function()
 				if GME then return end
 
 				if Input.KeyCode == Enum.KeyCode.E then
-					Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+					Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit)
 				end
 			end)
 
@@ -345,7 +347,7 @@ task.delay(.3,function()
 			if GME then return end
 
 			if Input.KeyCode == Enum.KeyCode.E then
-				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit)
 			end
 		end)
 
@@ -377,7 +379,7 @@ task.spawn(function()
 				if GME then return end
 				
 				if Input.KeyCode == Enum.KeyCode.E then
-					Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+					Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit)
 				end
 			end)
 
@@ -412,7 +414,7 @@ task.delay(.3,function()
 			if GME then return end
 
 			if Input.KeyCode == Enum.KeyCode.E then
-				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit,nil)
+				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit)
 			end
 		end)
 
@@ -538,16 +540,20 @@ task.spawn(function()
 	MainGodModesSection:addToggle("Earth God Mode", ActualSettings.SaveEGM, function(EGM)
 		if EGM and game.PlaceId == 536102540 then
 			EGMRun = RS.RenderStepped:Connect(function()
+
 				if not Player.Character:FindFirstChild("HumanoidRootPart") then
 					return
 				end
+
 				firetouchinterest(Player.Character.HumanoidRootPart, workspace.Touchy.Part, 0)
 				firetouchinterest(Player.Character.HumanoidRootPart, workspace.Touchy.Part, 1)
+
 				pcall(function()
 					if Player.PlayerGui:FindFirstChild("Popup") then
 						Player.PlayerGui.Popup:Destroy()
 					end
 				end)
+
 			end)
 		else
 			if EGMRun then
@@ -1287,6 +1293,12 @@ MiscSection1:addSlider("FOV", 70, 1, 120, function(FOV)
 	workspace.CurrentCamera.FieldOfView = FOV
 end)
 
+MiscSection1:addSlider("Speed",0, 0, 25000, function(Speed)
+	for _,connection in pairs(getconnections(Player.Backpack.ServerTraits.Input.OnClientEvent)) do
+		connection:Fire({Speed})
+	end
+end)
+
 MiscSection1:addTextbox("Player-TP","",function(PlayerToTp)
 	if PlayerToTp == "" then
 		return
@@ -1954,8 +1966,10 @@ end)
 MiscSection2:addButton("Queue Kick (U)",function()
 	UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 		if GameProcessedEvent then return end
+
 		if Input.KeyCode == Enum.KeyCode.U then
 			local OldCF,Pos = Player.Character.HumanoidRootPart.CFrame,Player.Character.HumanoidRootPart.Position
+
 			if workspace:FindFirstChild("Wormhole") then
 				workspace.Wormhole:Destroy()
 			end
@@ -1968,12 +1982,16 @@ MiscSection2:addButton("Queue Kick (U)",function()
 			Player.Character["Dragon Throw"]:Activate()
 			Player.Character["Dragon Throw"].Activator.Flip:Destroy()
 			Player.Character["Dragon Throw"]:Deactivate()
+
 			task.wait(.650)
+
 			for _ = 1,120 do
 				task.wait()
 				Player.Character.HumanoidRootPart.CFrame = CFrame.new(2658.0686, 3945.40454, -2516.53149, -0.394769967, -0, -0.918779969, -0, 1, -0, 0.918780088, 0, -0.394769907)
 			end
+
 			task.wait(.2)
+
 			if (Player.Character.HumanoidRootPart.Position - Pos).magnitude > 50 then
 				local Tween = game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(2,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = OldCF})
 				Tween:Play()
@@ -1999,6 +2017,7 @@ end)
 MiscSection2:addButton("Freeze (K)",function()
     UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 		if GameProcessedEvent then return end
+
 		if Input.KeyCode == Enum.KeyCode.K then
             if not Player.Backpack:FindFirstChild("Dragon Throw") and not Player.Character:FindFirstChild("Dragon Throw") then
 				game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB 5", Text = "Buy Dragon Throw",Duration = 3})
@@ -2008,17 +2027,24 @@ MiscSection2:addButton("Freeze (K)",function()
 			Player.Character["Dragon Throw"]:Activate()
 			Player.Character["Dragon Throw"].Activator.Flip:Destroy()
 			Player.Character["Dragon Throw"]:Deactivate()
+
             task.wait(.5)
+
             local OldCF,Pos = Player.Character.HumanoidRootPart.CFrame,Player.Character.HumanoidRootPart.Position
+
             for _ = 1,120 do
 				task.wait()
 				Player.Character.HumanoidRootPart.CFrame = CFrame.new(100000,100000,100000)
 			end
+
 			task.wait(.2)
+
 			if (Player.Character.HumanoidRootPart.Position - Pos).magnitude > 50 then
+
 				local Tween = game:GetService("TweenService"):Create(Player.Character.HumanoidRootPart,TweenInfo.new(2,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0),{CFrame = OldCF})
 				Tween:Play()
 				Tween.Completed:Wait()
+
 				if game.PlaceId == 536102540 and ResetRace() then
 					task.wait(1.2)
 					if (Player.Character.HumanoidRootPart.Position - Pos).magnitude > 50 then
@@ -3231,9 +3257,11 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 	end)
 
 	task.wait(.4)
+
 	autoSaveSection2:addButton("Close",function()
 		game.CoreGui["BOOGA-HUB V5 SETTINGS"]:Destroy()
 	end)
+
 	boogaHub:SelectPage(boogaHub.pages[2],true)
 end)
 
