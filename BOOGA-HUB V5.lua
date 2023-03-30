@@ -99,6 +99,10 @@ ActualSettings.SaveAntiGrab = convert(Settings.SaveAntiGrab)
 ActualSettings.SaveAntiGlitch = convert(Settings.SaveAntiGlitch)
 ActualSettings.Save2XP = convert(Settings.Save2XP)
 
+local function sendNotification(Title,Text,Duration)
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = Title,Text = Text,Duration = Duration})
+end
+
 task.spawn(function()
 	if ActualSettings.Save2XP then
 
@@ -998,10 +1002,10 @@ MainSection4:addToggle("Loop Kill",nil,function(LoopKill)
 	if LoopKill then
 		local CFrameTool = function(tool, pos)
 			local RightArm = Player.Character.RightLowerArm
-			local Arm = RightArm.CFrame * CFrame.new(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0);
+			local Arm = RightArm.CFrame * CFrame.new(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0)
 			local Inverse = CFrame.new().Inverse
 			local toObjectSpace = CFrame.new().toObjectSpace
-			local Frame = Inverse(toObjectSpace(Arm, pos));
+			local Frame = Inverse(toObjectSpace(Arm, pos))
 		
 			tool.Grip = Frame
 		end
@@ -1073,10 +1077,10 @@ MainSection4:addToggle("Loop Kill",nil,function(LoopKill)
 							
 			local Tool = Player.Backpack:FindFirstChildOfClass("Tool") or Player.Character:FindFirstChildOfClass("Tool")
 			Tool.Parent = Player.Character
-			Tool.Handle.Size = Vector3.new(4,4,4);
+			Tool.Handle.Size = Vector3.new(4,4,4)
 			CFrameTool(Tool,workspace.Live[Target].HumanoidRootPart.CFrame)
-			firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 0);
-			firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 1);
+			firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 0)
+			firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 1)
 			workspace.CurrentCamera.CameraSubject = Player.Character.Humanoid
 			Humanoid:ChangeState(15)
 			task.wait(2.5)
@@ -1131,7 +1135,7 @@ end)
 MainSection4:addButton("Kill",function()
 	local function CFrameTool(tool,pos)
 		local RightArm = Player.Character.RightLowerArm
-		local Arm = RightArm.CFrame * CFrame.new(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0);
+		local Arm = RightArm.CFrame * CFrame.new(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0)
 		local Frame = CFrame.new().Inverse(CFrame.new().toObjectSpace(Arm,pos))
 	
 		tool.Grip = Frame
@@ -1176,10 +1180,10 @@ MainSection4:addButton("Kill",function()
 					
 	local Tool = Player.Backpack:FindFirstChildOfClass("Tool") or Player.Character:FindFirstChildOfClass("Tool")
 	Tool.Parent = Player.Character
-	Tool.Handle.Size = Vector3.new(4,4,4);
+	Tool.Handle.Size = Vector3.new(4,4,4)
 	CFrameTool(Tool,workspace.Live[Target].HumanoidRootPart.CFrame)
-	firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 0);
-	firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 1);
+	firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 0)
+	firetouchinterest(workspace.Live[Target].HumanoidRootPart, Tool.Handle, 1)
 	workspace.CurrentCamera.CameraSubject = Player.Character.Humanoid
 	Humanoid:ChangeState(15)
 	task.wait(2.5)
@@ -1750,6 +1754,7 @@ MiscSection2:addButton("Anti-Kick",function()
 		end
 		return NameCall(self, ...)
 	end)
+
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:connect(function(child)
 		if child.Name == "ErrorPrompt" and child:FindFirstChild("MessageArea") and child.MessageArea:FindFirstChild("ErrorFrame") then
 			TeleportService:Teleport(game.PlaceId, Player)
@@ -1761,6 +1766,283 @@ MiscSection2:addButton("Anti-AFK", function()
 	Player.Idled:Connect(function()
 		VU:CaptureController()
 		VU:ClickButton2(Vector2.new())
+	end)
+end)
+
+MiscSection2:addButton("Anti-Wipe",function()
+
+	sendNotification("BOOGA HUB V5","Anti-Wipe Enabled",2)
+
+	local get
+	get = hookfunction(game.HttpGet, function(self, url, ...)
+		if url:lower():find("blacklist") then
+			sendNotification("BOOGA CMDS V2", "A request to a blacklist has been blocked", 2)
+			return nil
+		else
+			return get(self, url, ...)
+		end
+	end)
+
+	if http_request then
+		local get2
+		get2 = hookfunction(http_request, function(self, url, ...)
+			if url:lower():find("blacklist") then
+				sendNotification("BOOGA CMDS V2", "A request to a blacklist has been blocked", 2)
+				return nil
+			else
+				return get2(self, url, ...)
+			end
+		end)
+	end
+
+	if syn and syn.request then
+		local get3
+		get3 = hookfunction(syn.request, function(self, url, ...)
+			if url:lower():find("blacklist") then
+				sendNotification("BOOGA CMDS V2", "A request to a blacklist has been blocked", 2)
+				return nil
+			else
+				return get3(self, url, ...)
+			end
+		end)
+	end
+
+	local Hook
+	local Hook2
+	local Hook3
+	local Hook4
+	local Hook5
+	local Hook6
+	local Hook7
+	senzuRemote = Player.Backpack.ServerTraits.EatSenzu
+	inputRemote = Player.Backpack.ServerTraits.Input
+	chatRemote = Player.Backpack.ServerTraits.ChatAdvance
+
+	Hook = hookmetamethod(game, "__namecall", function(...)
+		local Args = { ... }
+		local self = Args[1]
+		local method = getnamecallmethod()
+		if self == senzuRemote and method:lower() == "fireserver" and not Args[2] then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+			return nil
+		elseif
+			self == inputRemote
+			and method:lower() == "fireserver"
+			and (
+				not Args[2]
+				or type(Args[2]) ~= "table"
+				or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
+				or not Args[3]
+				or typeof(Args[3]) ~= "CFrame"
+			)
+		then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+			return nil
+		elseif self == chatRemote and method:lower() == "fireserver" and (not Args[2] or type(Args[2]) ~= "table") then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+			return nil
+		end
+		return Hook(...)
+	end)
+
+	Hook2 = hookfunction(senzuRemote.FireServer, function(Remote, Bool)
+
+		if not Bool then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+			return nil
+		end
+
+		return Hook2(Remote, Bool)
+	end)
+
+	Hook3 = hookfunction(senzuRemote.fireServer, function(Remote, Bool)
+
+		if not Bool then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+			return nil
+		end
+
+		return Hook3(Remote, Bool)
+	end)
+
+	Hook4 = hookfunction(inputRemote.FireServer, function(Remote, ...)
+
+		local Args = { ... }
+
+		if
+			not Args[2]
+			or type(Args[2]) ~= "table"
+			or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
+			or not Args[3]
+			or typeof(Args[3]) ~= "CFrame"
+		then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+			return nil
+		end
+
+		return Hook4(Remote, ...)
+	end)
+
+	Hook5 = hookfunction(inputRemote.fireServer, function(Remote, ...)
+
+		local Args = { ... }
+
+		if
+			not Args[2]
+			or type(Args[2]) ~= "table"
+			or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
+			or not Args[3]
+			or typeof(Args[3]) ~= "CFrame"
+		then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+			return nil
+		end
+
+		return Hook5(Remote, ...)
+	end)
+
+	Hook6 = hookfunction(chatRemote.FireServer, function(Remote, Table)
+
+		if not Table or type(Table) ~= "table" then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+			return nil
+		end
+
+		return Hook6(Remote, Table)
+	end)
+
+	Hook7 = hookfunction(chatRemote.fireServer, function(Remote, Table)
+
+		if not Table or type(Table) ~= "table" then
+			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+			return nil
+		end
+
+		return Hook7(Remote, Table)
+	end)
+
+	Player.CharacterAdded:Connect(function()
+		repeat
+			task.wait()
+		until Player.Backpack:FindFirstChild("ServerTraits")
+
+		local Hook
+		local Hook2
+		local Hook3
+		local Hook4
+		local Hook5
+		local Hook6
+		local Hook7
+		senzuRemote = Player.Backpack.ServerTraits.EatSenzu
+		inputRemote = Player.Backpack.ServerTraits.Input
+		chatRemote = Player.Backpack.ServerTraits.ChatAdvance
+
+		Hook = hookmetamethod(game, "__namecall", function(...)
+			local Args = { ... }
+			local self = Args[1]
+			local method = getnamecallmethod()
+			if self == senzuRemote and method:lower() == "fireserver" and not Args[2] then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+				return nil
+			elseif
+				self == inputRemote
+				and method:lower() == "fireserver"
+				and (
+					not Args[2]
+					or type(Args[2]) ~= "table"
+					or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
+					or not Args[3]
+					or typeof(Args[3]) ~= "CFrame"
+				)
+			then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+				return nil
+			elseif
+				self == chatRemote
+				and method:lower() == "fireserver"
+				and (not Args[2] or type(Args[2]) ~= "table")
+			then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+				return nil
+			end
+			return Hook(...)
+		end)
+
+		Hook2 = hookfunction(senzuRemote.FireServer, function(Remote, Bool)
+
+			if not Bool then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+				return nil
+			end
+
+			return Hook2(Remote, Bool)
+		end)
+
+		Hook3 = hookfunction(senzuRemote.fireServer, function(Remote, Bool)
+
+			if not Bool then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+				return nil
+			end
+
+			return Hook3(Remote, Bool)
+		end)
+
+		Hook4 = hookfunction(inputRemote.FireServer, function(Remote, ...)
+
+			local Args = { ... }
+
+			if
+				not Args[2]
+				or type(Args[2]) ~= "table"
+				or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
+				or not Args[3]
+				or typeof(Args[3]) ~= "CFrame"
+			then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+				return nil
+			end
+
+			return Hook4(Remote, ...)
+		end)
+
+		Hook5 = hookfunction(inputRemote.fireServer, function(Remote, ...)
+
+			local Args = { ... }
+
+			if
+				not Args[2]
+				or type(Args[2]) ~= "table"
+				or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
+				or not Args[3]
+				or typeof(Args[3]) ~= "CFrame"
+			then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+				return nil
+			end
+
+			return Hook5(Remote, ...)
+		end)
+
+		Hook6 = hookfunction(chatRemote.FireServer, function(Remote, Table)
+
+			if not Table or type(Table) ~= "table" then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+				return nil
+			end
+
+			return Hook6(Remote, Table)
+		end)
+
+		Hook7 = hookfunction(chatRemote.fireServer, function(Remote, Table)
+
+			if not Table or type(Table) ~= "table" then
+				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+				return nil
+			end
+
+			return Hook7(Remote, Table)
+		end)
 	end)
 end)
 
