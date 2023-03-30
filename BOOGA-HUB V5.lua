@@ -1823,7 +1823,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		local self = Args[1]
 		local method = getnamecallmethod()
 		if self == senzuRemote and method:lower() == "fireserver" and not Args[2] then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 			return nil
 		elseif
 			self == inputRemote
@@ -1836,10 +1836,10 @@ MiscSection2:addButton("Anti-Wipe",function()
 				or typeof(Args[3]) ~= "CFrame"
 			)
 		then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 			return nil
 		elseif self == chatRemote and method:lower() == "fireserver" and (not Args[2] or type(Args[2]) ~= "table") then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 			return nil
 		end
 		return Hook(...)
@@ -1848,7 +1848,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 	Hook2 = hookfunction(senzuRemote.FireServer, function(Remote, Bool)
 
 		if not Bool then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 			return nil
 		end
 
@@ -1858,7 +1858,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 	Hook3 = hookfunction(senzuRemote.fireServer, function(Remote, Bool)
 
 		if not Bool then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 			return nil
 		end
 
@@ -1876,7 +1876,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 			or not Args[3]
 			or typeof(Args[3]) ~= "CFrame"
 		then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 			return nil
 		end
 
@@ -1894,7 +1894,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 			or not Args[3]
 			or typeof(Args[3]) ~= "CFrame"
 		then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 			return nil
 		end
 
@@ -1904,7 +1904,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 	Hook6 = hookfunction(chatRemote.FireServer, function(Remote, Table)
 
 		if not Table or type(Table) ~= "table" then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 			return nil
 		end
 
@@ -1914,7 +1914,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 	Hook7 = hookfunction(chatRemote.fireServer, function(Remote, Table)
 
 		if not Table or type(Table) ~= "table" then
-			sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 			return nil
 		end
 
@@ -1942,7 +1942,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 			local self = Args[1]
 			local method = getnamecallmethod()
 			if self == senzuRemote and method:lower() == "fireserver" and not Args[2] then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 				return nil
 			elseif
 				self == inputRemote
@@ -1955,14 +1955,14 @@ MiscSection2:addButton("Anti-Wipe",function()
 					or typeof(Args[3]) ~= "CFrame"
 				)
 			then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 				return nil
 			elseif
 				self == chatRemote
 				and method:lower() == "fireserver"
 				and (not Args[2] or type(Args[2]) ~= "table")
 			then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 				return nil
 			end
 			return Hook(...)
@@ -1971,7 +1971,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		Hook2 = hookfunction(senzuRemote.FireServer, function(Remote, Bool)
 
 			if not Bool then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 				return nil
 			end
 
@@ -1981,7 +1981,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		Hook3 = hookfunction(senzuRemote.fireServer, function(Remote, Bool)
 
 			if not Bool then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 				return nil
 			end
 
@@ -1999,7 +1999,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 				or not Args[3]
 				or typeof(Args[3]) ~= "CFrame"
 			then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 				return nil
 			end
 
@@ -2017,7 +2017,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 				or not Args[3]
 				or typeof(Args[3]) ~= "CFrame"
 			then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 				return nil
 			end
 
@@ -2027,7 +2027,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		Hook6 = hookfunction(chatRemote.FireServer, function(Remote, Table)
 
 			if not Table or type(Table) ~= "table" then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 				return nil
 			end
 
@@ -2037,7 +2037,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		Hook7 = hookfunction(chatRemote.fireServer, function(Remote, Table)
 
 			if not Table or type(Table) ~= "table" then
-				sendNotification("BOOGA CMDS V2", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
+				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 				return nil
 			end
 
