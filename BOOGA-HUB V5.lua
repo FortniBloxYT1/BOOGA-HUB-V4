@@ -3,7 +3,7 @@ repeat
 until game:IsLoaded() and game.Players.LocalPlayer
 
 if not Executed then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "OLD SERVER DELETED, JOIN https://discord.gg/RuswFJy7g9 | Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "OLD SERVER DELETED, JOIN https://discord.gg/P8XU6FAJ | Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
 else
 	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB ALREADY LOADED", Duration = 10})
 	while true do
@@ -12,7 +12,7 @@ else
 end
 
 
--- [[Made by BOOGABLOZxD / MangouRolo#3752 / Discord Server : https://discord.gg/RuswFJy7g9]] --
+-- [[Made by BOOGABLOZxD / FortniBloxYT#2555 / Discord Server : https://discord.gg/YCvCSqADtV]] --
 -- [[At what are you looking skids]] --
 
 getgenv().Executed = true
@@ -1050,17 +1050,17 @@ MainSection4:addToggle("Loop Kill",nil,function(LoopKill)
 				end
 			end
 			if not Target or not workspace.Live:FindFirstChild(Target) then
-				sendNotification("BOOGA CMDS V2",tostring(Target) .. "was not found on the player list")
+				sendNotification("BOOGA HUB V5",tostring(Target) .. "was not found on the player list")
 				LoopKilling = false
 				break
 			end
 			if not workspace.Live[Target]:FindFirstChild("HumanoidRootPart") then
-				sendNotification("BOOGA CMDS V2","Target does not have a humanoid root part",2)
+				sendNotification("BOOGA HUB V5","Target does not have a humanoid root part",2)
 				LoopKilling = false
 				break
 			end
 			if workspace.Live[Target].Humanoid.Sit then
-				sendNotification("BOOGA CMDS V2","Target is sitted down",2)
+				sendNotification("BOOGA HUB V5","Target is sitted down",2)
 				LoopKilling = false
 				break
 			end
@@ -1776,7 +1776,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 	local get
 	get = hookfunction(game.HttpGet, function(self, url, ...)
 		if url:lower():find("blacklist") then
-			sendNotification("BOOGA CMDS V2", "A request to a blacklist has been blocked", 2)
+			sendNotification("BOOGA HUB V5", "A request to a blacklist has been blocked", 2)
 			return nil
 		else
 			return get(self, url, ...)
@@ -1787,7 +1787,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		local get2
 		get2 = hookfunction(http_request, function(self, url, ...)
 			if url:lower():find("blacklist") then
-				sendNotification("BOOGA CMDS V2", "A request to a blacklist has been blocked", 2)
+				sendNotification("BOOGA HUB V5", "A request to a blacklist has been blocked", 2)
 				return nil
 			else
 				return get2(self, url, ...)
@@ -1799,7 +1799,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		local get3
 		get3 = hookfunction(syn.request, function(self, url, ...)
 			if url:lower():find("blacklist") then
-				sendNotification("BOOGA CMDS V2", "A request to a blacklist has been blocked", 2)
+				sendNotification("BOOGA HUB V5", "A request to a blacklist has been blocked", 2)
 				return nil
 			else
 				return get3(self, url, ...)
@@ -1825,17 +1825,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 		if self == senzuRemote and method:lower() == "fireserver" and not Args[2] then
 			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 			return nil
-		elseif
-			self == inputRemote
-			and method:lower() == "fireserver"
-			and (
-				not Args[2]
-				or type(Args[2]) ~= "table"
-				or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
-				or not Args[3]
-				or typeof(Args[3]) ~= "CFrame"
-			)
-		then
+		elseif self == inputRemote and method:lower() == "fireserver" and (not Args[2] or type(Args[2]) ~= "table" or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff")) or not Args[3] or typeof(Args[3]) ~= "CFrame") then
 			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 			return nil
 		elseif self == chatRemote and method:lower() == "fireserver" and (not Args[2] or type(Args[2]) ~= "table") then
@@ -1869,13 +1859,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 
 		local Args = { ... }
 
-		if
-			not Args[2]
-			or type(Args[2]) ~= "table"
-			or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
-			or not Args[3]
-			or typeof(Args[3]) ~= "CFrame"
-		then
+		if not Args[2] or type(Args[2]) ~= "table" or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff")) or not Args[3] or typeof(Args[3]) ~= "CFrame" then
 			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 			return nil
 		end
@@ -1887,13 +1871,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 
 		local Args = { ... }
 
-		if
-			not Args[2]
-			or type(Args[2]) ~= "table"
-			or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
-			or not Args[3]
-			or typeof(Args[3]) ~= "CFrame"
-		then
+		if not Args[2] or type(Args[2]) ~= "table" or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff")) or not Args[3] or typeof(Args[3]) ~= "CFrame" then
 			sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 			return nil
 		end
@@ -1944,24 +1922,10 @@ MiscSection2:addButton("Anti-Wipe",function()
 			if self == senzuRemote and method:lower() == "fireserver" and not Args[2] then
 				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH EATSENZU REMOTE", 2)
 				return nil
-			elseif
-				self == inputRemote
-				and method:lower() == "fireserver"
-				and (
-					not Args[2]
-					or type(Args[2]) ~= "table"
-					or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
-					or not Args[3]
-					or typeof(Args[3]) ~= "CFrame"
-				)
-			then
+			elseif self == inputRemote and method:lower() == "fireserver" and (not Args[2] or type(Args[2]) ~= "table" or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff")) or not Args[3] or typeof(Args[3]) ~= "CFrame") then
 				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 				return nil
-			elseif
-				self == chatRemote
-				and method:lower() == "fireserver"
-				and (not Args[2] or type(Args[2]) ~= "table")
-			then
+			elseif self == chatRemote and method:lower() == "fireserver" and (not Args[2] or type(Args[2]) ~= "table") then
 				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH CHATADVANCE REMOTE", 2)
 				return nil
 			end
@@ -1992,13 +1956,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 
 			local Args = { ... }
 
-			if
-				not Args[2]
-				or type(Args[2]) ~= "table"
-				or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
-				or not Args[3]
-				or typeof(Args[3]) ~= "CFrame"
-			then
+			if not Args[2] or type(Args[2]) ~= "table" or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff")) or not Args[3] or typeof(Args[3]) ~= "CFrame" then
 				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 				return nil
 			end
@@ -2010,13 +1968,7 @@ MiscSection2:addButton("Anti-Wipe",function()
 
 			local Args = { ... }
 
-			if
-				not Args[2]
-				or type(Args[2]) ~= "table"
-				or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff"))
-				or not Args[3]
-				or typeof(Args[3]) ~= "CFrame"
-			then
+			if not Args[2] or type(Args[2]) ~= "table" or (type(Args[2]) == "table" and (Args[2][1] ~= "md" and Args[2][1] ~= "m2" and Args[2][1] ~= "e" and Args[2][1] ~= "blockoff" and Args[2][1] ~= "blockon" and Args[2][1] ~= "x" and Args[2][1] ~= "xoff")) or not Args[3] or typeof(Args[3]) ~= "CFrame" then
 				sendNotification("BOOGA HUB V5", "SOMEONE TRIED TO WIPE YOUR ACCOUNT WITH INPUT REMOTE", 2)
 				return nil
 			end
@@ -3378,7 +3330,7 @@ MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
 		getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
 	else
-		game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
+		game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB V5 ALREADY LOADED", Duration = 5})
 	end
 end)
 
@@ -3388,7 +3340,7 @@ task.delay(.3,function()
 			getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
 		else
-			game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
+			game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB V5 ALREADY LOADED", Duration = 5})
 		end
 	end
 end)
@@ -3526,7 +3478,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
+		autoSaveSection2:addToggle("Auto Launch BOOGA HUB V5",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
 			if autoLaunchCMDS then
 				Settings.AutoLaunchBOOGACMDS = "true"
 				ActualSettings.AutoLaunchBOOGACMDS = "true"
