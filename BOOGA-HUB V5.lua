@@ -3330,7 +3330,7 @@ MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
 		getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
 	else
-		game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB V5 ALREADY LOADED", Duration = 5})
+		game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA CMDS V2", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
 	end
 end)
 
@@ -3478,7 +3478,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Launch BOOGA HUB V5",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
+		autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
 			if autoLaunchCMDS then
 				Settings.AutoLaunchBOOGACMDS = "true"
 				ActualSettings.AutoLaunchBOOGACMDS = "true"
