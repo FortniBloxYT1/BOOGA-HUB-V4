@@ -303,14 +303,13 @@ MainSection:addButton("Last Update : 31/03/2023",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
-			local m = math.random(1,20)
-			print(m)
-			if m == 1 and ActualSettings.AprilFools == "nil" then
+
+			if math.random(1,20) == 1 and ActualSettings.AprilFools == "nil" then
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
 				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
-			end	
+			end
 					
 			NSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -334,6 +333,14 @@ task.spawn(function()
 			end)
 
 		else
+			
+			if math.random(1,20) == 1 and ActualSettings.AprilFools == "nil" then
+				Settings.AprilFools = "true"
+				ActualSettings.AprilFools = "true"
+				Save()
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+			end
+
 			if NSRun then
 				NSRun:Disconnect()
 				NSEConn:Disconnect()
