@@ -59,7 +59,8 @@ local DefaultSettings = {
 	AutoLaunchBOOGACMDS = "nil";
 	SaveAntiGrab = "nil";
 	SaveAntiGlitch = "nil";
-	Save2XP = "nil"
+	Save2XP = "nil";
+	AprilFools = "nil"
 }
 
 if not isfolder("BOOGA-HUB V5") then
@@ -98,6 +99,7 @@ ActualSettings.AutoLaunchBOOGACMDS = convert(Settings.AutoLaunchBOOGACMDS)
 ActualSettings.SaveAntiGrab = convert(Settings.SaveAntiGrab)
 ActualSettings.SaveAntiGlitch = convert(Settings.SaveAntiGlitch)
 ActualSettings.Save2XP = convert(Settings.Save2XP)
+ActualSettings.AprilFools = convert(Settings.AprilFools)
 
 local function sendNotification(Title,Text,Duration)
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = Title,Text = Text,Duration = Duration})
@@ -300,6 +302,14 @@ local MainSection = Main:addSection("Main | Section 1")
 MainSection:addButton("Last Update : 31/03/2023",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
+				
+		if math.random(1,20) == 1 and ActualSettings.AprilFools == "nil" then
+			Settings.AprilFools = "true"
+			ActualSettings.AprilFools = "true"
+			Save()
+			Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+		end
+				
 		if NS then
 			NSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
