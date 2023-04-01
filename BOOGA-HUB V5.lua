@@ -303,8 +303,7 @@ MainSection:addButton("Last Update : 31/03/2023",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
-
-			if math.random(1,20) == 1 and ActualSettings.AprilFools == "nil" then
+			if math.random(1,20) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
@@ -334,7 +333,7 @@ task.spawn(function()
 
 		else
 			
-			if math.random(1,20) == 1 and ActualSettings.AprilFools == "nil" then
+			if math.random(1,20) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
