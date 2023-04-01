@@ -143,6 +143,14 @@ local function ResetCharacter()
 end
 
 local function Respawn()
+
+	if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
+		Settings.AprilFools = "true"
+		ActualSettings.AprilFools = "true"
+		Save()
+		Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of... APRIL FOOLS")
+	end
+
 	if game.PlaceId ~= 536102540 then ResetCharacter() return end
 	if game.PlaceId == 536102540 and not ResetRace() then ResetCharacter() return end
 	Player.Character:WaitForChild('HumanoidRootPart')
@@ -308,7 +316,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of... APRIL FOOLS")
 			end
 		
 			NSRun = RS.RenderStepped:Connect(function()
@@ -338,7 +346,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of... APRIL FOOLS")
 			end
 
 			if NSRun then
@@ -384,7 +392,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			BNSRun = RS.RenderStepped:Connect(function()
@@ -419,7 +427,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			if BNSRun then
@@ -467,7 +475,7 @@ MainGodModesSection:addButton("Universal GodMode", function() -- Universal God M
 		Settings.AprilFools = "true"
 		ActualSettings.AprilFools = "true"
 		Save()
-		Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+		Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 	end
 
 	if not Activated then
@@ -590,7 +598,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			EGMRun = RS.RenderStepped:Connect(function()
@@ -643,7 +651,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			KIGMToggled = true
@@ -792,7 +800,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			DTRUN = RS.RenderStepped:Connect(function()
@@ -884,7 +892,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			AGRUN = RS.RenderStepped:Connect(function()
@@ -932,7 +940,7 @@ task.spawn(function()
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
 				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
 			end
 
 			if workspace:FindFirstChild("Wormhole") then
