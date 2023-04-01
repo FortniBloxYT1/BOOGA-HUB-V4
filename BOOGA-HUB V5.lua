@@ -303,6 +303,7 @@ MainSection:addButton("Last Update : 31/03/2023",function() end)
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
+
 			if math.random(1,20) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
@@ -332,7 +333,7 @@ task.spawn(function()
 			end)
 
 		else
-			
+
 			if math.random(1,20) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
 				Settings.AprilFools = "true"
 				ActualSettings.AprilFools = "true"
@@ -378,6 +379,14 @@ end)
 task.spawn(function()
 	MainSection:addToggle("Better No Slow", ActualSettings.SaveBetterNoSlow, function(BNS)
 		if BNS then
+
+			if math.random(1,20) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
+				Settings.AprilFools = "true"
+				ActualSettings.AprilFools = "true"
+				Save()
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+			end
+
 			BNSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
 					for _, v in ipairs(Player.Character:GetChildren()) do
@@ -388,7 +397,7 @@ task.spawn(function()
 						if v.Name == "Block" and v.Value then
 							v.Value = false
 						end
-				
+		
 						if v:FindFirstChild("BodyVelocity") then
 							v.BodyVelocity:Destroy()
 						end
@@ -405,6 +414,14 @@ task.spawn(function()
 			end)
 
 		else
+
+			if math.random(1,20) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
+				Settings.AprilFools = "true"
+				ActualSettings.AprilFools = "true"
+				Save()
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+			end
+
 			if BNSRun then
 				BNSRun:Disconnect()
 				BNSEConn:Disconnect()
