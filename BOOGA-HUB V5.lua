@@ -301,17 +301,16 @@ local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
 MainSection:addButton("Last Update : 31/03/2023",function() end)
 task.spawn(function()
-	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)
-		local m = math.random(1,20)
-		print(m)
-		if m == 1 and ActualSettings.AprilFools == "nil" then
-			Settings.AprilFools = "true"
-			ActualSettings.AprilFools = "true"
-			Save()
-			Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
-		end
-				
+	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
+					
+			if math.random(1,20) == 1 and ActualSettings.AprilFools == "nil" then
+				Settings.AprilFools = "true"
+				ActualSettings.AprilFools = "true"
+				Save()
+				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of APRIL FOOLS")
+			end	
+					
 			NSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
 					for _, v in ipairs(Player.Character:GetChildren()) do
