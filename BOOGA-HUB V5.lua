@@ -59,8 +59,7 @@ local DefaultSettings = {
 	AutoLaunchBOOGACMDS = "nil";
 	SaveAntiGrab = "nil";
 	SaveAntiGlitch = "nil";
-	Save2XP = "nil";
-	AprilFools = "nil"
+	Save2XP = "nil"
 }
 
 if not isfolder("BOOGA-HUB V5") then
@@ -99,7 +98,6 @@ ActualSettings.AutoLaunchBOOGACMDS = convert(Settings.AutoLaunchBOOGACMDS)
 ActualSettings.SaveAntiGrab = convert(Settings.SaveAntiGrab)
 ActualSettings.SaveAntiGlitch = convert(Settings.SaveAntiGlitch)
 ActualSettings.Save2XP = convert(Settings.Save2XP)
-ActualSettings.AprilFools = convert(Settings.AprilFools)
 
 local function sendNotification(Title,Text,Duration)
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = Title,Text = Text,Duration = Duration})
@@ -143,14 +141,6 @@ local function ResetCharacter()
 end
 
 local function Respawn()
-
-	if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-		Settings.AprilFools = "true"
-		ActualSettings.AprilFools = "true"
-		Save()
-		Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of... APRIL FOOLS")
-	end
-
 	if game.PlaceId ~= 536102540 then ResetCharacter() return end
 	if game.PlaceId == 536102540 and not ResetRace() then ResetCharacter() return end
 	Player.Character:WaitForChild('HumanoidRootPart')
@@ -312,13 +302,6 @@ task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
 
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of... APRIL FOOLS")
-			end
-		
 			NSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
 					for _, v in ipairs(Player.Character:GetChildren()) do
@@ -341,13 +324,6 @@ task.spawn(function()
 			end)
 
 		else
-
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of... APRIL FOOLS")
-			end
 
 			if NSRun then
 				NSRun:Disconnect()
@@ -388,13 +364,6 @@ task.spawn(function()
 	MainSection:addToggle("Better No Slow", ActualSettings.SaveBetterNoSlow, function(BNS)
 		if BNS then
 
-			if math.random(1,15) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
-
 			BNSRun = RS.RenderStepped:Connect(function()
 				pcall(function()
 					for _, v in ipairs(Player.Character:GetChildren()) do
@@ -422,13 +391,6 @@ task.spawn(function()
 			end)
 
 		else
-
-			if math.random(1,15) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
 
 			if BNSRun then
 				BNSRun:Disconnect()
@@ -470,14 +432,6 @@ end)
 local MainGodModesSection = Main:addSection("Main | Section 2 | GodModes")
 
 MainGodModesSection:addButton("Universal GodMode", function() -- Universal God Mode Was Not Made By Booga
-
-	if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-		Settings.AprilFools = "true"
-		ActualSettings.AprilFools = "true"
-		Save()
-		Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-	end
-
 	if not Activated then
 		Activated = true
 		getgenv().toggled = true
@@ -594,13 +548,6 @@ task.spawn(function()
 	MainGodModesSection:addToggle("Earth God Mode", ActualSettings.SaveEGM, function(EGM)
 		if EGM and game.PlaceId == 536102540 then
 
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
-
 			EGMRun = RS.RenderStepped:Connect(function()
 
 				if not Player.Character:FindFirstChild("HumanoidRootPart") then
@@ -646,13 +593,6 @@ end)
 task.spawn(function()
 	MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
 		if KIGM then
-
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
 
 			KIGMToggled = true
 			local function kigm()
@@ -796,13 +736,6 @@ task.spawn(function()
 	MainSection3:addToggle("Dragon Throw Glitch", nil, function(DT)
 		if DT then
 
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
-
 			DTRUN = RS.RenderStepped:Connect(function()
 				pcall(function()
 					if Player.Character:FindFirstChild("Dragon Throw") then
@@ -887,14 +820,7 @@ end)
 task.spawn(function()
 	MainSection3:addToggle("Anti-Glitch", ActualSettings.SaveAntiGlitch, function(AG)
 		if AG then
-
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
-
+			
 			AGRUN = RS.RenderStepped:Connect(function()
 				pcall(function()
 					for _, v in pairs(Player.Character:GetChildren()) do
@@ -935,13 +861,6 @@ end)
 task.spawn(function()
 	MainSection3:addToggle("Anti-Grab", ActualSettings.SaveAntiGrab, function(ANG)
 		if ANG then
-
-			if math.random(1,10) == 1 and (ActualSettings.AprilFools == "nil" or ActualSettings.AprilFools == nil) then
-				Settings.AprilFools = "true"
-				ActualSettings.AprilFools = "true"
-				Save()
-				Player:Kick("Due to the exploits that you are using you have been permanently banned from this game for the reason of...APRIL FOOLS")
-			end
 
 			if workspace:FindFirstChild("Wormhole") then
 				workspace.Wormhole:Destroy()
