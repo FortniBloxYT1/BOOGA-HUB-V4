@@ -3,27 +3,28 @@ repeat
 until game:IsLoaded() and game.Players.LocalPlayer
 
 if not Executed then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "OLD SERVER DELETED, JOIN https://discord.gg/RuswFJy7g9 | Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5.5", Text = "OLD SERVER DELETED, JOIN https://discord.gg/RuswFJy7g9 | Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
 else
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB ALREADY LOADED", Duration = 10})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5.5", Text = "BOOGA HUB ALREADY LOADED", Duration = 10})
 	while true do
 		task.wait(6000)
 	end
 end
 
 
--- [[Made by BOOGABLOZxD / FortniBloxYT#2555 / Discord Server : https://discord.gg/RuswFJy7g9]] --
+-- [[Made by BOOGABLOZxD / MangouRolo#0001 / Discord Server : https://discord.gg/RuswFJy7g9]] --
 -- [[At what are you looking skids]] --
 
 getgenv().Executed = true
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
-local BoogaHub = Library.new("BOOGA-HUB V5", 5013109572)
+local BoogaHub = Library.new("BOOGA-HUB V5.5", 5013109572)
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
 getgenv().autoFarmDistance = 2
 local Mouse = Player:GetMouse()
 local TouchyCFrame
 local Toggled = false
 local SkyBeam = false
+local SpamJarsKey = Enum.KeyCode.Clear
 local func = setclipboard or toclipboard
 if game.PlaceId == 536102540 then
 	TouchyCFrame = workspace.Touchy.Part.CFrame
@@ -140,7 +141,7 @@ local function ResetCharacter()
 	Player.Character.Head:Destroy()
 end
 
-local function Respawn()
+local function Respawn(spam)
 	if game.PlaceId ~= 536102540 then ResetCharacter() return end
 	if game.PlaceId == 536102540 and not ResetRace() then ResetCharacter() return end
 	Player.Character:WaitForChild('HumanoidRootPart')
@@ -150,7 +151,17 @@ local function Respawn()
 	task.wait(.430)
 	game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 	task.wait(.430)
-	Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
+    
+    if not spam then
+        Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
+    else
+        for _ = 1,30 do
+            pcall(function()
+                Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
+                task.wait()
+            end)
+        end
+    end
 
 	Player.CharacterAdded:Connect(function()
 		if not Toggled then
@@ -295,9 +306,34 @@ UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 	end
 end)
 
+UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
+    if GameProcessedEvent then return end
+
+    if Input.KeyCode == SpamJarsKey and not JarSpam then
+        JarSpam = true
+
+        while JarSpam do
+            repeat task.wait() until Player.Character and Player.Character:FindFirstChild("PowerOutput")
+
+            Player.Backpack.ServerTraits.EatSenzu:FireServer("something")
+
+            task.wait(.2)
+
+            pcall(function()
+                Respawn(true)
+            end)
+
+        end
+
+    elseif Input.KeyCode == SpamJarsKey and JarSpam then
+        JarSpam = false
+    end
+end)
+
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 31/03/2023",function() end)
+MainSection:addButton("Last Update : 09/04/2023",function() end)
+
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
@@ -1727,6 +1763,11 @@ end, function(Key)
 	TpKey = Key.KeyCode
 end)
 
+MiscSection1:addKeybind("Jars Spam", Enum.KeyCode.Clear, function()
+end, function(Key) 
+	SpamJarsKey = Key.KeyCode
+end)
+
 MiscSection1:addDropdown("Slot Changer", { "Slot1", "Slot2", "Slot3" }, function(Slot)
 	changeSlot(Slot,Player.Character.HumanoidRootPart.CFrame)
 end)
@@ -2951,6 +2992,10 @@ end)
 local Other = BoogaHub:addPage("Other",5012544693)
 local OtherSection = Other:addSection("Other")
 
+OtherSection:addSlider("FPS Cap",60, 15, 240, function(FPS)
+	setfpscap(FPS)
+end)
+
 OtherSection:addButton("Remove Aura", function()
 	if Player.Character:FindFirstChild("HumanoidRootPart") then
 		if Player.Character.HumanoidRootPart:FindFirstChild("TempAura") then
@@ -3054,6 +3099,65 @@ task.spawn(function()
 			Player.Character.Animate.walk.RunAnim.AnimationId = "rbxassetid://669161051"
 		end
 	end)
+end)
+
+task.spawn(function()
+
+    OtherSection:addToggle("RGB Mode",nil,function(RGBMode)
+        if RGBMode then
+
+            RGB = true
+
+            while RGB do
+                
+                for i = 1,255 do
+
+                    if not RGB then
+                        break
+                    end
+
+                    BoogaHub:setTheme("Accent",Color3.fromRGB(i,0,0))
+                    BoogaHub:setTheme("Background",Color3.fromRGB(i,0,0))
+                    if math.random(1,12) == 1 then
+                        task.wait()
+                    end
+                end
+        
+                for i = 1,255 do
+
+                    if not RGB then
+                        break
+                    end
+
+                    BoogaHub:setTheme("Accent",Color3.fromRGB(0,i,0))
+                    BoogaHub:setTheme("Background",Color3.fromRGB(0,i,0))
+                    if math.random(1,12) == 1 then
+                        task.wait()
+                    end
+                end
+        
+                for i = 1,255 do
+
+                    if not RGB then
+                        break
+                    end
+
+                    BoogaHub:setTheme("Accent",Color3.fromRGB(0,0,i))
+                    BoogaHub:setTheme("Background",Color3.fromRGB(0,0,i))
+                    if math.random(1,12) == 1 then
+                        task.wait()
+                    end
+                end
+
+            end
+        else
+            RGB = false
+            task.wait(0.030)
+            BoogaHub:setTheme("Accent",Color3.fromRGB(181,175,193))
+            BoogaHub:setTheme("Background",Color3.fromRGB(24,24,24))
+        end
+    end)
+
 end)
 
 OtherSection:addButton("Fix Little Jiren", function()
@@ -3384,7 +3488,7 @@ end,function(Key)
 end)
 
 Plus:addButton("Destroy GUI",function()
-	game.CoreGui["BOOGA-HUB V5"]:Destroy()
+	game.CoreGui["BOOGA-HUB V5.5"]:Destroy()
 	getgenv().Executed = false
 end)
 
@@ -3393,7 +3497,7 @@ local autoSaveSection = Settingss:addSection("Auto Save Settings")
 autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 
 	local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
-	local boogaHub = Lib.new("BOOGA-HUB V5 SETTINGS", 5013109572)
+	local boogaHub = Lib.new("BOOGA-HUB V5.5 SETTINGS", 5013109572)
 	local nothing = boogaHub:addPage("Nothing",5012544693)
 	local autoSavePage = boogaHub:addPage("Auto Saves",5012544693)
 	local autoSaveSection2 = autoSavePage:addSection("Auto Saves")
@@ -3505,7 +3609,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 	task.wait(.4)
 
 	autoSaveSection2:addButton("Close",function()
-		game.CoreGui["BOOGA-HUB V5 SETTINGS"]:Destroy()
+		game.CoreGui["BOOGA-HUB V5.5 SETTINGS"]:Destroy()
 	end)
 
 	boogaHub:SelectPage(boogaHub.pages[2],true)
