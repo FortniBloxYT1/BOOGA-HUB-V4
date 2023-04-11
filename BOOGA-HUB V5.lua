@@ -3,9 +3,10 @@ repeat
 until game:IsLoaded() and game.Players.LocalPlayer
 
 if not Executed then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5.5", Text = "OLD SERVER DELETED, JOIN https://discord.gg/RuswFJy7g9 | Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5.5", Text = "Hello " .. game.Players.LocalPlayer.Name .. " ,welcome to the best DBZFS Hub", Duration = 10})
 else
 	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5.5", Text = "BOOGA HUB ALREADY LOADED", Duration = 10})
+	
 	while true do
 		task.wait(6000)
 	end
@@ -16,25 +17,44 @@ end
 -- [[At what are you looking skids]] --
 
 getgenv().Executed = true
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
 local BoogaHub = Library.new("BOOGA-HUB V5.5", 5013109572)
+
+task.spawn(function()
+
+	while true do
+		game.CoreGui["BOOGA-HUB V5.5"].Main.TopBar.Title.Text = "BOOGA-HUB V5.5                     ".. os.date("%B %d, %Y | %X")
+		task.wait()
+	end
+	
+end)
+
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
+
 getgenv().autoFarmDistance = 2
 local Mouse = Player:GetMouse()
 local TouchyCFrame
+
 local Toggled = false
 local SkyBeam = false
+
 local SpamJarsKey = Enum.KeyCode.Clear
 local func = setclipboard or toclipboard
+
 if game.PlaceId == 536102540 then
 	TouchyCFrame = workspace.Touchy.Part.CFrame
 end
+
 local SlowValues = {"xx","Action","Activity","SuperAction","Attacking","Using","heavy","hyper","Hyper","Tele","tele","Slow","Killed","KiBlasted","Hyper","Dodging","KiBlasting","BStun","creator","KnockBacked","NotHardBack","evasive","Velocity","zDASZzxc"}
+
 local MeleeMoves = {"Meteor Crash","Anger Rush","Wolf Fang Fist","Neo Wolf Fang Fist","Deadly Dance","God Slicer","Sweep Kick","TS Molotov","Flash Skewer","Demon Flash","Strong Kick","Masenko","Big Bang Kamehameha","Flash Strike","Aerial Breaker"}
+
 local KiMoves = {"Blaster Meteor","Explosive Grip","Super Volley","Unrelenting Volley","Finish Breaker","Genocide Shell","Murder Grenade","Hell Pillars","Justicle Flash","Divine Lasso","Spirit Ball","Death Beam Barrage"}
+
 local FireValues = {"Attacking","Action","heavy","hyper","Hyper","Using"}
+
 local Trackables = {"KiBlast","Blast"}
-local Magnitude = 12
 
 BoogaHub:setTheme("Glow",Color3.fromRGB(255,255,255))
 
@@ -121,6 +141,7 @@ task.spawn(function()
 			repeat task.wait() until Player.Character:FindFirstChild("True")
 			Player.Character.True:Destroy()
 		end)
+
 	end
 end)
 
@@ -143,10 +164,13 @@ end
 
 local function Respawn(spam)
 	if game.PlaceId ~= 536102540 then ResetCharacter() return end
+
 	if game.PlaceId == 536102540 and not ResetRace() then ResetCharacter() return end
+
 	Player.Character:WaitForChild('HumanoidRootPart')
 	Toggled = true
 	CurrentFrame3 = Player.Character.HumanoidRootPart.CFrame
+
 	Player.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs["Hair Stylist"])
 	task.wait(.430)
 	game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
@@ -167,12 +191,16 @@ local function Respawn(spam)
 		if not Toggled then
 			return
 		end
+
 		getgenv().loadingCharacter = true
+
 		repeat
 			task.wait()
 			Player.Character.HumanoidRootPart.CFrame = CurrentFrame3
 		until Player.Character:FindFirstChild("PowerOutput")
+
 		Toggled = false
+
 		task.delay(1,function()
             repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
             getgenv().loadingCharacter = false
@@ -191,13 +219,17 @@ local function changeSlot(Slot,CF)
 	CFram = Player.Character.HumanoidRootPart.CFrame
 	changing = true
 	getgenv().loadingCharacter = true
+
 	Player.CharacterAdded:Connect(function()
 		if changing then
+
 			repeat
 				task.wait()
 				Player.Character.HumanoidRootPart.CFrame = CFram
 			until Player.Character:FindFirstChild("PowerOutput")
+
 			changing = false
+
 			task.delay(1,function()
 				repeat task.wait(.1) until Player.PlayerGui:FindFirstChild("HUD")
 				getgenv().loadingCharacter = false
@@ -225,11 +257,13 @@ local function buyBeans()
 	task.wait(.450)
 	Player.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
 	task.wait(.450)
+
 	if amountt == "80" then
 		Player.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 	else
 		Player.Backpack.ServerTraits.ChatAdvance:FireServer({"Use Zenni"})
 	end
+	
 	task.wait(.450)
 	Player.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
 	task.wait(1)
@@ -237,6 +271,7 @@ end
 
 local function findExtra(PlayerName)
 	if game.Players:FindFirstChild(PlayerName) then
+
 		if workspace.Live[PlayerName]:FindFirstChild("RebirthWings") then
 			return "Rebirth"
 		elseif workspace.Live[PlayerName]:FindFirstChild("RealHalo") then
@@ -244,72 +279,70 @@ local function findExtra(PlayerName)
 		else
 			return "Pure"
 		end
+
 	end
+end
+
+local function findNearest()
+	local Nearest = nil
+	local t = {math.huge}
+	
+	for _,v in pairs(workspace.Live:GetChildren()) do
+		if v:FindFirstChild("Damagers") then
+			continue
+		end
+
+		local Distance = (Player.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude
+
+		if v.Name ~= Player.Name and Distance < t[1] then
+			t[1] = Distance
+			Nearest = v
+		end
+	end
+
+	return Nearest
 end
 
 UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 	if GameProcessedEvent then return end
+
 	if Input.KeyCode == RespawnKey then
+
 		if game.PlaceId == 536102540 and ResetRace() then
 			Respawn()
 		else
 			ResetCharacter()
 		end
-	end
-end)
+		
+	elseif Input.KeyCode == OtherRespawnKey then
 
-UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
-	if GameProcessedEvent then return end
-	if Input.KeyCode == OtherRespawnKey then
-		Player.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Hair Stylist"])
+		Player.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs["Hair Stylist"])
 		task.wait(.450)
 		Player.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"})
 		task.wait(.450)
 		Player.Backpack.HairScript.RemoteEvent:FireServer("woah")
 	end
-end)
 
-UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
-	if GameProcessedEvent then return end
 	if Input.KeyCode == Enum.KeyCode.V and SkyBeam then
 		if Player.Character:FindFirstChild("Blast") then
+
 			if Player.Character.Blast:FindFirstChild("Weld") then
 				Player.Character.Blast.Weld:Destroy()
 				Player.Character.Blast.Anchored = false
 			end
 		end
 	end
-end)
 
-UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
-	if GameProcessedEvent then return end
 	if Input.KeyCode == TpKey then
-		local function findNearest()
-			local Nearest = nil
-			local t = {math.huge}
-			for _,v in pairs(workspace.Live:GetChildren()) do
-				if v:FindFirstChild("Damagers") then
-					continue
-				end
-				local Distance = (Player.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude
-				if v.Name ~= Player.Name and Distance < t[1] then
-					t[1] = Distance
-					Nearest = v
-				end
-			end
-			return Nearest
-		end
+
 		Player.Backpack.ServerTraits.Vanish:FireServer()
 		local Target = findNearest()
 		Player.Character.HumanoidRootPart.CFrame = Target.HumanoidRootPart.CFrame * CFrame.new(0,0,2)
 		workspace.CurrentCamera.CFrame = Target.Head.CFrame
+
 	end
-end)
 
-UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
-    if GameProcessedEvent then return end
-
-    if Input.KeyCode == SpamJarsKey and not JarSpam then
+	if Input.KeyCode == SpamJarsKey and not JarSpam then
         JarSpam = true
 
         while JarSpam do
@@ -328,11 +361,12 @@ UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
     elseif Input.KeyCode == SpamJarsKey and JarSpam then
         JarSpam = false
     end
+
 end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 09/04/2023",function() end)
+MainSection:addButton("Last Update : 11/04/2023",function() end)
 
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
@@ -344,6 +378,7 @@ task.spawn(function()
 						if table.find(SlowValues, v.Name) then
 							v:Destroy()
 						end
+
 						if v.Name == "Block" and v.Value then
 							v.Value = false
 						end
@@ -444,9 +479,11 @@ task.delay(.3,function()
 					if table.find(SlowValues, v.Name) then
 						v:Destroy()
 					end
+
 					if v.Name == "Block" and v.Value then
 						v.Value = false
 					end
+
 					if v:FindFirstChild("BodyVelocity") then
 						v.BodyVelocity:Destroy()
 					end
@@ -472,35 +509,45 @@ MainGodModesSection:addButton("Universal GodMode", function() -- Universal God M
 		Activated = true
 		getgenv().toggled = true
 
-		repeat
-			task.wait()
-		until game:IsLoaded()
-		repeat
-			task.wait()
-		until game.Players.LocalPlayer.Character
-		game.Players.LocalPlayer.Character:WaitForChild("Prestige")
-		task.wait(1)
-		function uni_god()
-			char = game.Players.LocalPlayer.Character
-			bp = game.Players.LocalPlayer.Backpack
-			game.Players.LocalPlayer.Character:WaitForChild("Prestige")
-			task.wait(0.5)
-			local aas = bp:FindFirstChild("Afterimage Strike")
-			if not aas then
-				return print("unsuccessful")
-			end
-			aas.Parent = char
-			pcall(function()
-				char.PrimaryPart:FindFirstChild("VanishParticle"):Destroy()
-			end)
+		if not Player.Character then
 			repeat
 				task.wait()
-				aas.Targeter:FireServer(char)
+			until Player.Character
+		end
+
+		Player.Character:WaitForChild("Prestige")
+
+		task.wait(.5)
+
+		function uni_god()
+
+			Player.Character:WaitForChild("Prestige")
+
+			task.wait(.5)
+			
+			local aas = Player.Backpack:WaitForChild("Afterimage Strike")
+
+			if not aas then
+				return
+			end
+
+			aas.Parent = Player.Character
+
+			pcall(function()
+				Player.Character.PrimaryPart:FindFirstChild("VanishParticle"):Destroy()
+			end)
+
+			repeat
+				task.wait()
+				aas.Targeter:FireServer(Player.Character)
 				aas:Activate()
-			until char:FindFirstChild("i")
+			until Player.Character:FindFirstChild("i")
+
 			aas:Deactivate()
 		end
+
 		getgenv().uni_god_hookfunc = false
+
 		if not uni_god_hookfunc then
 			getgenv().uni_god_hookfunc = true
 			old = hookmetamethod(game, "__namecall", function(self, ...)
@@ -517,47 +564,60 @@ MainGodModesSection:addButton("Universal GodMode", function() -- Universal God M
 
 		if toggled then
 			uni_god()
-			uni_char_added = game.Players.LocalPlayer.CharacterAdded:Connect(uni_god)
+			uni_char_added = Player.CharacterAdded:Connect(uni_god)
 		end
+
 	end
 end)
 
 task.delay(.3,function()
 	if ActualSettings.SaveUniversalGM then -- Synapse is trash also venyx too
+		
 		repeat task.wait(.1) until Player:FindFirstChild("Backpack") and Player.Backpack:FindFirstChild("Afterimage Strike") and Player.Character and Player.Character:FindFirstChild("PowerOutput")
+
 		if not Activated then
 			Activated = true
 			getgenv().toggled = true
-	
-			repeat
-				task.wait()
-			until game:IsLoaded()
-			repeat
-				task.wait()
-			until game.Players.LocalPlayer.Character
-			game.Players.LocalPlayer.Character:WaitForChild("Prestige")
-			task.wait(1)
-			function uni_god()
-				char = game.Players.LocalPlayer.Character
-				bp = game.Players.LocalPlayer.Backpack
-				game.Players.LocalPlayer.Character:WaitForChild("Prestige")
-				task.wait(0.5)
-				local aas = bp:FindFirstChild("Afterimage Strike")
-				if not aas then
-					return print("unsuccessful")
-				end
-				aas.Parent = char
-				pcall(function()
-					char.PrimaryPart:FindFirstChild("VanishParticle"):Destroy()
-				end)
+
+			if not Player.Character then
 				repeat
 					task.wait()
-					aas.Targeter:FireServer(char)
+				until Player.Character
+			end
+
+			Player.Character:WaitForChild("Prestige")
+
+			task.wait(.5)
+
+			function uni_god()
+
+				Player.Character:WaitForChild("Prestige")
+
+				task.wait(.5)
+				
+				local aas = Player.Backpack:WaitForChild("Afterimage Strike")
+
+				if not aas then
+					return
+				end
+
+				aas.Parent = Player.Character
+
+				pcall(function()
+					Player.Character.PrimaryPart:FindFirstChild("VanishParticle"):Destroy()
+				end)
+
+				repeat
+					task.wait()
+					aas.Targeter:FireServer(Player.Character)
 					aas:Activate()
-				until char:FindFirstChild("i")
+				until Player.Character:FindFirstChild("i")
+
 				aas:Deactivate()
 			end
+
 			getgenv().uni_god_hookfunc = false
+
 			if not uni_god_hookfunc then
 				getgenv().uni_god_hookfunc = true
 				old = hookmetamethod(game, "__namecall", function(self, ...)
@@ -571,11 +631,12 @@ task.delay(.3,function()
 					return old(self, ...)
 				end)
 			end
-	
+
 			if toggled then
 				uni_god()
-				uni_char_added = game.Players.LocalPlayer.CharacterAdded:Connect(uni_god)
+				uni_char_added = Player.CharacterAdded:Connect(uni_god)
 			end
+			
 		end
 	end
 end)
@@ -1544,7 +1605,7 @@ task.spawn(function()
 				pcall(function()
 					for _,v in pairs(workspace.Live:GetChildren()) do
 						if v:FindFirstChild("HumanoidRootPart") then
-							if (Player.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude < Magnitude then
+							if (Player.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude < 12 then
 								for _,v in pairs(v:GetChildren()) do
 									if table.find(FireValues,v.Name) and v.Parent.Name ~= Player.Name and v.Parent.Humanoid.Health > 1 then
 										Player.Backpack.ServerTraits.Vanish:FireServer()
