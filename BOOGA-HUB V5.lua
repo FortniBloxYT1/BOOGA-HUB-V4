@@ -24,7 +24,7 @@ local BoogaHub = Library.new("BOOGA-HUB V5.5", 5013109572)
 task.spawn(function()
 
 	while true do
-		game.CoreGui["BOOGA-HUB V5.5"].Main.TopBar.Title.Text = "BOOGA-HUB V5.5                     ".. os.date("%B %d, %Y | %X")
+		game.CoreGui["BOOGA-HUB V5.5"].Main.TopBar.Title.Text = "BOOGA-HUB V5.5                                                  ".. os.date("%B %d, %Y | %X")
 		task.wait()
 	end
 	
@@ -366,7 +366,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 11/04/2023",function() end)
+MainSection:addButton("Last Update : 12/04/2023",function() end)
 
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
@@ -1083,6 +1083,30 @@ task.spawn(function()
 			else
 				ResetCharacter()
 			end
+		end
+	end)
+end)
+
+task.spawn(function()
+	MainSection3:addToggle("Remove CoolDown", nil, function(RemoveCooldown)
+		if RemoveCooldown then
+			CooldownToggled = true
+
+			if CooldownHook then
+				return
+			end
+
+			CooldownHook = hookfunction(wait,function(Time)
+
+				if CooldownToggled and not getgenv().loadingCharacter and Player.Character and Player.Character:FindFirstChild("PowerOutput") then
+					return CooldownHook(0)
+				else
+					return CooldownHook(Time)
+				end
+
+			end)
+		else
+			CooldownToggled = false
 		end
 	end)
 end)
