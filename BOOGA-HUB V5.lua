@@ -366,7 +366,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 12/04/2023",function() end)
+MainSection:addButton("Last Update : 11/04/2023",function() end)
 
 task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
@@ -2453,6 +2453,30 @@ MiscSection2:addButton("Anchor (O)",function()
 			Player.Character.HumanoidRootPart.Anchored = false
 		end
 
+	end)
+end)
+
+MiscSection2:addButton("Auto Block (F)",function()
+
+	UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
+		if GameProcessedEvent then return end
+
+		if Input.KeyCode == Enum.KeyCode.F and not AutoBlockRun then
+
+			AutoBlockRun = RS.RenderStepped:Connect(function()
+				pcall(function()
+					Player.Backpack.ServerTraits.Input:FireServer({"blockon"},CFrame.new())
+				end)
+			end)
+
+		elseif Input.KeyCode == Enum.KeyCode.F and AutoBlockRun then
+
+			AutoBlockRun:Disconnect()
+			AutoBlockRun = nil
+
+			Player.Backpack.ServerTraits.Input:FireServer({"blockoff"},CFrame.new())
+			
+		end
 	end)
 end)
 
