@@ -80,7 +80,11 @@ local DefaultSettings = {
 	AutoLaunchBOOGACMDS = "nil";
 	SaveAntiGrab = "nil";
 	SaveAntiGlitch = "nil";
-	Save2XP = "nil"
+	Save2XP = "nil";
+	SaveLockOn = "nil";
+	AutoLevelHider = "nil";
+	AutoWingsHider = "nil";
+	AutoHaloHider = "nil"
 }
 
 if not isfolder("BOOGA-HUB V5") then
@@ -119,6 +123,10 @@ ActualSettings.AutoLaunchBOOGACMDS = convert(Settings.AutoLaunchBOOGACMDS)
 ActualSettings.SaveAntiGrab = convert(Settings.SaveAntiGrab)
 ActualSettings.SaveAntiGlitch = convert(Settings.SaveAntiGlitch)
 ActualSettings.Save2XP = convert(Settings.Save2XP)
+ActualSettings.SaveLockOn = convert(Settings.SaveLockOn)
+ActualSettings.AutoLevelHider = convert(Settings.AutoLevelHider)
+ActualSettings.AutoWingsHider = convert(Settings.AutoWingsHider)
+ActualSettings.AutoHaloHider = convert(Settings.AutoHaloHider)
 
 local function sendNotification(Title,Text,Duration)
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = Title,Text = Text,Duration = Duration})
@@ -369,6 +377,12 @@ local MainSection = Main:addSection("Main | Section 1")
 MainSection:addButton("Last Update : 11/04/2023",function() end)
 
 task.spawn(function()
+	if ActualSettings.SaveLockOn then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/lock-on/main/Lock-on.txt"))()
+	end
+end)
+
+task.spawn(function()
 	MainSection:addToggle("No Slow", ActualSettings.SaveNoSlow, function(NS)		
 		if NS then
 
@@ -404,7 +418,7 @@ task.spawn(function()
 	end)
 end)
 
-task.delay(.3,function()
+task.spawn(function()
 	if ActualSettings.SaveNoSlow then -- Synapse is trash also venyx too
 		NSRun = RS.RenderStepped:Connect(function()
 			pcall(function()
@@ -471,36 +485,35 @@ task.spawn(function()
 	end)
 end)
 
-task.delay(.3,function()
-	if ActualSettings.SaveBetterNoSlow then  -- Synapse is trash also venyx too
-		BNSRun = RS.RenderStepped:Connect(function()
-			pcall(function()
-				for _, v in ipairs(Player.Character:GetChildren()) do
-					if table.find(SlowValues, v.Name) then
-						v:Destroy()
-					end
 
-					if v.Name == "Block" and v.Value then
-						v.Value = false
-					end
-
-					if v:FindFirstChild("BodyVelocity") then
-						v.BodyVelocity:Destroy()
-					end
+if ActualSettings.SaveBetterNoSlow then  -- Synapse is trash also venyx too
+	BNSRun = RS.RenderStepped:Connect(function()
+		pcall(function()
+			for _, v in ipairs(Player.Character:GetChildren()) do
+				if table.find(SlowValues, v.Name) then
+					v:Destroy()
 				end
-			end)
-		end)
 
-		BNSEConn = UIS.InputBegan:Connect(function(Input,GME)
-			if GME then return end
+				if v.Name == "Block" and v.Value then
+					v.Value = false
+				end
 
-			if Input.KeyCode == Enum.KeyCode.E then
-				Player.Backpack.ServerTraits.Input:FireServer({"e"},Mouse.Hit)
+				if v:FindFirstChild("BodyVelocity") then
+					v.BodyVelocity:Destroy()
+				end
 			end
 		end)
+	end)
 
-	end
-end)
+	BNSEConn = UIS.InputBegan:Connect(function(Input, GME)
+		if GME then return end
+
+		if Input.KeyCode == Enum.KeyCode.E then
+			Player.Backpack.ServerTraits.Input:FireServer({ "e" }, Mouse.Hit)
+		end
+	end)
+end
+
 
 local MainGodModesSection = Main:addSection("Main | Section 2 | GodModes")
 
@@ -570,7 +583,7 @@ MainGodModesSection:addButton("Universal GodMode", function() -- Universal God M
 	end
 end)
 
-task.delay(.3,function()
+task.spawn(function()
 	if ActualSettings.SaveUniversalGM then -- Synapse is trash also venyx too
 		
 		repeat task.wait(.1) until Player:FindFirstChild("Backpack") and Player.Backpack:FindFirstChild("Afterimage Strike") and Player.Character and Player.Character:FindFirstChild("PowerOutput")
@@ -670,22 +683,21 @@ task.spawn(function()
 	end)
 end)
 
-task.delay(.3,function()
-	if ActualSettings.SaveEGM and game.PlaceId == 536102540 then  -- Synapse is trash also venyx too
-		EGMRun = RS.RenderStepped:Connect(function()
-			if not Player.Character:FindFirstChild("HumanoidRootPart") then
-				return
-			end
+if ActualSettings.SaveEGM and game.PlaceId == 536102540 then  -- Synapse is trash also venyx too
+	EGMRun = RS.RenderStepped:Connect(function()
+
+		pcall(function()
 			firetouchinterest(Player.Character.HumanoidRootPart, workspace.Touchy.Part, 0)
 			firetouchinterest(Player.Character.HumanoidRootPart, workspace.Touchy.Part, 1)
-			pcall(function()
-				if Player.PlayerGui:FindFirstChild("Popup") then
-					Player.PlayerGui.Popup:Destroy()
-				end
-			end)
+
+			if Player.PlayerGui:FindFirstChild("Popup") then
+				Player.PlayerGui.Popup:Destroy()
+			end
 		end)
-	end
-end)
+
+	end)
+end
+
 
 task.spawn(function()
 	MainGodModesSection:addToggle("Ki God Mode", nil, function(KIGM)
@@ -937,23 +949,23 @@ task.spawn(function()
 	end)
 end)
 
-task.delay(.3,function()
-	if ActualSettings.SaveAntiGlitch then  -- Synapse is trash also venyx too
-		AGRUN = RS.RenderStepped:Connect(function()
-			pcall(function()
-				for _, v in pairs(Player.Character:GetChildren()) do
-					if v.Name == "MoveStart" then
-						for _, v in pairs(Player.Character:GetDescendants()) do
-							if v:IsA("BodyVelocity") and v.Name ~= "Flying" then
-								v:Destroy()
-							end
+if ActualSettings.SaveAntiGlitch then  -- Synapse is trash also venyx too
+	AGRUN = RS.RenderStepped:Connect(function()
+		pcall(function()
+			for _, v in pairs(Player.Character:GetChildren()) do
+				if v.Name == "MoveStart" then
+
+					for _, v in pairs(Player.Character:GetDescendants()) do
+						if v:IsA("BodyVelocity") and v.Name ~= "Flying" then
+							v:Destroy()
 						end
 					end
+
 				end
-			end)
+			end
 		end)
-	end
-end)
+	end)
+end
 
 task.spawn(function()
 	MainSection3:addToggle("Anti-Grab", ActualSettings.SaveAntiGrab, function(ANG)
@@ -980,26 +992,29 @@ task.spawn(function()
 	end)
 end)
 
-task.delay(.3,function()
-	if ActualSettings.SaveAntiGrab then -- Synapse is trash also venyx too
+if ActualSettings.SaveAntiGrab then -- Synapse is trash also venyx too
 
-		if workspace:FindFirstChild("Wormhole") then
-			workspace.Wormhole:Destroy()
-		end
-
-		ANGRun = RS.RenderStepped:Connect(function()
-			pcall(function()
-				if Player.Character:FindFirstChild("MoveStart") and not AntiGrabRespawn then
-					AntiGrabRespawn = true
-					task.delay(1.2, function()
-						AntiGrabRespawn = false
-					end)
-					Respawn()
-				end
-			end)
-		end)
+	if workspace:FindFirstChild("Wormhole") then
+		workspace.Wormhole:Destroy()
 	end
-end)
+
+	ANGRun = RS.RenderStepped:Connect(function()
+		pcall(function()
+
+			if Player.Character:FindFirstChild("MoveStart") and not AntiGrabRespawn then
+
+				AntiGrabRespawn = true
+
+				task.delay(1.2, function()
+					AntiGrabRespawn = false
+				end)
+
+				Respawn()
+			end
+
+		end)
+	end)
+end
 
 task.spawn(function()
 	MainSection3:addToggle("Anti Glitch Dt Throw/Dc Throw", nil, function(AG2)
@@ -1022,8 +1037,20 @@ task.spawn(function()
 	end)
 end)
 
+if ActualSettings.AutoLevelHider then
+	LVLRun = RS.RenderStepped:Connect(function()
+		pcall(function()
+			for _, v in pairs(Player.Character:GetChildren()) do
+				if v.ClassName == "Model" then
+					v:Destroy()
+				end
+			end
+		end)
+	end)
+end
+
 task.spawn(function()
-	MainSection3:addToggle("Level/Prestige Hider", nil, function(LVL)
+	MainSection3:addToggle("Level/Prestige Hider", ActualSettings.AutoLevelHider, function(LVL)
 		if LVL then
 			LVLRun = RS.RenderStepped:Connect(function()
 				pcall(function()
@@ -1036,6 +1063,7 @@ task.spawn(function()
 			end)
 		else
 			LVLRun:Disconnect()
+
 			if game.PlaceId == 536102540 and ResetRace() then
 				Respawn()
 			else
@@ -1045,18 +1073,29 @@ task.spawn(function()
 	end)
 end)
 
+if ActualSettings.AutoWingsHider then
+	WingsHideRun = RS.RenderStepped:Connect(function()
+		pcall(function()
+			if Player.Character:FindFirstChild("RebirthWings"):FindFirstChild("Handle") then
+				Player.Character.RebirthWings.Handle:Destroy()
+			end
+		end)
+	end)
+end
+
 task.spawn(function()
-	MainSection3:addToggle("Rebirth Wings-Hider", nil, function(WingHide)
+	MainSection3:addToggle("Rebirth Wings-Hider", ActualSettings.AutoWingsHider, function(WingHide)
 		if WingHide then
 			WingsHideRun = RS.RenderStepped:Connect(function()
 				pcall(function()
-					if Player.Character:FindFirstChild("RebirthWings"):FindFirstChild("RebirthWings") then
-						Player.Character["RebirthWings"].Handle:Destroy()
+					if Player.Character:FindFirstChild("RebirthWings"):FindFirstChild("Handle") then
+						Player.Character.RebirthWings.Handle:Destroy()
 					end
 				end)
 			end)
 		else
 			WingsHideRun:Disconnect()
+
 			if game.PlaceId == 536102540 and ResetRace() then
 				Respawn()
 			else
@@ -1066,18 +1105,29 @@ task.spawn(function()
 	end)
 end)
 
+if ActualSettings.AutoHaloHider then
+	HaloHideRun = RS.RenderStepped:Connect(function()
+		pcall(function()
+			if Player.Character:FindFirstChild("RealHalo"):FindFirstChild("Handle") then
+				Player.Character.RealHalo.Handle:Destroy()
+			end
+		end)
+	end)
+end
+
 task.spawn(function()
-	MainSection3:addToggle("Halo-Hider", nil, function(HaloHide)
+	MainSection3:addToggle("Halo-Hider", ActualSettings.AutoHaloHider, function(HaloHide)
 		if HaloHide then
 			HaloHideRun = RS.RenderStepped:Connect(function()
 				pcall(function()
 					if Player.Character:FindFirstChild("RealHalo"):FindFirstChild("Handle") then
-						Player.Character["RealHalo"].Handle:Destroy()
+						Player.Character.RealHalo.Handle:Destroy()
 					end
 				end)
 			end)
 		else
 			HaloHideRun:Disconnect()
+
 			if game.PlaceId == 536102540 and ResetRace() then
 				Respawn()
 			else
@@ -3559,12 +3609,14 @@ MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
 	end
 end)
 
-task.delay(.3,function()
+task.spawn(function()
 	if ActualSettings.AutoLaunchBOOGACMDS then -- Synapse is trash also venyx too
 		if not getgenv().Executedd then
-			getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
+
+			getgenv().targetNPCs = getgenv().targetNPCs or false
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
 		else
+
 			game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA-HUB V5", Text = "BOOGA HUB V5 ALREADY LOADED", Duration = 5})
 		end
 	end
@@ -3586,6 +3638,7 @@ for theme, color in pairs(Themes) do
 		BoogaHub:setTheme(theme, color3)
 	end)
 end
+
 local Plus = Settingss:addSection("Plus")
 
 Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
@@ -3612,7 +3665,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 	local autoSaveSection2 = autoSavePage:addSection("Auto Saves")
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Earth God Mode",ActualSettings.SaveEGM,function(saveEGM)
+		autoSaveSection2:addToggle("Auto Save Earth God Mode", ActualSettings.SaveEGM, function(saveEGM)
 			if saveEGM then
 				Settings.SaveEGM = "true"
 				ActualSettings.SaveEGM = "true"
@@ -3620,12 +3673,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.SaveEGM = "nil"
 				ActualSettings.SaveEGM = "nil"
 			end
+			
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Universal God Mode",ActualSettings.SaveUniversalGM,function(saveUniversalGM)
+		autoSaveSection2:addToggle("Auto Save Universal God Mode", ActualSettings.SaveUniversalGM, function(saveUniversalGM)
 			if saveUniversalGM then
 				Settings.SaveUniversalGM = "true"
 				ActualSettings.SaveUniversalGM = "true"
@@ -3633,12 +3687,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.SaveUniversalGM = "nil"
 				ActualSettings.SaveUniversalGM = "nil"
 			end
+
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save No Slow",ActualSettings.SaveNoSlow,function(saveNS)
+		autoSaveSection2:addToggle("Auto Save No Slow", ActualSettings.SaveNoSlow, function(saveNS)
 			if saveNS then
 				Settings.SaveNoSlow = "true"
 				ActualSettings.SaveNoSlow = "true"
@@ -3646,12 +3701,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.SaveNoSlow = "nil"
 				ActualSettings.SaveNoSlow = "nil"
 			end
+
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Better No Slow",ActualSettings.SaveBetterNoSlow,function(saveBNS)
+		autoSaveSection2:addToggle("Auto Save Better No Slow",ActualSettings.SaveBetterNoSlow, function(saveBNS)
 			if saveBNS then
 				Settings.SaveBetterNoSlow = "true"
 				ActualSettings.SaveBetterNoSlow = "true"
@@ -3659,12 +3715,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.SaveBetterNoSlow = "nil"
 				ActualSettings.SaveBetterNoSlow = "nil"
 			end
+
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Anti Grab",ActualSettings.SaveAntiGrab,function(saveANG)
+		autoSaveSection2:addToggle("Auto Save Anti Grab", ActualSettings.SaveAntiGrab, function(saveANG)
 			if saveANG then
 				Settings.SaveAntiGrab = "true"
 				ActualSettings.SaveAntiGrab = "true"
@@ -3672,12 +3729,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.SaveAntiGrab = "nil"
 				ActualSettings.SaveAntiGrab = "nil"
 			end
+
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Anti Glitch",ActualSettings.SaveAntiGlitch,function(saveAG)
+		autoSaveSection2:addToggle("Auto Save Anti Glitch", ActualSettings.SaveAntiGlitch, function(saveAG)
 			if saveAG then
 				Settings.SaveAntiGlitch = "true"
 				ActualSettings.SaveAntiGlitch = "true"
@@ -3685,12 +3743,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.SaveAntiGlitch = "nil"
 				ActualSettings.SaveAntiGlitch = "nil"
 			end
+
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save 2XP FREEZE",ActualSettings.Save2XP,function(save2XP)
+		autoSaveSection2:addToggle("Auto Save 2XP FREEZE", ActualSettings.Save2XP, function(save2XP)
 			if save2XP then
 				Settings.Save2XP = "true"
 				ActualSettings.Save2XP = "true"
@@ -3698,12 +3757,13 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.Save2XP = "nil"
 				ActualSettings.Save2XP = "nil"
 			end
+
 			Save()
 		end)
 	end)
 
 	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2",ActualSettings.AutoLaunchBOOGACMDS,function(autoLaunchCMDS)
+		autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2", ActualSettings.AutoLaunchBOOGACMDS, function(autoLaunchCMDS)
 			if autoLaunchCMDS then
 				Settings.AutoLaunchBOOGACMDS = "true"
 				ActualSettings.AutoLaunchBOOGACMDS = "true"
@@ -3711,6 +3771,63 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 				Settings.AutoLaunchBOOGACMDS = "nil"
 				ActualSettings.AutoLaunchBOOGACMDS = "nil"
 			end
+
+			Save()
+		end)
+	end)
+
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Save Lock On", ActualSettings.SaveLockOn, function(AutoSaveLockOn)
+			if AutoSaveLockOn then
+				Settings.SaveLockOn = "true"
+				ActualSettings.SaveLockOn = "true"
+			else
+				Settings.SaveLockOn = "nil"
+				ActualSettings.SaveLockOn = "nil"
+			end
+
+			Save()
+		end)
+	end)
+
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Prestige/Level Hider", ActualSettings.AutoLevelHider, function(AutoLevelHider)
+			if AutoLevelHider then
+				Settings.AutoLevelHider = "true"
+				ActualSettings.AutoLevelHider = "true"
+			else
+				Settings.AutoLevelHider = "nil"
+				ActualSettings.AutoLevelHider = "nil"
+			end
+
+			Save()
+		end)
+	end)
+
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Wings Hider", ActualSettings.AutoWingsHider, function(AutoWingsHider)
+			if AutoWingsHider then
+				Settings.AutoWingsHider = "true"
+				ActualSettings.AutoWingsHider = "true"
+			else
+				Settings.AutoWingsHider = "nil"
+				ActualSettings.AutoWingsHider = "nil"
+			end
+
+			Save()
+		end)
+	end)
+
+	task.spawn(function()
+		autoSaveSection2:addToggle("Auto Halo Hider", ActualSettings.AutoHaloHider, function(AutoHaloHider)
+			if AutoHaloHider then
+				Settings.AutoHaloHider = "true"
+				ActualSettings.AutoHaloHider = "true"
+			else
+				Settings.AutoHaloHider = "nil"
+				ActualSettings.AutoHaloHider = "nil"
+			end
+
 			Save()
 		end)
 	end)
