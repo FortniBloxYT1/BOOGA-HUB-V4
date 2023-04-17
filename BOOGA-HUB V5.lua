@@ -355,6 +355,8 @@ UIS.InputBegan:Connect(function(Input,GameProcessedEvent)
 
         while JarSpam do
             repeat task.wait() until Player.Character and Player.Character:FindFirstChild("PowerOutput")
+							
+	    task.wait(.3)
 
             Player.Backpack.ServerTraits.EatSenzu:FireServer("something")
 
