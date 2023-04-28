@@ -3157,6 +3157,215 @@ OtherSection:addSlider("FPS Cap",60, 15, 240, function(FPS)
 	setfpscap(FPS)
 end)
 
+OtherSection:addButton("Destroy South City",function()
+	if Player.Backpack:FindFirstChild("Chain Destructo Disk") then
+
+		local Temp = RS.RenderStepped:Connect(function()
+			for _, v in ipairs(Player.Character:GetChildren()) do
+				if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+					v.Parent = workspace
+					v.Parent = Player.Character
+					v.CFrame = CFrame.new(-321.94085693359375, 46.853328704833984, -6522.7080078125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-549.8817749023438, 46.85326385498047, -6516.54296875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-554.9075317382812, 46.85310363769531, -6660.20703125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-798.9278564453125, 65.46261596679688, -6540.232421875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-342.9331970214844, 46.58429718017578, -6290.02099609375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-289.4344482421875, 46.584293365478516, -6124.689453125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-454.6794128417969, 46.58428955078125, -6021.11962890625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-446.515625, 43.039573669433594, -6664.51806640625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-873.4732055664062, 44.044151306152344, -6447.46533203125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-845.406494140625, 44.043235778808594, -6353.0546875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-844.889892578125, 55.01910400390625, -6360.80419921875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-562.689697265625, 79.71495819091797, -6155.42236328125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-336.8099365234375, 52.05033874511719, -6332.22021484375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-343.0293273925781, 67.66625213623047, -6225.0791015625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-712.9083251953125, 87.75789642333984, -6179.07275390625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-783.9833984375, 63.145225524902344, -6224.2685546875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-769.5980224609375, 79.64446258544922, -6680.6875)
+				end
+			end
+		end)
+
+		task.delay(16,function()
+			Temp:Disconnect()
+		end)
+
+		for _ = 1,4 do
+			Player.Backpack["Chain Destructo Disk"].Parent = Player.Character
+			Player.Character["Chain Destructo Disk"]:Activate()
+			repeat task.wait() until Player.Character:FindFirstChild("Blast") and Player.Character.Blast.Size == Vector3.new(3,3,3)
+			task.wait(.3)
+			Player.Character["Chain Destructo Disk"]:Deactivate()
+			task.wait(.250)
+			Player.Character["Chain Destructo Disk"].Parent = Player.Backpack
+			task.wait(3)
+		end
+
+	else
+		sendNotification("BOOGA-HUB V5","Buy Chain Destructo Disk",2)
+	end
+end)
+
+OtherSection:addButton("Destroy West City",function()
+	if Player.Backpack:FindFirstChild("Chain Destructo Disk") then
+
+		local Temp = RS.RenderStepped:Connect(function()
+			for _, v in ipairs(Player.Character:GetChildren()) do
+				if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+					v.Parent = workspace
+					v.Parent = Player.Character
+					v.CFrame = CFrame.new(-678.1494140625, 46.3182373046875, -3088.555908203125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-790.3327026367188, 46.31821823120117, -2999.56201171875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-233.95065307617188, 58.270381927490234, -2785.347412109375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-199.0154266357422, 55.49599075317383, -3001.0771484375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-268.8165588378906, 65.62974548339844, -3103.226318359375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-635.9321899414062, 53.888309478759766, -3371.6787109375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-809.716552734375, 66.55875396728516, -3214.374755859375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-862.612548828125, 86.21691131591797, -3196.8583984375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-470.27459716796875, 49.43365478515625, -2664.853759765625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-679.7741088867188, 71.1262435913086, -2783.427001953125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-764.1619873046875, 71.12626647949219, -2781.241455078125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-771.55419921875, 68.33372497558594, -2663.940185546875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-688.6072998046875, 68.33422088623047, -2650.03857421875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-438.6930847167969, 86.75931549072266, -3366.067138671875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-666.69921875, 90.16650390625, -3194.48486328125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-930.8486328125, 51.58945846557617, -2948.37841796875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-126.31153869628906, 56.24436950683594, -2600.63623046875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-684.4891357421875, 103.71376037597656, -2987.2177734375)
+				end
+			end
+		end)
+
+		task.delay(16,function()
+			Temp:Disconnect()
+		end)
+
+		for _ = 1,4 do
+			Player.Backpack["Chain Destructo Disk"].Parent = Player.Character
+			Player.Character["Chain Destructo Disk"]:Activate()
+			repeat task.wait() until Player.Character:FindFirstChild("Blast") and Player.Character.Blast.Size == Vector3.new(3,3,3)
+			task.wait(.3)
+			Player.Character["Chain Destructo Disk"]:Deactivate()
+			task.wait(.250)
+			Player.Character["Chain Destructo Disk"].Parent = Player.Backpack
+			task.wait(3)
+		end
+
+	else
+		sendNotification("BOOGA-HUB V5","Buy Chain Destructo Disk",2)
+	end
+end)
+
+OtherSection:addButton("Destroy Central City",function()
+	if Player.Backpack:FindFirstChild("Chain Destructo Disk") then
+
+		local Temp = RS.RenderStepped:Connect(function()
+			for _, v in ipairs(Player.Character:GetChildren()) do
+				if v:FindFirstChild("Ki") and v:FindFirstChild("Mesh") then
+					v.Parent = workspace
+					v.Parent = Player.Character
+					v.CFrame = CFrame.new(-3633.4013671875, 57.870628356933594, -1496.4383544921875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3929.82373046875, 65.46651458740234, -1695.591552734375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3920.306640625, 65.4646224975586, -1871.7099609375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3924.781982421875, 60.468605041503906, -1547.943603515625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3641.48095703125, 126.63037872314453, -1231.7445068359375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3254.652099609375, 113.0166015625, -2190.28955078125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-2818.533447265625, 61.1212043762207, -2111.16162109375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-2827.004638671875, 61.11927032470703, -1881.568359375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-2756.04443359375, 61.11928939819336, -1785.8460693359375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-2747.662353515625, 61.791683197021484, -1510.3502197265625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-2930.3037109375, 63.45114517211914, -1420.17626953125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3415.62158203125, 63.28607177734375, -1328.60107421875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3306.894775390625, 84.7347640991211, -1505.7796630859375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3373.4697265625, 103.4599609375, -2116.351318359375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3782.682861328125, 51.10520935058594, -2110.2265625)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3063.79150390625, 48.26889419555664, -1502.704345703125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-2806.5419921875, 29.973417282104492, -1408.8778076171875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3629.628662109375, 87.90525817871094, -1873.22021484375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3620.7392578125, 63.99690628051758, -2133.27783203125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3888.951416015625, 102.94198608398438, -1294.796875)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3466.365478515625, 74.60734558105469, -1172.658203125)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3215.79931640625, 122.91788482666016, -1897.140380859375)
+					task.wait(.150)
+					v.CFrame = CFrame.new(-3526.703369140625, 64.0551528930664, -1890.8133544921875)
+				end
+			end
+		end)
+
+		task.delay(20,function()
+			Temp:Disconnect()
+		end)
+
+		for _ = 1,5 do
+			Player.Backpack["Chain Destructo Disk"].Parent = Player.Character
+			Player.Character["Chain Destructo Disk"]:Activate()
+			repeat task.wait() until Player.Character:FindFirstChild("Blast") and Player.Character.Blast.Size == Vector3.new(3,3,3)
+			task.wait(.3)
+			Player.Character["Chain Destructo Disk"]:Deactivate()
+			task.wait(.250)
+			Player.Character["Chain Destructo Disk"].Parent = Player.Backpack
+			task.wait(3)
+		end
+
+	else
+		sendNotification("BOOGA-HUB V5","Buy Chain Destructo Disk",2)
+	end
+end)
+
 OtherSection:addButton("Remove Aura", function()
 	if Player.Character:FindFirstChild("HumanoidRootPart") then
 		if Player.Character.HumanoidRootPart:FindFirstChild("TempAura") then
