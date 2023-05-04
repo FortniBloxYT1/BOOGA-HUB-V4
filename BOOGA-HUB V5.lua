@@ -2307,46 +2307,16 @@ MiscSection2:addButton("No-Ki-Waste-Vanish", function()
 	end)
 end)
 
-MiscSection2:addButton("Fusion Stack", function()
-	if Player.Character:FindFirstChild("FUSED") then
-		Player.Character.FUSED:Destroy()
-	end
-	if Player:FindFirstChild("FUSED") then
-		Player.FUSED:Destroy()
-	end
-
-	Player.Character.ChildAdded:Connect(function(Child)
-		if Child.Name == "FUSED" then
-			Child:Destroy()
-		end
-	end)
-
-	Player.ChildAdded:Connect(function(Child)
-		if Child.Name == "FUSED" then
-			Child:Destroy()
-		end
-	end)
-end)
-
 MiscSection2:addButton("Power Impact Glitch",function()
 	while true do
 		task.wait(.250)
-		if Toggled or not workspace.Live:FindFirstChild(Player.Name) then
-			continue
-		end
-		if not Player.Character:FindFirstChild("Head") then
-			continue
-		elseif not Player.Character:FindFirstChild("Power Impact") then
-			continue
-		end
-		if not Player.Character["Power Impact"].Activator:FindFirstChild("BoneBreak") then
-			continue
-		end
-		Player.Character["Power Impact"].Activator.BoneBreak:Destroy()
-		Player.Character["Power Impact"].Activator.Sound:Destroy()
-		Player.Character["Power Impact"].Activator.Fireworks:Destroy()
-		Player.Character["Power Impact"].Activator.Crash:Destroy()
-		Player.Character["Power Impact"].Activator.Blocked:Destroy()
+		pcall(function()
+			Player.Character["Power Impact"].Activator.BoneBreak:Destroy()
+			Player.Character["Power Impact"].Activator.Sound:Destroy()
+			Player.Character["Power Impact"].Activator.Fireworks:Destroy()
+			Player.Character["Power Impact"].Activator.Crash:Destroy()
+			Player.Character["Power Impact"].Activator.Blocked:Destroy()
+		end)
 	end
 end)
 
