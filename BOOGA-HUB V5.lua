@@ -4023,7 +4023,7 @@ autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
 end)
 
 Plus:addButton("Made By BOOGABLOZxD | Copy discord link for updates", function()
-	func("https://discord.gg/RuswFJy7g9")
+	func("https://discord.gg/F5WbRVWCaT")
 end)
 
 BoogaHub:SelectPage(BoogaHub.pages[1], true)
