@@ -13,7 +13,7 @@ else
 end
 
 
--- [[Made by BOOGABLOZxD / MangouRolo#0001 / Discord Server : https://discord.gg/RuswFJy7g9]] --
+-- [[Made by BOOGABLOZxD / MangouRolo / Discord Server : https://discord.gg/F5WbRVWCaT]] --
 -- [[At what are you looking skids]] --
 
 getgenv().Executed = true
