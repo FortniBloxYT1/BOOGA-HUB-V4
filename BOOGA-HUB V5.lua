@@ -102,16 +102,13 @@ ActualSettings.CloseUI = Settings.CloseUI
 
 local function convert(str)
 	if str == "nil" then
-		str = nil
-		return str
+		return nil
 	elseif str == "true" then
-		str = true
-		return str
+		return true
 	elseif str == true then
 		return str
 	elseif str == false then
-		str = nil
-		return str
+		return nil
 	end
 end
 
