@@ -98,7 +98,7 @@ if not pcall(function() readfile(Name) end) then writefile(Name, game:service'Ht
 
 local Settings
 
-if identifyexecutor and identifyexecutor() ~= "Wave 5.0" then
+if identifyexecutor and identifyexecutor() ~= "Wave" then
 	Settings = game:service'HttpService':JSONDecode(readfile(Name))
 end
 
