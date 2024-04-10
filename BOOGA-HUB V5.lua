@@ -3823,6 +3823,10 @@ end
 
 local Plus = Settingss:addSection("Plus")
 
+if identifyexecutor() == "Wave" then
+	ActualSettings.CloseUI = "Comma"
+end
+
 Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
 	BoogaHub:toggle()
 end,function(Key)
