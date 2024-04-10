@@ -96,7 +96,7 @@ local ActualSettings = {}
 
 if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
 
-local Settings
+local Settings = {}
 
 if identifyexecutor and identifyexecutor() ~= "Wave" then
 	Settings = game:service'HttpService':JSONDecode(readfile(Name))
