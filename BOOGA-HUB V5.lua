@@ -3823,7 +3823,7 @@ end
 
 local Plus = Settingss:addSection("Plus")
 
-if identifyexecutor() == "Wave" then
+if identifyexecutor and identifyexecutor() == "Wave" then
 	ActualSettings.CloseUI = "Comma"
 end
 
