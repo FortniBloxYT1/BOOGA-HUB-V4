@@ -96,7 +96,11 @@ local ActualSettings = {}
 
 if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
 
-local Settings = game:service'HttpService':JSONDecode(readfile(Name))
+local Settings
+
+if identifyexecutor and identifyexecutor() ~= "Wave 5.0" then
+	Settings = game:service'HttpService':JSONDecode(readfile(Name))
+end
 
 ActualSettings.CloseUI = Settings.CloseUI
 
