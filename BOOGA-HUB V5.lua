@@ -3824,7 +3824,7 @@ end
 local Plus = Settingss:addSection("Plus")
 
 if identifyexecutor and identifyexecutor() == "Wave" then
-	ActualSettings.CloseUI = "Comma"
+	ActualSettings.CloseUI = "Clear"
 end
 
 Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
