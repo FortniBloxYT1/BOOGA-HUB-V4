@@ -32,7 +32,7 @@ end)
 
 local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
 
-Player:Kick("You have been banned from Final Stand for using exploits, all your slots have been wiped and reseted to level 0, rejoin to start again")
+Player:Kick("You have been banned from Final Stand for using exploits, all your slots have been wiped and reseted to level 0")
 
 getgenv().autoFarmDistance = 2
 local Mouse = Player:GetMouse()
