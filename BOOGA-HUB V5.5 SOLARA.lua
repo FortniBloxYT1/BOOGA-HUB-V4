@@ -2829,19 +2829,19 @@ task.spawn(function()
 				end
 			end
             
-			autoQuest = nil
-			questsDone = nil
-			NPCs = nil
-			questLoaded = nil
-			Fight = nil
-			Talk = nil
-			Both = nil
-			searchMore = nil
-			destroy = nil
-			friaza = nil
-			friazaQuests = nil
-			Others = nil
-			Balls = nil
+			getgenv().autoQuest = nil
+			getgenv().questsDone = nil
+			getgenv().NPCs = nil
+			getgenv().questLoaded = nil
+			getgenv().Fight = nil
+			getgenv().Talk = nil
+			getgenv().Both = nil
+			getgenv().searchMore = nil
+			getgenv().destroy = nil
+			getgenv().friaza = nil
+			getgenv().friazaQuests = nil
+			getgenv().Others = nil
+			getgenv().Balls = nil
 			if Player.Character.HumanoidRootPart:FindFirstChild("AutoQuestBV") then
 				Player.Character.HumanoidRootPart.AutoQuestBV:Destroy()
 			end
