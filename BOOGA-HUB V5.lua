@@ -98,9 +98,7 @@ if not pcall(function() readfile(Name) end) then writefile(Name, game:service'Ht
 
 local Settings = {}
 
-if identifyexecutor and identifyexecutor() ~= "Wave" then
-	Settings = game:service'HttpService':JSONDecode(readfile(Name))
-end
+Settings = game:service'HttpService':JSONDecode(readfile(Name))
 
 ActualSettings.CloseUI = Settings.CloseUI
 
@@ -3822,10 +3820,6 @@ for theme, color in pairs(Themes) do
 end
 
 local Plus = Settingss:addSection("Plus")
-
-if identifyexecutor and identifyexecutor() == "Wave" then
-	ActualSettings.CloseUI = "Clear"
-end
 
 Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
 	BoogaHub:toggle()
