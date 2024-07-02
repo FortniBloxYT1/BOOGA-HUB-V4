@@ -94,11 +94,13 @@ end
 
 local ActualSettings = {}
 
-if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
+if not pcall(function() readfile(Name) end) then pcall(function() writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end) end
 
 local Settings = {}
 
-Settings = game:service'HttpService':JSONDecode(readfile(Name))
+pcall(function()
+	Settings = game:service'HttpService':JSONDecode(readfile(Name))
+end)
 
 ActualSettings.CloseUI = Settings.CloseUI
 
