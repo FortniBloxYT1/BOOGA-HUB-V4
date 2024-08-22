@@ -3408,8 +3408,10 @@ OtherSection:addButton("Wrathful Charge Aura", function()
 	Player.Character["Wrathful Charge"].Activator.Forward:Destroy()
 end)
 
-OtherSection:addDropdown("Auto-Stats",{ "Health-Max", "Ki-Max", "Phys-Damage", "Ki-Damage", "Phys-Resist", "Ki-Resist", "Speed" },function(AutoStats)
-	Stat = AutoStats
+task.spawn(function()
+	OtherSection:addDropdown("Auto-Stats",{ "Health-Max", "Ki-Max", "Phys-Damage", "Ki-Damage", "Phys-Resist", "Ki-Resist", "Speed" },function(AutoStats)
+		Stat = AutoStats
+	end)
 end)
 
 task.spawn(function()
@@ -3513,20 +3515,26 @@ task.spawn(function()
 
 end)
 
-OtherSection:addButton("Fix Little Jiren", function()
-	Player.Character["Little Jiren"].Handle.Jiren.Humanoid:Destroy()
+task.spawn(function()
+	OtherSection:addButton("Fix Little Jiren", function()
+		Player.Character["Little Jiren"].Handle.Jiren.Humanoid:Destroy()
+	end)
 end)
 
-OtherSection:addSlider("Saturation", 0.2, -25, 25, function(Saturation)
-	game.Lighting.ColorCorrection.Saturation = Saturation
+task.spawn(function()
+	OtherSection:addSlider("Saturation", 0.2, -25, 25, function(Saturation)
+		game.Lighting.ColorCorrection.Saturation = Saturation
+	end)
 end)
 
-OtherSection:addColorPicker("Wing/Halo Color", Color3.new(255, 0, 0), function(Color)
-	if Player.Character:FindFirstChild("RebirthWings") then
-		Player.Character.RebirthWings.Handle.Color = Color
-	elseif Player.Character:FindFirstChild("RealHalo") then
-		Player.Character.RealHalo.Handle.Color = Color
-	end
+task.spawn(function()
+	OtherSection:addColorPicker("Wing/Halo Color", Color3.new(255, 0, 0), function(Color)
+		if Player.Character:FindFirstChild("RebirthWings") then
+			Player.Character.RebirthWings.Handle.Color = Color
+		elseif Player.Character:FindFirstChild("RealHalo") then
+			Player.Character.RealHalo.Handle.Color = Color
+		end
+	end)
 end)
 
 local Animations = Other:addSection("Animations")
@@ -3585,26 +3593,36 @@ end)
 
 local Visuals = Other:addSection("Visuals")
 
-Visuals:addButton("Galaxy Shaders",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Galaxy%20Shader"))()
-end)
-
-Visuals:addButton("Shader",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/OtherShader"))()
-end)
-
-Visuals:addButton("Japanese Dark Shader",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Dark"))()
-end)
-
-Visuals:addButton("Japanese Shader",function()
-	pcall(function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Japanese"))()
+task.spawn(function()
+	Visuals:addButton("Galaxy Shaders",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Galaxy%20Shader"))()
 	end)
 end)
 
-Visuals:addButton("FPS Boost",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Fps-boost/main/Fps%20boost"))()
+task.spawn(function()
+	Visuals:addButton("Shader",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/OtherShader"))()
+	end)
+end)
+
+task.spawn(function()
+	Visuals:addButton("Japanese Dark Shader",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Dark"))()
+	end)
+end)
+
+task.spawn(function()
+	Visuals:addButton("Japanese Shader",function()
+		pcall(function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Shaders/main/Japanese"))()
+		end)
+	end)
+end)
+
+task.spawn(function()
+	Visuals:addButton("FPS Boost",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Fps-boost/main/Fps%20boost"))()
+	end)
 end)
 
 task.spawn(function()
@@ -3674,77 +3692,101 @@ end)
 local Teleports = BoogaHub:addPage("Teleports", 5012544693)
 local TeleportSection = Teleports:addSection("Worlds")
 
-TeleportSection:addButton("Rejoin",function()
-	task.wait(1)
-	if #game.Players:GetPlayers() == 1 then
-		TeleportService:Teleport(game.PlaceId, Player)
-	else
-		TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, Player)
-	end
-end)
-
-TeleportSection:addButton("Earth", function()
-	task.wait(1)
-	TeleportService:Teleport(536102540)
-end)
-
-TeleportSection:addButton("Namek", function()
-	task.wait(1)
-	TeleportService:Teleport(882399924)
-end)
-
-TeleportSection:addButton("Space", function()
-	task.wait(1)
-	TeleportService:Teleport(478132461)
-end)
-
-TeleportSection:addButton("Future", function()
-	task.wait(1)
-	TeleportService:Teleport(569994010)
-end)
-
-TeleportSection:addButton("Secret World", function()
-	task.wait(1)
-	TeleportService:Teleport(2046990924)
-end)
-
-TeleportSection:addButton("Queue", function()
-	task.wait(1)
-	TeleportService:Teleport(3565304751)
-end)
-
-TeleportSection:addButton("Zaros", function()
-	task.wait(1)
-	TeleportService:Teleport(2651456105)
-end)
-
-TeleportSection:addButton("Heaven", function()
-	task.wait(1)
-	TeleportService:Teleport(3552157537)
-end)
-
-TeleportSection:addButton("Ranked", function()
-	task.wait(1)
-	TeleportService:Teleport(489979581)
-end)
-
-TeleportSection:addButton("HTC", function()
-	task.wait(1)
-	TeleportService:Teleport(882375367)
-end)
-
-TeleportSection:addButton("Server Hop", function()
-	local z = {}
-	for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
-		if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
-			z[#z + 1] = v.id
+task.spawn(function()
+	TeleportSection:addButton("Rejoin",function()
+		task.wait(1)
+		if #game.Players:GetPlayers() == 1 then
+			TeleportService:Teleport(game.PlaceId, Player)
+		else
+			TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, Player)
 		end
-	end
-	if #z > 0 then
-		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, z[math.random(1, #z)])
-	else
-		return BoogaHub:Notify("Server Hop can't find a server")
-	end
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Earth", function()
+		task.wait(1)
+		TeleportService:Teleport(536102540)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Namek", function()
+		task.wait(1)
+		TeleportService:Teleport(882399924)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Space", function()
+		task.wait(1)
+		TeleportService:Teleport(478132461)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Future", function()
+		task.wait(1)
+		TeleportService:Teleport(569994010)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Secret World", function()
+		task.wait(1)
+		TeleportService:Teleport(2046990924)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Queue", function()
+		task.wait(1)
+		TeleportService:Teleport(3565304751)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Zaros", function()
+		task.wait(1)
+		TeleportService:Teleport(2651456105)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Heaven", function()
+		task.wait(1)
+		TeleportService:Teleport(3552157537)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Ranked", function()
+		task.wait(1)
+		TeleportService:Teleport(489979581)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("HTC", function()
+		task.wait(1)
+		TeleportService:Teleport(882375367)
+	end)
+end)
+
+task.spawn(function()
+	TeleportSection:addButton("Server Hop", function()
+		local z = {}
+		for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+			if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+				z[#z + 1] = v.id
+			end
+		end
+		if #z > 0 then
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, z[math.random(1, #z)])
+		else
+			return BoogaHub:Notify("Server Hop can't find a server")
+		end
+	end)
 end)
 
 local TeleportSection2 = Teleports:addSection("Cities")
@@ -3786,21 +3828,27 @@ end)
 local MoreScripts = BoogaHub:addPage("More Scripts", 5012544693)
 local MoreScriptsSection = MoreScripts:addSection("More Scripts")
 
-MoreScriptsSection:addButton("Infinite Yield", function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+task.spawn(function()
+	MoreScriptsSection:addButton("Infinite Yield", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+	end)
 end)
 
-MoreScriptsSection:addButton("Fates-Admin", function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))()
+task.spawn(function()
+	MoreScriptsSection:addButton("Fates-Admin", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))()
+	end)
 end)
 
-MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
-	if not getgenv().Executedd then
-		getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
-	else
-		game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA CMDS V2", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
-	end
+task.spawn(function()
+	MoreScriptsSection:addButton("BOOGA-CMDS V2",function()
+		if not getgenv().Executedd then
+			getgenv().targetNPCs = false -- [[ If true then commands like -tp,-ltp and -ez will work for npcs too ]]
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/BOOGA-CMDS/main/BOOGA%20CMDS%20V2.lua"))()
+		else
+			game:GetService("StarterGui"):SetCore("SendNotification", {Title = "BOOGA CMDS V2", Text = "BOOGA CMDS V2 ALREADY LOADED", Duration = 5})
+		end
+	end)
 end)
 
 task.spawn(function()
@@ -3816,12 +3864,16 @@ task.spawn(function()
 	end
 end)
 
-MoreScriptsSection:addButton("Kosa-HUB", function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/shit-kosa-hub/main/HubDBFS-SK-v4.lua"))()
+task.spawn(function()
+	MoreScriptsSection:addButton("Kosa-HUB", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/shit-kosa-hub/main/HubDBFS-SK-v4.lua"))()
+	end)
 end)
 
-MoreScriptsSection:addButton("Snowy Hub",function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Snowy-Hub/main/SnowySkidHub_1.lua"))()
+task.spawn(function()
+	MoreScriptsSection:addButton("Snowy Hub",function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Snowy-Hub/main/SnowySkidHub_1.lua"))()
+	end)
 end)
 
 local Settingss = BoogaHub:addPage("Settings", 5012544693)
@@ -3835,208 +3887,216 @@ end
 
 local Plus = Settingss:addSection("Plus")
 
-Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
-	BoogaHub:toggle()
-end,function(Key)
-    Settings.CloseUI = tostring(Key.KeyCode):gsub("%a+%.%a+%.","")
-    ActualSettings.CloseUI = tostring(Key.KeyCode):gsub("%a+%.%a+%.","")
-    Save()
+task.spawn(function()
+	Plus:addKeybind("Close UI", Enum.KeyCode[ActualSettings.CloseUI], function()
+		BoogaHub:toggle()
+	end,function(Key)
+	    Settings.CloseUI = tostring(Key.KeyCode):gsub("%a+%.%a+%.","")
+	    ActualSettings.CloseUI = tostring(Key.KeyCode):gsub("%a+%.%a+%.","")
+	    Save()
+	end)
 end)
 
-Plus:addButton("Destroy GUI",function()
-	game.CoreGui["BOOGA-HUB V5.5"]:Destroy()
-	getgenv().Executed = false
+task.spawn(function()
+	Plus:addButton("Destroy GUI",function()
+		game.CoreGui["BOOGA-HUB V5.5"]:Destroy()
+		getgenv().Executed = false
+	end)
 end)
 
 local autoSaveSection = Settingss:addSection("Auto Save Settings")
 
-autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
-
-	local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
-	local boogaHub = Lib.new("BOOGA-HUB V5.5 SETTINGS", 5013109572)
-	local nothing = boogaHub:addPage("Nothing",5012544693)
-	local autoSavePage = boogaHub:addPage("Auto Saves",5012544693)
-	local autoSaveSection2 = autoSavePage:addSection("Auto Saves")
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Earth God Mode", ActualSettings.SaveEGM, function(saveEGM)
-			if saveEGM then
-				Settings.SaveEGM = "true"
-				ActualSettings.SaveEGM = "true"
-			else
-				Settings.SaveEGM = "nil"
-				ActualSettings.SaveEGM = "nil"
-			end
-			
-			Save()
+task.spawn(function()
+	autoSaveSection:addButton("Open BOOGA HUB Settings Hub",function()
+	
+		local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/FortniBloxYT1/Venyx-UI/main/Venyx.lua"))()
+		local boogaHub = Lib.new("BOOGA-HUB V5.5 SETTINGS", 5013109572)
+		local nothing = boogaHub:addPage("Nothing",5012544693)
+		local autoSavePage = boogaHub:addPage("Auto Saves",5012544693)
+		local autoSaveSection2 = autoSavePage:addSection("Auto Saves")
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save Earth God Mode", ActualSettings.SaveEGM, function(saveEGM)
+				if saveEGM then
+					Settings.SaveEGM = "true"
+					ActualSettings.SaveEGM = "true"
+				else
+					Settings.SaveEGM = "nil"
+					ActualSettings.SaveEGM = "nil"
+				end
+				
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Universal God Mode", ActualSettings.SaveUniversalGM, function(saveUniversalGM)
-			if saveUniversalGM then
-				Settings.SaveUniversalGM = "true"
-				ActualSettings.SaveUniversalGM = "true"
-			else
-				Settings.SaveUniversalGM = "nil"
-				ActualSettings.SaveUniversalGM = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save Universal God Mode", ActualSettings.SaveUniversalGM, function(saveUniversalGM)
+				if saveUniversalGM then
+					Settings.SaveUniversalGM = "true"
+					ActualSettings.SaveUniversalGM = "true"
+				else
+					Settings.SaveUniversalGM = "nil"
+					ActualSettings.SaveUniversalGM = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save No Slow", ActualSettings.SaveNoSlow, function(saveNS)
-			if saveNS then
-				Settings.SaveNoSlow = "true"
-				ActualSettings.SaveNoSlow = "true"
-			else
-				Settings.SaveNoSlow = "nil"
-				ActualSettings.SaveNoSlow = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save No Slow", ActualSettings.SaveNoSlow, function(saveNS)
+				if saveNS then
+					Settings.SaveNoSlow = "true"
+					ActualSettings.SaveNoSlow = "true"
+				else
+					Settings.SaveNoSlow = "nil"
+					ActualSettings.SaveNoSlow = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Better No Slow",ActualSettings.SaveBetterNoSlow, function(saveBNS)
-			if saveBNS then
-				Settings.SaveBetterNoSlow = "true"
-				ActualSettings.SaveBetterNoSlow = "true"
-			else
-				Settings.SaveBetterNoSlow = "nil"
-				ActualSettings.SaveBetterNoSlow = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save Better No Slow",ActualSettings.SaveBetterNoSlow, function(saveBNS)
+				if saveBNS then
+					Settings.SaveBetterNoSlow = "true"
+					ActualSettings.SaveBetterNoSlow = "true"
+				else
+					Settings.SaveBetterNoSlow = "nil"
+					ActualSettings.SaveBetterNoSlow = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Anti Grab", ActualSettings.SaveAntiGrab, function(saveANG)
-			if saveANG then
-				Settings.SaveAntiGrab = "true"
-				ActualSettings.SaveAntiGrab = "true"
-			else
-				Settings.SaveAntiGrab = "nil"
-				ActualSettings.SaveAntiGrab = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save Anti Grab", ActualSettings.SaveAntiGrab, function(saveANG)
+				if saveANG then
+					Settings.SaveAntiGrab = "true"
+					ActualSettings.SaveAntiGrab = "true"
+				else
+					Settings.SaveAntiGrab = "nil"
+					ActualSettings.SaveAntiGrab = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Anti Glitch", ActualSettings.SaveAntiGlitch, function(saveAG)
-			if saveAG then
-				Settings.SaveAntiGlitch = "true"
-				ActualSettings.SaveAntiGlitch = "true"
-			else
-				Settings.SaveAntiGlitch = "nil"
-				ActualSettings.SaveAntiGlitch = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save Anti Glitch", ActualSettings.SaveAntiGlitch, function(saveAG)
+				if saveAG then
+					Settings.SaveAntiGlitch = "true"
+					ActualSettings.SaveAntiGlitch = "true"
+				else
+					Settings.SaveAntiGlitch = "nil"
+					ActualSettings.SaveAntiGlitch = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save 2XP FREEZE", ActualSettings.Save2XP, function(save2XP)
-			if save2XP then
-				Settings.Save2XP = "true"
-				ActualSettings.Save2XP = "true"
-			else
-				Settings.Save2XP = "nil"
-				ActualSettings.Save2XP = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save 2XP FREEZE", ActualSettings.Save2XP, function(save2XP)
+				if save2XP then
+					Settings.Save2XP = "true"
+					ActualSettings.Save2XP = "true"
+				else
+					Settings.Save2XP = "nil"
+					ActualSettings.Save2XP = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2", ActualSettings.AutoLaunchBOOGACMDS, function(autoLaunchCMDS)
-			if autoLaunchCMDS then
-				Settings.AutoLaunchBOOGACMDS = "true"
-				ActualSettings.AutoLaunchBOOGACMDS = "true"
-			else
-				Settings.AutoLaunchBOOGACMDS = "nil"
-				ActualSettings.AutoLaunchBOOGACMDS = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Launch BOOGA CMDS V2", ActualSettings.AutoLaunchBOOGACMDS, function(autoLaunchCMDS)
+				if autoLaunchCMDS then
+					Settings.AutoLaunchBOOGACMDS = "true"
+					ActualSettings.AutoLaunchBOOGACMDS = "true"
+				else
+					Settings.AutoLaunchBOOGACMDS = "nil"
+					ActualSettings.AutoLaunchBOOGACMDS = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Save Lock On", ActualSettings.SaveLockOn, function(AutoSaveLockOn)
-			if AutoSaveLockOn then
-				Settings.SaveLockOn = "true"
-				ActualSettings.SaveLockOn = "true"
-			else
-				Settings.SaveLockOn = "nil"
-				ActualSettings.SaveLockOn = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Save Lock On", ActualSettings.SaveLockOn, function(AutoSaveLockOn)
+				if AutoSaveLockOn then
+					Settings.SaveLockOn = "true"
+					ActualSettings.SaveLockOn = "true"
+				else
+					Settings.SaveLockOn = "nil"
+					ActualSettings.SaveLockOn = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Prestige/Level Hider", ActualSettings.AutoLevelHider, function(AutoLevelHider)
-			if AutoLevelHider then
-				Settings.AutoLevelHider = "true"
-				ActualSettings.AutoLevelHider = "true"
-			else
-				Settings.AutoLevelHider = "nil"
-				ActualSettings.AutoLevelHider = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Prestige/Level Hider", ActualSettings.AutoLevelHider, function(AutoLevelHider)
+				if AutoLevelHider then
+					Settings.AutoLevelHider = "true"
+					ActualSettings.AutoLevelHider = "true"
+				else
+					Settings.AutoLevelHider = "nil"
+					ActualSettings.AutoLevelHider = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Wings Hider", ActualSettings.AutoWingsHider, function(AutoWingsHider)
-			if AutoWingsHider then
-				Settings.AutoWingsHider = "true"
-				ActualSettings.AutoWingsHider = "true"
-			else
-				Settings.AutoWingsHider = "nil"
-				ActualSettings.AutoWingsHider = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Wings Hider", ActualSettings.AutoWingsHider, function(AutoWingsHider)
+				if AutoWingsHider then
+					Settings.AutoWingsHider = "true"
+					ActualSettings.AutoWingsHider = "true"
+				else
+					Settings.AutoWingsHider = "nil"
+					ActualSettings.AutoWingsHider = "nil"
+				end
+	
+				Save()
+			end)
 		end)
-	end)
-
-	task.spawn(function()
-		autoSaveSection2:addToggle("Auto Halo Hider", ActualSettings.AutoHaloHider, function(AutoHaloHider)
-			if AutoHaloHider then
-				Settings.AutoHaloHider = "true"
-				ActualSettings.AutoHaloHider = "true"
-			else
-				Settings.AutoHaloHider = "nil"
-				ActualSettings.AutoHaloHider = "nil"
-			end
-
-			Save()
+	
+		task.spawn(function()
+			autoSaveSection2:addToggle("Auto Halo Hider", ActualSettings.AutoHaloHider, function(AutoHaloHider)
+				if AutoHaloHider then
+					Settings.AutoHaloHider = "true"
+					ActualSettings.AutoHaloHider = "true"
+				else
+					Settings.AutoHaloHider = "nil"
+					ActualSettings.AutoHaloHider = "nil"
+				end
+	
+				Save()
+			end)
 		end)
+	
+		task.wait(.4)
+	
+		autoSaveSection2:addButton("Close",function()
+			game.CoreGui["BOOGA-HUB V5.5 SETTINGS"]:Destroy()
+		end)
+	
+		boogaHub:SelectPage(boogaHub.pages[2],true)
 	end)
-
-	task.wait(.4)
-
-	autoSaveSection2:addButton("Close",function()
-		game.CoreGui["BOOGA-HUB V5.5 SETTINGS"]:Destroy()
-	end)
-
-	boogaHub:SelectPage(boogaHub.pages[2],true)
 end)
 
-Plus:addButton("Made By BOOGABLOZxD | Copy discord link for updates", function()
-	func("https://discord.gg/F5WbRVWCaT")
+task.spawn(function()
+	Plus:addButton("Made By BOOGABLOZxD | Copy discord link for updates", function()
+		func("https://discord.gg/F5WbRVWCaT")
+	end)
 end)
 
 BoogaHub:SelectPage(BoogaHub.pages[1], true)
