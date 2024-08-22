@@ -377,7 +377,7 @@ end)
 
 local Main = BoogaHub:addPage("Main", 5012544693)
 local MainSection = Main:addSection("Main | Section 1")
-MainSection:addButton("Last Update : 04/05/2023",function() end)
+MainSection:addButton("Last Update : 22/08/2024",function() end)
 
 task.spawn(function()
 	if ActualSettings.SaveLockOn then
