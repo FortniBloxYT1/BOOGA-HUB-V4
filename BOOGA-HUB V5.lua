@@ -30,7 +30,7 @@ task.spawn(function()
 	
 end)
 
-local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100
+local Player, UIS, RS, VU, TeleportService , KIGMToggled, TeleSpeed, SpamMelee, AntiGrabRespawn, SpamKi, ServerDestroyer, RespawnKey, OtherRespawnKey, Buying, BuyingEXP, SpammingMoves, AutoFarming, Attacking, HeavyAttacking , SilentEGM, ResetStamina, Ressetting, BeanSpam, AutoFarming, AutoForm, TpKey, NpcsMode, AutoBlock, LoopAttach, OldPercentatge, Power, StatsPerSecond = game.Players.LocalPlayer, game:GetService("UserInputService"), game:GetService("RunService"),game:GetService("VirtualUser"),game:GetService("TeleportService"),false,false,false,false,false,false,Enum.KeyCode.Comma,Enum.KeyCode.Clear,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,Enum.KeyCode.Clear,100,100,500
 
 getgenv().autoFarmDistance = 2
 local Mouse = Player:GetMouse()
@@ -3413,13 +3413,25 @@ OtherSection:addDropdown("Auto-Stats",{ "Health-Max", "Ki-Max", "Phys-Damage", "
 end)
 
 task.spawn(function()
+    OtherSection:addSlider("Stats Per Second", 500, 0, 100000, function(Stats)
+	StatsPerSecond = Stats
+    end)
+end)
+
+task.spawn(function()
 	OtherSection:addToggle("Auto Stats On/Off", nil, function(AutoStatsToggle)
 		if AutoStatsToggle and Stat then
-			AutoStatsRun = RS.RenderStepped:Connect(function()
-				Player.Backpack.ServerTraits.AttemptUpgrade:FireServer(Player.PlayerGui.HUD.Bottom.Stats[Stat])
-			end)
+			Statting = true
+
+			while Statting do
+				for _ = 1, StatsPerSecond do
+					Player.Backpack.ServerTraits.AttemptUpgrade:FireServer(Player.PlayerGui.HUD.Bottom.Stats[Stat])
+				end
+
+				task.wait(1)
+			end
 		else
-			AutoStatsRun:Disconnect()
+			Statting = false		
 		end
 	end)
 end)
