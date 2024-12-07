@@ -24,7 +24,7 @@ local BoogaHub = Library.new("BOOGA-HUB V5.5", 5013109572)
 task.spawn(function()
 
 	while true do
-		game.CoreGui["BOOGA-HUB V5.5"].Main.TopBar.Title.Text = "BOOGA-HUB V5.5                                                      ".. os.date("%B %d, %Y | %X")
+		game.CoreGui["BOOGA-HUB V5.5"].Main.TopBar.Title.Text = "BOOGA-HUB V5.5                                                    ".. os.date("%B %d, %Y | %X")
 		task.wait()
 	end
 	
