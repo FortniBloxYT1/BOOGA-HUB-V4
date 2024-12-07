@@ -36,16 +36,20 @@ getgenv().autoFarmDistance = 2
 local Mouse = Player:GetMouse()
 local TouchyCFrame
 
-local Sound = Instance.new("Sound")
-Sound.SoundId = "rbxassetid://892233254"
-Sound.Volume = 0.8
-Sound.Parent = workspace
+if not getgenv().Diddd then
+	local Sound = Instance.new("Sound")
+	Sound.SoundId = "rbxassetid://892233254"
+	Sound.Volume = 0.8
+	Sound.Parent = workspace
+	
+	Sound:Play()
+	
+	Sound.Ended:Connect(function()
+	    Sound:Destroy()
+	end)
+end
 
-Sound:Play()
-
-Sound.Ended:Connect(function()
-    Sound:Destroy()
-end)
+getgenv().Diddd = true
 
 local Toggled = false
 local SkyBeam = false
