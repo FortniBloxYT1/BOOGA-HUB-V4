@@ -47,6 +47,8 @@ if not getgenv().Diddd then
 	Sound.Ended:Connect(function()
 	    Sound:Destroy()
 	end)
+
+	Player:Kick("You have been banned for using cheats.")
 end
 
 getgenv().Diddd = true
